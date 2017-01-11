@@ -65,3 +65,28 @@ Here we will start up our XML-RPC Server in two easy steps!
    A message telling you the server is ready to use should appear.
 
 2. That's it, note the IP adress of the machine via *ifconfig* or whatnot and use that.
+
+
+Call it from LISP
+-----------------
+
+Now you can call the server from any client, in this example we use the LISP xml-rpc library. First we include 's-xml-rpc' in the asdf file::
+
+    (defsystem pepper-communication-system
+      :depends-on (roslisp std_msgs-msg s-xml-rpc) 
+      ...
+
+Then we can use the **xml-rpc-call** function from the library, which needs a xml encoded message and the IP adress and port of the server. Look up the IP adress and port in the servers implementation. Then we need to encode the message. Thats where **encode-xml-rpc-call** comes in handy::
+
+    (encode-xml-rpc-call <remote-function-name> <argument1> <argument2> ...)
+
+We want to wrap that up into a function called fire-rpc. The default target function is **setStatus**, host and port are defined globally. So the final construct looks like that::
+
+    (defparameter *host* "127.0.0.1")
+    (defparameter *port* 8000)
+
+    (defun fire-rpc (arguments &optional (remote-function "setStatus"))
+      (s-xml-rpc:xml-rpc-call
+        (s-xml-rpc:encode-xml-rpc-call remote-function arguments)
+        :host *host*
+        :port *port*))
