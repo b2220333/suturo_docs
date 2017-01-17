@@ -154,9 +154,28 @@ Bis hierhin ist der Algorithmus sehr übersichtlich. Die Hauptherausforderung ve
 
 Gegeben die Differenzmenge :math:`D = G_T \setminus S_T`, so scheiden bereits alle Operatoren aus, deren Nachbedingung nicht mindestens einem Element in :math:`D` entspricht. Folglich muss für jeden Operator :math:`\exists \bar{p} \in post_o = i_p \in D` gelten. Für jeden der Operatoren in dieser Vorauswahl müssen nun Belegungen seiner Parameter gefunden werden, um eine Instanz zu erzeugen. Die Menge der möglichen Belegungen kann im schlimmsten Fall exponentiell mit der Anzahl der Prädikate im Operator steigen, weswegen es wichtig ist hier sehr vorsichtig und präzise vorzugehen, um die Anzahl der Möglichkeiten zu reduzieren.
 
-Eine Möglichkeit ist hier die Reihenfolge der Parameter des Operators auszunutzen, um einen Baum zu beschreiben.
+Ein Weg dies zu tun, ist einen Baum zu erzeugen, an dessen Knoten mögliche Instanz der Operatoren stehen. Eine gültige (Teil-)belegung der Parameter des Operators ergibt sich durch das Abgehen aller Äste im Baum. Die Struktur des Baumes wird durch die Parameter des Operators bestimmt. Jeder Parameter entspricht dabei einer Ebene des Baumes. 
 
-[Hier geht's bald weiter]
+Ein Beispiel, um die abstrakte Beschreibung anschaulicher zu machen. Gegeben seien ein Operator :math:`o(a,b,c)` und ein Differenzzustand :math:`D`
+
+.. math::
+	
+	D &= \{\neg f(x_1, x_2), \neg f(x_1, x_3), \neg f(x_3, x_1), g(x_3, x_4), g(x_2, x_5)\} \\
+	pre_o &= \{f(a,b), \neg f(a,c)\} \\
+	post_o &= \{\neg f(a,b), g(b,c)\}
+
+Aus dieser Differenz lässt sich folgender Baum erzeugen:
+
+.. figure:: instance_tree.png
+	:alt: Belegungsbaum des Beispiels
+
+	Belegungsbaum für das Beispiel. Vollständige Belegungen für :math:`a,b,c` in Blau und Rot gekennzeichnet. (Habe noch nicht die Zeit gehabt eine Graphenbibliothek für Sphinx zu finden)
+
+Vollständige Belegungen für :math:`a,b,c` lassen sich nun anhand dieses Baumes ablesen, indem man alle Pfade bis zu den Blättern der :math:`c`-Ebene abgeht.
+
+Im gegebenen Beispiel lassen sich mit dieser einfachen Technik alle vollständigen Instanzen von :math:`o(a,b,c)` finden. Doch dies ist ein Idealfall, der nicht immer gegeben istund  gerade bei Ressourcenmanagement wahrscheinlich nie gegeben sein wird.
+
+[Hier geht's bald weiter...]
 
 TODO - Was noch entwickelt werden könnte
 ----------------------------------------
