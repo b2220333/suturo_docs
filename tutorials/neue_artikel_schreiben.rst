@@ -4,7 +4,7 @@ Tutorial: Neue Artikel schreiben
 Doku schreiben
 --------------
 
-Die Artikel in diesem/r Wiki/Doku liegen als .rst-Dateien in dem suturo_msgs-Repository im Ordner *docs*.
+Die Artikel in diesem/r Wiki/Doku liegen als .rst-Dateien in dem suturo_docs-Repository auf gitHub `suturo_docs <https://github.com/suturo16/suturo_docs>`_.
 Darin gibt es die drei Unterverzeichnisse *organisation*, *tutorials* und *implementierung*. Diese entsprechen den drei Kategorien in der Sidebar/Inhaltsverzeichnis. Ihr wählt also das passende Verzeichnis und erstellt darin eine neue .rst-Datei mit dem Namen eures Artikels.
 
 .. note:: Namenskonvention ist *name_eures_artikels.rst*, also einfach spaces durch _ ersetzen und alles klein.
