@@ -59,7 +59,7 @@ Contents:
    :maxdepth: 2
    :caption: Implementierung
 
-
+   implementierung/planning/plan_generator
 
 
 Indices and tables
