@@ -23,10 +23,10 @@ ______
 Knowledge
 ---------
 
+.. code::
 Prolog
 ______
 
-.. code::
 - getObjectInfo(+Name, -FrameID, -Timestamp, -Height, -Width, -Depth) -> Liste von Lösungen
         In welcher Form der Timestamp kommt, ist für die Schnittstelle relativ unwichtig, da wir ihn nur umherreichen und es auf jeden Fall ein String sein wird.
 
