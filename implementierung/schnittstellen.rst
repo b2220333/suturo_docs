@@ -44,6 +44,9 @@ Planning
 ----------
 .. code::
 - RPC-Server
+        - updateObserverClient(clientID, host, port)
+            Der RPC-Server verwaltet eine Map von Clients und deren IPs/Ports. Bekommt er diese Anfrage updatet er die Infos des entsprechenden Clients oder legt ihn neu an.
+        
         - cutCake()
             Um den Plan zum Kuchen schneiden anzustoßen. Soll sofort zurückgeben, wie lange das etwa dauern wird (also z.B. wie viele Aufträge vorher noch ausgeführt werden müssen).
 
@@ -52,5 +55,8 @@ Pepper
 ----------
 .. code::
 - RPC-Server
+        - updateObserverClient(clientID, host, port)
+            Der RPC-Server verwaltet eine Map von Clients und deren IPs/Ports. Bekommt er diese Anfrage updatet er die Infos des entsprechenden Clients oder legt ihn neu an.
+            
         - notify()
             Benachrichtigung, dass der Kuchen geschnitten ist.
