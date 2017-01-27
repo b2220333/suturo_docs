@@ -7,7 +7,18 @@ Im Folgenden finden sich die Definitionen der Schnittstellen der einzelnen Grupp
 
 Perception
 ----------
-TODO
+.. code::
+Service:
+________
+
+- runPipeline(List<Objects>) -> Liste mit Objekten für die keine Pipeline gestartet werden konnte
+        Führt dazu, dass in Perception eine Pipeline generiert wird, die die spezifizierten Objekte sucht.
+
+Topic:
+________
+
+- percepteros/object_detection -> suturo_perception_msgs/ObjectDetection
+        Gefundene Objekte werden auf diesem Topic gepublished.
 
 Knowledge
 ----------
