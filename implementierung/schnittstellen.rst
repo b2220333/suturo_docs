@@ -8,20 +8,24 @@ Im Folgenden finden sich die Definitionen der Schnittstellen der einzelnen Grupp
 Perception
 ----------
 .. code::
-Service:
+Services
 ________
 
 - runPipeline(List<Objects>) -> Liste mit Objekten für die keine Pipeline gestartet werden konnte
         Führt dazu, dass in Perception eine Pipeline generiert wird, die die spezifizierten Objekte sucht.
 
-Topic:
-________
+Topics
+______
 
 - percepteros/object_detection -> suturo_perception_msgs/ObjectDetection
         Gefundene Objekte werden auf diesem Topic gepublished.
 
 Knowledge
-----------
+---------
+
+Prolog
+______
+
 .. code::
 - getObjectInfo(+Name, -FrameID, -Timestamp, -Height, -Width, -Depth) -> Liste von Lösungen
         In welcher Form der Timestamp kommt, ist für die Schnittstelle relativ unwichtig, da wir ihn nur umherreichen und es auf jeden Fall ein String sein wird.
