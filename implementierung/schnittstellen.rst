@@ -41,7 +41,18 @@ ______
 
 Manipulation
 ----------
-TODO: Controller-Spezifikation bitte ins Wiki schreiben.
+.. code::
+- Controller Liste
+        - Startposition
+            Parameter: keine
+        - Messer greifen
+            Parameter: Messer Frame, Messerlänge, Grifflänge, Griffhöhe, Griffbreite
+        - Messer Umgreifen
+            Parameter: Messer Frame, Messerlänge, Grifflänge, Griffhöhe, Griffbreite
+        - Kuchen schneiden
+            Parameter: Kuchen Frame, Höhe, Länge, Tiefe
+        - Kuchenstück zur Seite schieben
+            Parameter: Kuchenstück Frame, Höhe, Länge, Tiefe
 
 
 Planning
