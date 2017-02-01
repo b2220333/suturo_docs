@@ -50,9 +50,9 @@ Manipulation
         - Messer Umgreifen
             Parameter: Messer Frame, Messerlänge, Grifflänge, Griffhöhe, Griffbreite
         - Kuchen schneiden
-            Parameter: Kuchen Frame, Höhe, Länge, Tiefe
+            Parameter: Kuchen Frame, Kuchenhöhe, KuchenLänge, Kuchenbreite
         - Kuchenstück zur Seite schieben
-            Parameter: Kuchenstück Frame, Höhe, Länge, Tiefe
+            Parameter: Kuchen Frame, Kuchenhöhe, KuchenLänge, Kuchenbreite, Kuchenstück Frame, Kuchenstückhöhe, Kuchenstücklänge, Kuchenstückbreite
 
 
 Planning
