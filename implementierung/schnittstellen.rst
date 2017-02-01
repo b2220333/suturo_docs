@@ -27,16 +27,16 @@ Knowledge
 Prolog
 ______
 
-- getObjectInfo(+Name, -FrameID, -Timestamp, -Height, -Width, -Depth) -> Liste von Lösungen
+- get_object_info(+Name, -FrameID, -Timestamp, -Height, -Width, -Depth) -> Liste von Lösungen
         In welcher Form der Timestamp kommt, ist für die Schnittstelle relativ unwichtig, da wir ihn nur umherreichen und es auf jeden Fall ein String sein wird.
 
-- seenSince(+Name, +FrameID, +Timestamp) -> True/False
+- seen_since(+Name, +FrameID, +Timestamp) -> True/False
         Wurde das Objekt vom Typ (Name) "Name" und der Frame-ID "FrameID" seit dem Timestamp "Timestamp" wieder gesehen?
 
-- connectFrames(+ParentFrameID, +ChildFrameID)
+- connect_frames(+ParentFrameID, +ChildFrameID)
         Verbindet zwei Objekte mit den gegebenen Frames, so dass in TF eine konstante Transformation vom Parent zum Child gepublisht wird.
 
-- disconnectFrames(+ParentFrameID, +ChildFrameID)
+- disconnect_frames(+ParentFrameID, +ChildFrameID)
         Trennt zwei Objekte mit den gegebenen Frames, so dass die zuvor konstante Transformation genutzt wird, um die neue "absolute" Position des Objektes zu berechnen und zu publishen.
 
 Manipulation
