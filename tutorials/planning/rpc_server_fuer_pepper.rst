@@ -192,6 +192,6 @@ die nach Initialisierung nur die Keys *:pepper* und *:turtle* enthält, noch ohn
                          (make-client :host host :port port)))
               'SUCCESS))
               
- Zuerst wird hier die ID, *:pepper* oder *:turtle*, des Clients ermittelt. Falls die ID nicht identifiziert werden kann, wird eine Errornachricht zurückgegeben und das Update abgebrochen. Wenn das nicht der Fall ist kann es weiter gehen. Da der Port in Calls von Lisp aus als number übergeben wird, soll er auch so gespeichert werden. Daher parsed man evtl als String übertragene Ports zur number.
+Zuerst wird hier die ID, *:pepper* oder *:turtle*, des Clients ermittelt. Falls die ID nicht identifiziert werden kann, wird eine Errornachricht zurückgegeben und das Update abgebrochen. Wenn das nicht der Fall ist kann es weiter gehen. Da der Port in Calls von Lisp aus als number übergeben wird, soll er auch so gespeichert werden. Daher parsed man evtl als String übertragene Ports zur number.
  
 Nun wird geprüft, ob schon Informationen zu dem Client in der Liste existieren. Entsprechend werden dann die Einträge aktualisiert oder ein neuer angelegt. 
