@@ -238,25 +238,27 @@ graspkard/TODO - Messer greifen
 """""""""""""""""""""""""
     :Beschreibung: Fährt ein Messer zum Greifen mit dem rechten Arm an.
     :Gelenklisten:
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm, rechter Greifer
     :Parameter:
       - **transform** Frame des Messers in *base_link*
       - **double** Länge des Messers in *m*
       - **double** Länge des Griffes in *m*
       - **double** Höhe des Griffes in *m*
-      - **TODO**
     :Feedback: *feedback* je näher an :math:`0`, desto besser.
     :Beispiel-Parameter: TODO
 
 
 graspkard/TODO - Messer umgreifen
 """""""""""""""""""""""""
-    :Beschreibung: TODO
+    :Beschreibung: Messer sitzt beim ersten Greifen ungeeignet für das Schneiden im Greifer und wird mit Hilfe dieses Controllers in eine geeignete Position gebracht.
     :Gelenklisten:
-      - *graspkard/config/pr2_upper_body_grippers.yaml*: Torso, Rechter Arm und Greifer **TODO**
+      - *graspkard/config/pr2_upper_body_grippers.yaml*: Torso, rechter Arm, linker Arm, rechter Greifer, linker Greifer
     :Parameter:
-      - **TODO**
-    :Feedback: *feedback* **TODO**
+      - **transform** Frame des Messers in *base_link*
+      - **double** Länge des Messers in *m*
+      - **double** Länge des Griffes in *m*
+      - **double** Höhe des Griffes in *m*
+    :Feedback: *feedback* je näher an :math:'0', desto besser 
     :Beispiel-Parameter: TODO
 
 
