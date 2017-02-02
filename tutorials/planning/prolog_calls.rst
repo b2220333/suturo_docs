@@ -30,7 +30,7 @@ Der Prolog Calls sieht für das Beispiel zur Anfrage der Objekt-Info so aus ::
                    ,(format nil "~a~a" +knowrob-iri-prefix+ name)
                    ?frame ?width ?height ?depth) :lispify T :package :pr2-do)))
 
-Die Funktion *json-prolog:prolog* (eigentlich die Funktion *prolog* aus dem Paket *json-prolog*) versucht die Prolog Funktion mit Namen *get_object_infos* aufzurufen. Dafür braucht sie zuerst einen eindeutigen Identifier des gesuchten Objekts *name*. Die Konstante *+knowrob-iri-prefix+* ist auf *http://knowrob.org/kb/knowrob.owl#* gesetzt und repräsentiert die Adresse der Wissensbasis, kombiniert mit *name* erreicht man somit das gesuchte Objekt. Desweiteren erwartet der Prolog-Call die Bezeichner der von ihm zurückgegebenen Werte *?frame, ?width, ?height* und *?depth*. Die Prolog Funktion auf Seite der Knowledge hat also folgende Signatur :: 
+Die Funktion *json-prolog:prolog* (eigentlich die Funktion *prolog* aus dem Paket *json-prolog*) versucht die Prolog Funktion mit Namen *get_object_infos* aufzurufen. Dafür braucht sie zuerst einen eindeutigen Identifier des gesuchten Objekts *name*. Die Konstante *+knowrob-iri-prefix+* ist auf *http://knowrob.org/kb/knowrob.owl#* gesetzt und repräsentiert die Adresse der Wissensbasis. Kombiniert mit *name* erreicht man somit das gesuchte Objekt. Desweiteren erwartet der Prolog-Call die Bezeichner der von ihm zurückgegebenen Werte *?frame, ?width, ?height* und *?depth*. Die Prolog Funktion auf Seite der Knowledge hat also folgende Signatur :: 
 
   get_object_infos(?Name, ?Frame, ?Height, ?Width, ?Depth)
   
