@@ -46,6 +46,7 @@ Hier ist das gesamte Skript mit beispielhafter Server-Funktion, die einen String
           pass
           
 Der richtige RPC-Server auf Pepper kann noch viel mehr. Er wird umfangreicher aufgesetzt, um auch ROS-Funktionen verwenden zu können. ::
+     
      class Server:
           def __init__(self):
                rospy.init_node('server')
@@ -63,6 +64,7 @@ Der richtige RPC-Server auf Pepper kann noch viel mehr. Er wird umfangreicher au
                self.server.register_function(self.setStatus)
 
 Und er verwendet Funktionen wie::    
+     
      def setStatus(self,status):
        #publish status of PR2
        self.pub.publish(String(status))
