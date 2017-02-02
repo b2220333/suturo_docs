@@ -248,6 +248,18 @@ graspkard/TODO - Messer greifen
     :Feedback: *feedback* je näher an :math:`0`, desto besser.
     :Beispiel-Parameter: TODO
 
+
+graspkard/TODO - Messer umgreifen
+"""""""""""""""""""""""""
+    :Beschreibung: TODO
+    :Gelenklisten:
+      - *graspkard/config/pr2_upper_body_grippers.yaml*: Torso, Rechter Arm und Greifer **TODO**
+    :Parameter:
+      - **TODO**
+    :Feedback: *feedback* **TODO**
+    :Beispiel-Parameter: TODO
+
+
 graspkard/TODO - Kuchen schneiden
 """""""""""""""""""""""""
     :Beschreibung: Schneidet einen Kuchen entlang einer Schnittebene mit dem rechten Arm.
@@ -261,15 +273,15 @@ graspkard/TODO - Kuchen schneiden
     :Beispiel-Parameter: TODO
 
 
-
-TODO
-````
-  - Messer Umgreifen
-      Parameter: Messer Frame, Messerlänge, Grifflänge, Griffhöhe, Griffbreite
-  - Kuchen schneiden
-      Parameter: Kuchen Frame, Kuchenhöhe, KuchenLänge, Kuchenbreite
-  - Kuchenstück zur Seite schieben
-      Parameter: Kuchen Frame, Kuchenhöhe, KuchenLänge, Kuchenbreite, Kuchenstück Frame, Kuchenstückhöhe, Kuchenstücklänge, Kuchenstückbreite
+graspkard/TODO - Kuchenstück beiseite scheiben
+"""""""""""""""""""""""""
+    :Beschreibung: Schiebt ein Kuchenstück ein paar Zentimeter beiseite.
+    :Gelenklisten:
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer 
+    :Parameter:
+      - **TODO** Kuchen Frame, Kuchenhöhe, KuchenLänge, Kuchenbreite, Kuchenstück Frame, Kuchenstückhöhe, Kuchenstücklänge, Kuchenstückbreite
+    :Feedback: *feedback* **TODO**
+    :Beispiel-Parameter: TODO
 
 
 Planning
