@@ -1,38 +1,31 @@
-Using the RPC Server Node for communication with Pepper
-=======================================================
+Nutzung von REST zur Kommunikation mit Pepper
+==========================================================
 
-Here you will learn to use RPC (Remote Procedure Calls) to send messages from Pepper to CaterROS. Look at the documentation for RPC Server in Planning to see which methods are available(not yet there).
+Hier zeigen wir, wie man remote-procedure-calls (RPC) zur Kommunikation mit Pepper absetzt und empfängt. Siehe dazu die Schnittstellenbeschreibung  `hier. <https://github.com/suturo16/suturo_docs/blob/master/implementierung/schnittstellen.rst>`_ 
 
-.. note:: This tutorial is for one way communication only. Pepper will be able to send information to a node in ROS but not the other way around.
+Setup
+-----
 
+Um Kommunikation stattfinden zu lassen ist auf allen verwendeten Robotern je ein RPC-Server, als auch Client implementiert. Wir starten mit dem Python Server und Client auf Pepper, und gehen dann zum Lisp Code für PR2 und Turtles über. Man braucht dafür Python und Roslisp.
 
-Setting up
-----------
+Schreibe einen minimalen Server in Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The process is composed of two parts, you will need to write a code in Pepper which allows her to send information via XML-RPC and of course setting up the Server on a ROS-Node.
-
-You will also need Python in your system and of course, the built CaterROS project.
-
-Writing an easy Python script at Pepper to send messages from
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For this you only need to know the IP address of the computer running the RPC Server.
+Du brauchst die IP-Adresse deines Rechners im Netzwerk. 
 
 .. Note: Your code can be run in a myriad of ways, I used Choreograph to pass my scripts to Pepper.
 
-1. Write something leading to a Python Script. For that read/watch some tutorials about using Pepper.
+1. Schreibe ein Python Script, sodass es für Pepper kompatibel ist. Schaue dir notfalls ein paar Tutorials dazu an.
 
-2. Your Python script will need to import the xmlrpclib.
+2. Das Script muss xmlrpclib importieren.
 
-3. Connect to the server by using:
+3. Definiere den Server mit deiner IP-Adresse und sinnvollem Port (ohne Leerzeichen)::
      ``server = xmlrpclib.Server('http:// >>IP ADDRESS FROM SERVER<< :7080/')``
      
-   Without the spaces, the port stays the same.
-     
-4. Now you can already send messages to the server. Use any command the server has like that:
+Alle Calls auf den Server werden so aussehen ::
      ``server.COMMAND(PARAMETERS)``
      
-Here is an example of a simple message sent to the Server, this command will echo everything sent to the topic **pepper_command**::
+Hier ist das gesamte Skript mit beispielhafter Server-Funktion, die einen String zurückgibt::
 
      #!/usr/bin/env python
      
@@ -51,6 +44,31 @@ Here is an example of a simple message sent to the Server, this command will ech
      if __name__ == '__main__':          
           server.echo("At the end of the test, there will be cake.")
           pass
+          
+Der richtige RPC-Server auf Pepper kann noch viel mehr. Er wird umfangreicher aufgesetzt, um auch ROS-Funktionen verwenden zu können. ::
+     class Server:
+          def __init__(self):
+               rospy.init_node('server')
+               self.confirmation="0"
+               rospy.on_shutdown(self.cleanup)
+               rospy.loginfo("Starting server node...")
+               #read the parameter
+               self.IP = rospy.get_param("~SERVER_IP", "127.0.0.1")
+               self.PORT = rospy.get_param("~SERVER_PORT", "8000") 
+               #Publisher
+               self.pub=rospy.Publisher('~status',String,queue_size=1000)
+               #rpc server
+               rospy.loginfo("Starting rpc server ...")
+               self.server = SimpleXMLRPCServer((self.IP, int(self.PORT)))
+               self.server.register_function(self.setStatus)
+
+Und er verwendet Funktionen wie::    
+     def setStatus(self,status):
+       #publish status of PR2
+       self.pub.publish(String(status))
+       return self.confirmation
+       
+um vom PR2 dessen Status empfangen zu können. Der aktuelle RPC-Server von Pepper liegt in https://github.com/suturo16/perception/blob/feature/pepper-robot-dialog-system/dialogsystem/nodes/rpc_server.py , aber wird vermutlich bald auf den Master Branch gemerged.
 
 Starting up the Server!
 ^^^^^^^^^^^^^^^^^^^^^^^^
