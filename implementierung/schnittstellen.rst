@@ -295,6 +295,12 @@ Planning
         
         - cutCake()
             Um den Plan zum Kuchen schneiden anzustoßen. Soll sofort zurückgeben, wie lange das etwa dauern wird (also z.B. wie viele Aufträge vorher noch ausgeführt werden müssen).
+            
+        - stressLevel()
+            Gibt die Auslastung des Servers als numerischen Wert zurück. Entspricht der Anzahl der Aufgaben, die noch durchzuführen sind.
+            
+        - nextTask()
+           Liefert die Beschreibung der nächsten, geplanten Aufgabe zurück.
 
 
 Pepper
