@@ -11,7 +11,7 @@ Perception
 Services
 ________
 
-- /percepteros/set_pipeline(List<Objects>) -> Liste mit Objekten für die keine Pipeline gestartet werden konnte
+- /percepteros/set_pipeline(List<ObjectNames>) -> Liste mit Objekten für die keine Pipeline gestartet werden konnte
         Führt dazu, dass in Perception eine Pipeline generiert wird, die die spezifizierten Objekte sucht.
 
 Topics
