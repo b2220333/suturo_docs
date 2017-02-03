@@ -60,6 +60,7 @@ Contents:
    :caption: Implementierung
 
    implementierung/planning/plan_generator
+   implementierung/planning/cram_language
 
 
 Indices and tables
