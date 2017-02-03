@@ -41,7 +41,8 @@ Usage of Semrec
 	2. add cram-beliefstate as a dependency to the asd file.
 	3. load the lisp package this dependency has been added to. 
 
-2. run semrec ::
+2. run semrec 
+::
 	rosrun semrec semrec
 
 3. load package
