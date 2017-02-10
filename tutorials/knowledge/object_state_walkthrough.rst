@@ -13,6 +13,7 @@ Das Package enthält:
 * eine Prolog-Klasse 'object_state.pl' um die KnowRob-Funktionalitäten bereitzustellen
 * einen Subscriber für 'percepteros/object_detection' namens 'Listener.java'
 * einen Subscriber für 'percepteros/object_detection' namens 'subscriber.py'
+* einen Dummy Publisher für 'percepteros/object_detection' namens 'dummy_publisher.py'
 * Launchfiles für je einen Subscriber, die Prolog-Klasse sowie für alle zur Ausführung nötigen Komponenten zusammen, erkennbar am Dateinamen
 
 .. note:: Vorerst solltet ihr nur den Python-Subscriber benutzen, da der Java-Subscriber noch fehlerhaft ist. Wenn ihr 'object_state.launch' ausführt wird standartmäßig der Python-Subscriber gestartet.
@@ -23,7 +24,8 @@ Verwendung und Testlauf
 
 .. note:: Öffnet eine Kommandozeile à la Terminator und teilt sie in 4 Shells auf, da es sonst extrem unübersichtlich wird. Im weiteren sind die unterschiedlichen Terminals mit t1(oben links), t2(oben rechts), t3(unten links) und t4(unten rechts) benannt.
 
-1. Schritt 
+1. Schritt - Launch Environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Wir starten zunächst die Prolog Komponente in t1::
 
@@ -31,11 +33,24 @@ Wir starten zunächst die Prolog Komponente in t1::
 
 .. note:: roslaunch startet, sofern noch nicht vorher geschehen, einen roscore. Ihr braucht also keinen separaten roscore zu starten.
 
-2. Schritt
+2. Schritt - Publishen von Objekten
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Wir publishen Daten auf dem Topic, welches der Subscriber abhört.
+Wir publishen Daten auf dem Topic, welches der Subscriber abhört. Hierbei können entweder manuell die Objekte gepublished oder der dummy_publisher genutzt werden.
 
-Dazu nutzen wir folgendes Kommando in t2::
+Dummy Publisher
+"""""""""""""""
+
+Der Dummy Publisher erzeugt in zufälliger Weise Object perceptions und posted diese. Dazu starten wir::
+
+	rosrun object_state dummy_publisher.py
+
+Hierbei stehen 1-6 Typen und zurzeit 1 Objekt pro Typ zur Verfügung. Diese werden mit allen nötigen Daten (FrameID, Pose, etc.) erzeugt.
+
+Manuell publishen
+"""""""""""""""""
+
+Dazu können wir folgendes Kommando in t2::
 
 	percepteros/object_detection suturo_perception_msgs/ObjectDetection
 
@@ -57,7 +72,8 @@ Danach mehrfach Tab drücken um ein Aufruf-Template zu erzeugen, oder alternativ
 
 
 
-3. Schritt
+3. Schritt - Launch Subscriber
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Jetzt können wir den Subscriber in t3 starten::
 
@@ -65,22 +81,34 @@ Jetzt können wir den Subscriber in t3 starten::
 
 Dieser erhält jetzt mit der zuvor festgelegten Frequenz von 15 Herz die Daten die auf das Topic 'percepteros/object_detection' gepublished werden. Es ist möglich, dass durch die verwendung des Launchfiles kein sichtbarer Output generiert wird, es werden trotzdem Daten empfangen.
 
-3.1 (Optional)
+..note:: (Optional)
 Wenn unbedingt visueller Output erwünscht ist, kann der Subscriber auch ohne Launchfile gestartet werden, und zwar so::
 
 	rosrun object_state subscriber.py
 
-4. Schritt
+4. Schritt - Prolog Queries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Wir wollen jetzt mit einer Prolog-Query das von uns gepublishte Objekt, für das mittlerweile durch die Funktionalität des Subscribers und der in 'object_state.pl' definierten Funktionen eine KnowRob-Repräsentation erzeugt wurde, anfragen. Dazu nutzen wir den Rosservice simple_query, der es uns ermöglicht, Prolog-Anfragen zu stellen und führen das folgende Kommando in t4 aus::
 
 	rosservice call /json_prolog/simple_query
 
-und vervollständigen den Aufruf wie gewohnt mit doppel-Tab, oder verwenden den folgenden Aufruf::
+und vervollständigen den Aufruf wie gewohnt mit doppel-Tab.
+
+get_object_infos
+""""""""""""""""
+
+Um die Objektinformationen (Name, FrameID, Timestamp, Height, Weight, Depth) gesehener Objekte zu bekommen, verwenden den folgenden Aufruf::
 
 	rosservice call /json_prolog/simple_query "mode: 0
 	id: '1337'
-	query: 'get_object_infos(knowrob:cylinder,Frame,Height,Width,Depth)'"
+	query: 'get_object_infos(Name,FrameID,Timestamp,Height,Width,Depth)'"
+
+..note:: Sollen nur bestimmte Objektinfos gesucht werden, können die Variabeln des Queries durch Werte ersetzt werden, z.B.:
+	Name = knowrob:cylinder
+	Frame = "odom_combined"
+	Timestamp = Float (Sekunden seit 01-01-1970 ~ 1.486E9)
+	H, W, D = Float
 
 Wir wollen nun die Funktion 'get_object_infos()' aufrufen, um alle möglichen Informationen über ein Objekt, von dem wir nur den Namen wissen, zu bekommen.
 Zum Testen könnt ihr eine beliebige ID verwenden, müsst aber darauf achten, dass ihr im nächsten Schritt die selbe ID wieder angebt.
@@ -91,8 +119,12 @@ Es wird noch ein weiterer Prolog-Aufruf benötigt um unsere Antwort zu generiere
 
 Wie erwartet liefert uns die Methode alle aktuellen Werte des Objekts zurück::
 
+	rosservice call /json_prolog/next_solution "id: '1337'"
 	status: 3
-	solution: {"Height":5,"Depth":4,"Frame":"odom_combined","Width":7}
+	solution:
+	{"W":2,	"Name":"http://knowrob.org/kb/knowrob.owl#cone",
+	"FrameID":"odom_combined","H":1,"Time":1.4867326416517348E9,"D":5}
+
 
 Aber was, wenn sich nun die Werte unseres Objekts verändern?
 Kein Problem für object_state!
@@ -129,6 +161,25 @@ Nun brauchen wir, wie zuvor auch schon, den zweiten Prolog-Call um die Lösung d
 	
 	status: 3
 	solution: {"Height":5,"Depth":88,"Frame":"odom_combined","Width":7}
+
+seen_since
+""""""""""
+
+Die Query seen_since(Name, FrameID, Timestamp) soll die Frage beantworten, ob ein bestimmtes Objekt seit Zeitpunkt t1 gesehen wurde. Hierzu wird die Funktion ähnlich wie get_object_infos aufgerufen. Hierbei muss mindestens die Variable Timestamp zugewiesen sein! ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '1'
+	query: 'seen_since(knowrob:cone,"odom_combined",1.4E9)'"	
+
+Als Antwort auf eine Query mit allen Variablen festgelegt, bekommen wir folgende Antworten auf next_solution für True und False respektive::
+
+	status: 3
+	solution: {}
+oder
+	status: 3
+	solution: 
+
+
 
 Vielen Dank für die Aufmerksamkeit und Happy Coding, 
 Luke :D
