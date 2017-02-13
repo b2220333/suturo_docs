@@ -33,11 +33,14 @@ ______
 - seen_since(+Name, +FrameID, +Timestamp) -> True/False
         Wurde das Objekt vom Typ (Name) "Name" und der Frame-ID "FrameID" seit dem Timestamp "Timestamp" wieder gesehen?
 
-- connect_frames(+ParentFrameID, +ChildFrameID)
-        Verbindet zwei Objekte mit den gegebenen Frames, so dass in TF eine konstante Transformation vom Parent zum Child gepublisht wird.
-
 - disconnect_frames(+ParentFrameID, +ChildFrameID)
         Trennt zwei Objekte mit den gegebenen Frames, so dass die zuvor konstante Transformation genutzt wird, um die neue "absolute" Position des Objektes zu berechnen und zu publishen.
+        
+Service
+______    
+        
+- connect_frames_service(String ParentFrameID, String ChildFrameID)
+        Verbindet zwei Objekte mit den gegebenen Frames, so dass in TF eine konstante Transformation vom Parent zum Child gepublisht wird.
 
 Manipulation
 ------------
