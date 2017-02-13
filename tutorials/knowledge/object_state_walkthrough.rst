@@ -104,7 +104,7 @@ Um die Objektinformationen (Name, FrameID, Timestamp, Height, Weight, Depth) ges
 	id: '1337'
 	query: 'get_object_infos(Name,FrameID,Timestamp,Height,Width,Depth)'"
 
-..note:: Sollen nur bestimmte Objektinfos gesucht werden, können die Variabeln des Queries durch Werte ersetzt werden, z.B.:
+.. note:: Sollen nur bestimmte Objektinfos gesucht werden, können die Variabeln des Queries durch Werte ersetzt werden, z.B.:
 	Name = knowrob:cylinder
 	Frame = "odom_combined"
 	Timestamp = Float (Sekunden seit 01-01-1970 ~ 1.486E9)
@@ -175,7 +175,7 @@ Als Antwort auf eine Query mit allen Variablen festgelegt, bekommen wir folgende
 
 	status: 3
 	solution: {}
-oder
+oder:
 	status: 3
 	solution: 
 
