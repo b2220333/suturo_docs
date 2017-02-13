@@ -2,10 +2,6 @@
 Package object_state 
 -------------------------------
 
-Es folgt eine kurze Einleitung in das Package 'object_state'.
-
-Was ist 'object_state'?
------------------------
 MS1:
 Das Package stellt einen listener für das Perception-Topic 'percepteros/object_detection' bereit und hört es ab. Die Informationen aus dem Perception-Topic werden dann weiterverarbeitet, indem eine KnowRob-Repräsentation erzeugt wird. Mittels dieser können wir dann Wissen inferieren.
 
