@@ -171,13 +171,15 @@ Die Query seen_since(Name, FrameID, Timestamp) soll die Frage beantworten, ob ei
 
 	rosservice call /json_prolog/simple_query "mode: 0
 	id: '1'
-	query: 'seen_since(knowrob:cone,"odom_combined",1.4E9)'"	
+	query: 'seen_since(knowrob:cone,"odom_combined",1.486E9)'"	
 
-Als Antwort auf eine Query mit allen Variablen festgelegt, bekommen wir folgende Antworten auf next_solution für True und False respektive::
+Als Antwort auf eine Query mit allen Variablen festgelegt, bekommen wir folgende Antworten auf next_solution für True::
 
 	status: 3
 	solution: {}
-oder:
+	
+oder False::
+	
 	status: 3
 	solution: 
 
