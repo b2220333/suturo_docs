@@ -197,14 +197,16 @@ Umsetzung, Verwendung und Test der neuen Funktionalität wird hier Schritt für 
 
 Zunächst öffnen wir auf einem freien Workspace vier Shells. Dabei stehen im Folgenden die Abkürzungen T1-T4 für die vier Shells, wobei die Zuordnung wie folgt aussieht: T1 oben links, T2 oben rechts, T3 unten links, T4 unten rechts.
 
-1. Schritt
-^^^^^^^^^^^
+1. Schritt - Prolog laden
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Wir beginnen damit, das Prolog-Modul des 'object_state'-Packages zu starten (ROS-Core wird automatisch mitgestartet).::
 
 	roslaunch object_state object_state_prolog.launch
 
-2. Schritt
-^^^^^^^^^^	
+2. Schritt - Queries
+^^^^^^^^^^^^^^^^^^^^
+	
 Als nächstes nutzen wir den Service /json_prolog/simple_query um mittels der in Prolog implementierten Dummy-Methoden echte Objektwahrnehmungen zu simulieren. Dazu kopieren wir das Folgende Kommando in T2 und lösen mittels doppeltem Drücken der TAB-Taste die automatische Vervollständigung aus.
 (Als Parameter übergeben wir irgeneinen Namen, z.B. "`baum"' sowie eine beliebige ID): ::
 	
@@ -228,8 +230,8 @@ Da wir die Query sauber schließen wollen, um die verwendete ID wieder verwendba
 
 	rosservice call /json_prolog/finish "id: '1'"
 
-3.Schritt
-^^^^^^^^^
+3. Schritt - TF-Broadcaster starten
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Wir starten jetzt in T3 den TF-Broadcaster, indem wir mit folgendem Kommando das Pythonskript fluent_tf_publisher.py ausführen.::
 
@@ -237,8 +239,8 @@ Wir starten jetzt in T3 den TF-Broadcaster, indem wir mit folgendem Kommando das
 
 Auf der Konsole sollte sofort ersichtlich sein, dass der Publisher anfängt zu arbeiten. Die Textausgabe dient nur zur Information und wird vermutlich noch häufiger angepasst.
 
-4. Schritt
-^^^^^^^^^^
+4. Schritt - Testen
+^^^^^^^^^^^^^^^^^^^
 
 Jetzt wollen wir überprüfen, was auf dem TF-Topic ankommt, dazu wechseln wir zu T4 und führen folgendes Kommando aus, um wiederzugeben, was im TF-Topic gepublished wird.::
 
