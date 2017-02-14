@@ -263,5 +263,262 @@ Der Vollständigkeit halber, sollte nun noch das Query in T2 geschlossen werden.
 	rosservice call /json_prolog/finish "id: '2'" 
 
 
-Bei Fragen oder Problemen, schreibt mich auf keinen Fall direkt an, sondern Adrian :'D
-Lukas S.
+Bei Fragen oder Problemen, schreibt mich auf keinen Fall direkt an, sondern Adrian :'D 
+
+Verwendung und Test des Features zum Frames verbinden
+-----------------------------------------------------
+.. note:: Es empfiehlt sich ein Terminal-Tool wie Terminator zu verwenden, dass mehrere Shells in einem Fenster (split view) anzeigen kann.
+
+Erzeugt fünf Shells und ordnet sie ca gleich groß nebeneinander an. Im weiteren sind die unterschiedlichen Terminals mit t1(oben links), t2(oben mitte), t3(oben rechts), t4(unten links) und t5(unten rechts) benannt.
+
+
+1. Schritt - Prolog laden
+^^^^^^^^^^^^^^^^^^^^^^^^^
+In t1 ausführen: ::
+
+	roslaunch object_state prolog.launch
+
+2. Schritt - Testframes eruzeugen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In t2 ausführen: ::
+
+	rosrun object_state test_frame.py
+
+Das Pythonskript stellt zwei Frames zur Verfügung, die zum Testen benötigt werden.
+
+3. Schritt - Testobjekt erzeugen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note:: Achte darauf, für jeden Aufruf von simple_query eine neue ID zu verwenden. Beim Aufruf von next_solution muss zudem *immer* die ID des vorausgegangenen simple_query Aufrufs gesetzt werden.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '1'
+	query: 'connect_frames1(carrot1)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '1'"
+	rosservice call /json_prolog/finish "id: '1'"
+
+
+The More You Know: connect_frames1 erstellt knowrob-intern eine Objektrepräsentation als Fluents. Der Name des Objekts ist "carrot1" und die Position(xyz) ist [5,4,3]. Die restlichen Parameter sind für diesen Test nicht so wichtig.
+
+4. Schritt - Verbinden der Frames
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In t4 ausführen: ::
+
+	rosrun object_state connect_frames_bridge.py 
+
+Das Skipt dient einfach nur dazu die Prolog-Funktion connect_frames() mit den richtigen Parametern aufzurufen.
+
+In t5 kopieren, TAB-vervollständigen, parentFrame und childFrame setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /connect_frames_service 
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /connect_frames_service "parentFrame: '/turtle1'
+	childFrame: '/carrot1'" 
+
+
+5. Schritt - Überprüfen von Position und Orientierung
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Wenn die Frames korrekt verbunden wurden, sollten sich die Positions- und Orientierungswerte verändert haben.  
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '2'
+	query: 'get_tf_infos(carrot1, FrameID, Position, Orientation)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '2'"
+	rosservice call /json_prolog/finish "id: '2'"
+
+An der Ausgabe können wir erkennen, dass sich die Werte für die Position und Orientierung verändert haben, von [5,4,3] zu [0,-2,0] bzw. [6,7,8,9] zu [0,0,0,1]
+
+6. Schritt - Überprüfen des Verhaltens bzgl. der Fluent-Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Wir prüfen jetzt zusätzlich, ob die neue Position und Orientierung *gleich bleibt*, wenn wir ein Update dieser Werte für die Fluents in knowrob durchführen. 
+Da unser Objekt nun fest mit einem Frame verbunden ist, sollten sich dessen Werte natürlich *nicht mehr* verändern!
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '3'
+	query: 'connect_frames2(carrot1)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '3'"
+	rosservice call /json_prolog/finish "id: '3'"
+
+Im wesentlichen wiederholen wir jetzt die Prozedur aus Schritt 5, um zu überprüfen, dass sich die Positions- und Orientierungswerte nicht verändert haben.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '4'
+	query: 'get_tf_infos(carrot1, FrameID, Position, Orientation)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '4'"
+	rosservice call /json_prolog/finish "id: '4'"
+
+Wie du siehst, haben sich weder die Werte für Position noch Orientierung verändert!
+
+Jetzt müssen wir aber noch sicherstellen, dass *andere* Objekte noch erstellt und über ihre zugehörigen Fluents noch wie gewohnt verändert werden können.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '5'
+	query: 'connect_frames1(baum)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '5'"
+	rosservice call /json_prolog/finish "id: '5'"
+
+Nun sollte ein neues Objekt vom Typ baum existieren.
+Schauen wir auf die Werte.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '6'
+	query: 'get_tf_infos(baum, FrameID, Position, Orientation)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '6'"
+	rosservice call /json_prolog/finish "id: '6'"
+
+Die Werte für Position: [5,4,3].
+
+Und prüfen wir letztlich noch, ob sich die Werte verändern lassen. Dies sollte funktionieren, da ja dieser Frame nicht verbunden ist!
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '7'
+	query: 'connect_frames4(baum)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '7'"
+	rosservice call /json_prolog/finish "id: '7'"
+
+Werfen wir nun einen Blick auf die Werte.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '8'
+	query: 'get_tf_infos(baum, FrameID, Position, Orientation)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '8'"
+	rosservice call /json_prolog/finish "id: '8'"
+
+Die Werte haben sich aktualisiert: [8,7,7]
+
+Damit verhält sich die Funktion connect_frames() genau so, wie wir es wollen.
+
+7. Schritt ⁻ Frames voneinander lösen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Letztlich muss noch gewährleistet werden, dass sich Frames auch wieder ordentlich voneinander lösen lassen.
+
+Wir führen also zunächst die disconnect_frames() Funktion aus.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '9'
+	query: 'connect_frames3(a,b)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '9'"
+	rosservice call /json_prolog/finish "id: '9'"
+
+Die Frames sollten jetzt wieder voneinander gelöst sein.
+Eine letzte Query müssen wir noch ausführen, um dies zu überprüfen.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '10'
+	query: 'connect_frames2(carrot1)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '10'"
+	rosservice call /json_prolog/finish "id: '10'" 
+
+Und jetzt final schauen, ob die Werte sich wieder angepasst haben.
+
+In t3 kopieren, TAB-vervollständigen, Id und Query setzen (vgl. weiter unten) und dann ausführen: ::
+
+	rosservice call /json_prolog/simple_query
+
+Sollte in etwa so aussehen: ::
+
+	rosservice call /json_prolog/simple_query "mode: 0
+	id: '11'
+	query: 'get_tf_infos(carrot1, FrameID, Position, Orientation)'" 
+
+In t3 ausführen: ::
+
+	rosservice call /json_prolog/next_solution "id: '11'"
+	rosservice call /json_prolog/finish "id: '11'" 
+
+Die Werte haben sich wie gewünscht wieder verändert. Damit ist unser Feature funktionsfähig.
+
+Bei Fragen und Problemen wie gewohnt Adrian anschreiben.
+Danke fürs Durchhalten. War lang, ich weiß. 
+LSa.
