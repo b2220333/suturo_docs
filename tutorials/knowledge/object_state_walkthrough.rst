@@ -278,8 +278,8 @@ In t1 ausführen: ::
 
 	roslaunch object_state prolog.launch
 
-2. Schritt - Testframes eruzeugen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2. Schritt - Testframes erzeugen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In t2 ausführen: ::
 
 	rosrun object_state test_frame.py
