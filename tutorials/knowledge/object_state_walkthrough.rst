@@ -461,7 +461,7 @@ Die Werte haben sich aktualisiert: [8,7,7]
 
 Damit verhält sich die Funktion connect_frames() genau so, wie wir es wollen.
 
-7. Schritt ⁻ Frames voneinander lösen
+7. Schritt - Frames voneinander lösen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Letztlich muss noch gewährleistet werden, dass sich Frames auch wieder ordentlich voneinander lösen lassen.
 
