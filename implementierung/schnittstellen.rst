@@ -40,6 +40,7 @@ Service
 ______    
         
 - connect_frames_service(String ParentFrameID, String ChildFrameID)
+        Typ: suturo_knowledgE_msgs/srv/ConnectFrames.srv
         Verbindet zwei Objekte mit den gegebenen Frames, so dass in TF eine konstante Transformation vom Parent zum Child gepublisht wird.
 
 Manipulation
