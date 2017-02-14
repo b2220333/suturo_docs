@@ -263,5 +263,5 @@ Der Vollständigkeit halber, sollte nun noch das Query in T2 geschlossen werden.
 	rosservice call /json_prolog/finish "id: '2'" 
 
 
-Bei Fragen oder Problemen, schreibt mich direkt an.
+Bei Fragen oder Problemen, schreibt mich auf keinen Fall direkt an, sondern Adrian :'D
 Lukas S.
