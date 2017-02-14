@@ -263,10 +263,10 @@ Der Vollständigkeit halber, sollte nun noch das Query in T2 geschlossen werden.
 	rosservice call /json_prolog/finish "id: '2'" 
 
 
-Bei Fragen oder Problemen, schreibt mich auf keinen Fall direkt an, sondern Adrian :'D 
 
 Verwendung und Test des Features zum Frames verbinden
 -----------------------------------------------------
+
 .. note:: Es empfiehlt sich ein Terminal-Tool wie Terminator zu verwenden, dass mehrere Shells in einem Fenster (split view) anzeigen kann.
 
 Erzeugt fünf Shells und ordnet sie ca gleich groß nebeneinander an. Im weiteren sind die unterschiedlichen Terminals mit t1(oben links), t2(oben mitte), t3(oben rechts), t4(unten links) und t5(unten rechts) benannt.
@@ -518,7 +518,3 @@ In t3 ausführen: ::
 	rosservice call /json_prolog/finish "id: '11'" 
 
 Die Werte haben sich wie gewünscht wieder verändert. Damit ist unser Feature funktionsfähig.
-
-Bei Fragen und Problemen wie gewohnt Adrian anschreiben.
-Danke fürs Durchhalten. War lang, ich weiß. 
-LSa.
