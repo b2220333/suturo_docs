@@ -250,9 +250,8 @@ graspkard/TODO - Messer greifen
       - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm, rechter Greifer
     :Parameter:
       - **transform** Frame des Messers in *base_link*
-      - **double** Länge des Messers in *m*
-      - **double** Länge des Griffes in *m*
-      - **double** Höhe des Griffes in *m*
+      - **double** Höhe des Messers in *m*
+      - **double** Länge des Messergriffes in *m*
     :Feedback: *feedback* je näher an :math:`0`, desto besser.
     :Beispiel-Parameter: TODO
 
@@ -288,6 +287,7 @@ graspkard/pr2_cut_r.yaml
     :Feedback: *feedback* Je näher an 0 desto besser.
     :Beispiel-Parameter: *graspkard/test_params/cut.yaml*: Schneidet ein 1,5cm breites Stück von einen Kuchen *cake* mit einem Messer *knife*.
 
+
 graspkard/pr2_cut_position_r.yaml
 """""""""""""""""""""""""
     :Beschreibung: Geht mit dem rechten Arm in eine Vorpose, um einen Kuchen zu schneiden.
@@ -304,16 +304,6 @@ graspkard/pr2_cut_position_r.yaml
       - **double** Breite des Kuchenstücks
     :Feedback: *feedback* Je näher an 0 desto besser.
     :Beispiel-Parameter: *graspkard/test_params/cut_pos.yaml*: Geht in die Vorpose um schließlich ein 1,5cm breites Stück von einen Kuchen *cake* mit einem Messer *knife*.
-
-graspkard/TODO - Kuchenstück beiseite scheiben
-"""""""""""""""""""""""""
-    :Beschreibung: Schiebt ein Kuchenstück ein paar Zentimeter beiseite.
-    :Gelenklisten:
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer 
-    :Parameter:
-      - **TODO** Kuchen Frame, Kuchenhöhe, KuchenLänge, Kuchenbreite, Kuchenstück Frame, Kuchenstückhöhe, Kuchenstücklänge, Kuchenstückbreite
-    :Feedback: *feedback* **TODO**
-    :Beispiel-Parameter: TODO
 
 
 Planning
