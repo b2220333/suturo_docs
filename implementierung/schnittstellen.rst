@@ -68,6 +68,7 @@ Parameter werden in Form von *suturo_manipulation_msgs/TypedParam* übergeben.
 
   uint8 DOUBLE=0
   uint8 TRANSFORM=1
+  uint8 ELAPSEDTIME=2
   bool isConst
   uint8 type
   string name
@@ -91,6 +92,10 @@ Unterstützte Typen:
      + *konstant*: Sieben durch Leerzeichen getrennte **double**, wobei die ersten drei die Position, die nächsten drei eine Rotationsachse und die letzte eine Rotation um diese Achse in Radianten beschreiben. Beispiel: "0 0 0 1 0 0 0" für die Identitätstransformation.
      + *dynamisch*: Zwei Namen von Frames die im TF-Baum existieren. Der erste Name ist dabei der des gesuchten Frames, der zweite der des Frames, zu dem der erste relativ bestimmt werden soll. 
        Beispiel: "glass table" um den Frame *glass* relativ zu *table* bestimmen zu lassen.
+
+ - **elapsed time**
+
+     + Gibt die Zeit seit Start des Controllers in Sekunden an. Alle Felder dieses Parameters werden ignoriert.
        
 
 Die Reihenfolge der Parameter ist wichtig, da diese der in den Controllern entsprechen muss. Eine Ausnahme stellen dabei die fest benannten Parameter, welche gesondert behandelt werden und die Reihenfolge nicht beeinflussen.
@@ -266,18 +271,39 @@ graspkard/TODO - Messer umgreifen
     :Beispiel-Parameter: TODO
 
 
-graspkard/TODO - Kuchen schneiden
+graspkard/pr2_cut_r.yaml
 """""""""""""""""""""""""
-    :Beschreibung: Schneidet einen Kuchen entlang einer Schnittebene mit dem rechten Arm.
+    :Beschreibung: Schneidet einen Kuchen parallel zu seiner YZ-Ebene mit dem rechten Arm.
     :Gelenklisten:
       - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
     :Parameter:
       - **transform** Frame des Kuchens in *base_link*
+      - **double** Länge des Kuchens (X-Ausdehnung)
+      - **double** Breite des Kuchens (Y-Ausdehnung)
+      - **double** Tiefe des Kuchens (Z-Ausdehnung)
       - **transform** Frame des Messers in *r_wrist_roll_link*
-      - **TODO**
-    :Feedback: *feedback* **TODO**
-    :Beispiel-Parameter: TODO
+      - **double** Höhe des Messers
+      - **double** Länge des Messergriffs
+      - **double** Breite des Kuchenstücks
+    :Feedback: *feedback* Je näher an 0 desto besser.
+    :Beispiel-Parameter: *graspkard/test_params/cut.yaml*: Schneidet ein 1,5cm breites Stück von einen Kuchen *cake* mit einem Messer *knife*.
 
+graspkard/pr2_cut_position_r.yaml
+"""""""""""""""""""""""""
+    :Beschreibung: Geht mit dem rechten Arm in eine Vorpose, um einen Kuchen zu schneiden.
+    :Gelenklisten:
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+    :Parameter:
+      - **transform** Frame des Kuchens in *base_link*
+      - **double** Länge des Kuchens (X-Ausdehnung)
+      - **double** Breite des Kuchens (Y-Ausdehnung)
+      - **double** Tiefe des Kuchens (Z-Ausdehnung)
+      - **transform** Frame des Messers in *r_wrist_roll_link*
+      - **double** Höhe des Messers
+      - **double** Länge des Messergriffs
+      - **double** Breite des Kuchenstücks
+    :Feedback: *feedback* Je näher an 0 desto besser.
+    :Beispiel-Parameter: *graspkard/test_params/cut_pos.yaml*: Geht in die Vorpose um schließlich ein 1,5cm breites Stück von einen Kuchen *cake* mit einem Messer *knife*.
 
 graspkard/TODO - Kuchenstück beiseite scheiben
 """""""""""""""""""""""""
