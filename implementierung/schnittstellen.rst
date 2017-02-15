@@ -243,7 +243,7 @@ graspkard/pr2_place_control_l.yaml
       - *graspkard/test_params/place_cylinder_l.yaml*: Platziert einen Zylinder namens *cylinder* in einem Zielareal namens *goal_area*
 
 
-graspkard/TODO - Messer greifen
+graspkard/knife_grasp.yaml - Messer greifen
 """""""""""""""""""""""""
     :Beschreibung: Fährt ein Messer zum Greifen mit dem rechten Arm an.
     :Gelenklisten:
