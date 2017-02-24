@@ -306,6 +306,19 @@ graspkard/pr2_cut_position_r.yaml
     :Beispiel-Parameter: *graspkard/test_params/cut_pos.yaml*: Geht in die Vorpose um schließlich ein 1,5cm breites Stück von einen Kuchen *cake* mit einem Messer *knife*.
 
 
+graspkard/pr2_detatch_knife_r.yaml
+""""""""""""""""""""""""""
+    
+    :Beschreibung: Löst ein mit rechts gegriffenes, Objekt von einem Magnet-Rack. Die Y-Achse muss in das Rack hinein zeigen. Diese Ausrichtung wurde gewählt, da man so die letzte Pose des Messers als Pose für das Rack verwenden kann.
+    :Gelenklisten: 
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+    :Parameter:
+      - **transform** Frame der Messers in *r_wrist_roll_link*.
+      - **transform** Frame des Racks in *base_link*.
+    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+    :Beispiel-Parameter:
+      - Noch keine
+
 Planning
 ----------
 .. code::
