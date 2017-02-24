@@ -23,6 +23,7 @@ Contents:
    tutorials/installation
    tutorials/pullreq_git
    tutorials/travis_ci
+   tutorials/semrec_install
 
 .. toctree::
    :maxdepth: 2
