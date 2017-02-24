@@ -24,6 +24,7 @@ Contents:
    tutorials/pullreq_git
    tutorials/travis_ci
    tutorials/semrec_install
+   tutorials/starten_des_pr2
 
 .. toctree::
    :maxdepth: 2
