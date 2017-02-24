@@ -156,13 +156,6 @@ graspkard/pr2_upper_body_joint_control.yaml
       - *graspkard/config/pr2_upper_body.yaml*: Torso, beide Arme, keine Greifer
     :Parameter:
         - **double** Position des Gelenks *torso_lift_joint* in *m*
-        - **double** Position des Gelenks *r_shoulder_pan_joint* in *rad*
-        - **double** Position des Gelenks *r_shoulder_lift_joint* in *rad*
-        - **double** Position des Gelenks *r_upper_arm_roll_joint* in *rad*
-        - **double** Position des Gelenks *r_elbow_flex_joint* in *rad*
-        - **double** Position des Gelenks *r_forearm_roll_joint* in *rad*
-        - **double** Position des Gelenks *r_wrist_flex_joint* in *rad*
-        - **double** Position des Gelenks *r_wrist_roll_joint* in *rad*
         - **double** Position des Gelenks *l_shoulder_pan_joint* in *rad*
         - **double** Position des Gelenks *l_shoulder_lift_joint* in *rad*
         - **double** Position des Gelenks *l_upper_arm_roll_joint* in *rad*
@@ -170,6 +163,13 @@ graspkard/pr2_upper_body_joint_control.yaml
         - **double** Position des Gelenks *l_forearm_roll_joint* in *rad*
         - **double** Position des Gelenks *l_wrist_flex_joint* in *rad*
         - **double** Position des Gelenks *l_wrist_roll_joint* in *rad*
+        - **double** Position des Gelenks *r_shoulder_pan_joint* in *rad*
+        - **double** Position des Gelenks *r_shoulder_lift_joint* in *rad*
+        - **double** Position des Gelenks *r_upper_arm_roll_joint* in *rad*
+        - **double** Position des Gelenks *r_elbow_flex_joint* in *rad*
+        - **double** Position des Gelenks *r_forearm_roll_joint* in *rad*
+        - **double** Position des Gelenks *r_wrist_flex_joint* in *rad*
+        - **double** Position des Gelenks *r_wrist_roll_joint* in *rad*
     :Feedback: *feedback* je näher an :math:`0`, desto besser.
     :Beispiel-Parameter:
       - *graspkard/test_params/upper_body_praying_mantis.yaml*: Die *Gottesanbeterin*-Pose
