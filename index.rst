@@ -25,6 +25,7 @@ Contents:
    tutorials/travis_ci
    tutorials/semrec_install
    tutorials/starten_des_pr2
+   tutorials/setup_ms2
 
 .. toctree::
    :maxdepth: 2

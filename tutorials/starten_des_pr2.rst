@@ -36,7 +36,7 @@ Nun startet man folgende launchfiles
 ::
     roslaunch /etc/ros/indigo/robot.launch
     roslaunch pr2_teleop teleop_joystick.launch
-    roslauch iai_maps iai_maps
+    roslaunch iai_maps iai_maps
     roslaunch ~/pr2_manipulation.launch
     
 Bevor man Giskard startet, sollten die Motoren es PR2 ausgeschaltet werden.
