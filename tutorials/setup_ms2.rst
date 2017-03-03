@@ -22,8 +22,11 @@ Perception
 ----------
 Branch: feature/knife-rgb
 Requires: pcl 1.8 to run. Make also sure your RoboSherlock is up to date. 
+( `pcl installation Tutorial: <http://www.pointclouds.org/documentation/tutorials/compiling_pcl_posix.php>`_. )
 
 roslaunch robosherlock rs.launch
+
+rosrun percepteros caterrosRun -visualizer cateros.xml
 
 
 Knowledge
