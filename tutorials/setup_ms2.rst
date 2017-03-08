@@ -7,7 +7,7 @@ Manipulation:
 -------------
 Branch: feature/mergeMS2
 
-On the Robot:
+On the Robot: (Make sure that the Robot's motors are turned of for this step!)
 roslaunch giskard_examples pr2.launch sim:=false
 
 Local:
@@ -20,7 +20,9 @@ Planning Seite dazu:
 
 Perception
 ----------
-Branch: feature/knife-rgb
+Branch: feature/knife-rgb  for Knife detection
+(Branch: misc/milestone-test  for Cake/Box detection)
+
 Requires: pcl 1.8 to run. Make also sure your RoboSherlock is up to date. 
 ( `pcl installation Tutorial: <http://www.pointclouds.org/documentation/tutorials/compiling_pcl_posix.php>`_. )
 
@@ -31,7 +33,7 @@ rosrun percepteros caterrosRun -visualizer cateros.xml
 
 Knowledge
 ---------
-Branch: master
+Branch: ObjectDetection
 
 roslaunch object_state object_state.launch
 
