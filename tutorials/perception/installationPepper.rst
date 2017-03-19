@@ -29,3 +29,16 @@ Auf dem Proxy-Computer muss ein Ros-Indigo-System installiert werden::
 
     http://wiki.ros.org/indigo/Installation/Ubuntu
 
+
+
+Python
+^^^^^^^^^^^
+
+Auf dem Proxy-Computer muss eine Umgebung python2.7 Ubuntu 64bits installiert werden::
+
+    https://wiki.ubuntuusers.de/Python/
+
+Prüfen Sie die Installation::
+ 
+   $python --version
+   Python 2.7.6
