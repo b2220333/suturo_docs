@@ -54,23 +54,54 @@ Prüfen Sie die Installation::
 Installation vom Paket naoqi_bridge_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Mit diesem Paket können sich Ros-Programme und native NAOqi-Programme Daten austauschen.
+Mit diesem Paket können sich Ros-Programme und native NAOqi-Programme Daten austauschen. NAOqi ist das Betriebsystem auf Pepper.
 
      1. Starten Sie den das Shell-Programm und legen Sie einen Ordner "test" (oder etwas anderes) an::
-     
+
         $mkdir test
-        
+
      2. Im Ordner test Legen Sie einen Ordner src an::
-     
+
         test$mkdir src
-        
+
      3. Im Ordner src duplizieren Sie das Paket naoqi_bridge_msgs::
-     
+
         src$git clone https://github.com/ros-naoqi/naoqi_bridge_msgs.git 
-        
+
      4. Kompilieren Sie das Paket naoqi_bridge_msgs vom Ordner test aus::
-     
+
         src$cd ..
-        
+
         test$catkin build naoqi_bridge_msgs
         
+
+Installation vom Pepper-Python-SDK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Um Feraufrufe von NAOqi-Module(vom Proxy-Computer aus) durchzuführen, wird dieses Paket benötigt.
+
+   1. Von der Aldebarans Webseite aus laden Sie das Pepper-Python-SDK für Linux 64 bits herunter::
+
+      https://developer.softbankrobotics.com/. Momentan ist nur Version 2.5.5.5 Linux 64bits Python2.7 verfügbar
+
+   2. Legen Sie einen Ordner naoqi im src Ordner::
+
+      src$mkdir naoqi
+
+   3. Kopieren und entpacken Sie das heruntergeladene Paket im Ordner naoqi::
+
+      src$ cp ~/pynaoqi-python2.7-2.5.5.5-linux64.tar.gz naoqi
+
+      src$cd naoqi
+
+      naoqi$tar xzf ~/pynaoqi-python2.7-2.5.5.5-linux64.tar.gz
+
+   4. Fügen Sie den SDK-Pfad in $PYTHONPATH hinzu::
+
+      naoqi$echo 'export PYTHONPATH=~/naoqi/pynaoqi-python2.7-2.5.5.5-linux64/lib/python2.7/site-packages:$PYTHONPATH' >> ~/.bashrc
+
+   5. Prüfen Sie die Installation::
+
+      naoqi$python::
+      >>import naoqi::
+      >>
