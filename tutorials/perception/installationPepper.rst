@@ -30,6 +30,13 @@ Auf dem Proxy-Computer muss ein Ros-Indigo-System installiert werden::
     http://wiki.ros.org/indigo/Installation/Ubuntu
 
 
+Catkin-Tools
+^^^^^^^^^^^^^
+
+Zum Kompieleren von Ros-Paketen müssen die Catkin-Tools auch installiert werden::
+
+    http://catkin-tools.readthedocs.io/en/latest/installing.html
+
 
 Python
 ^^^^^^^^^^^
@@ -42,3 +49,20 @@ Prüfen Sie die Installation::
  
    $python --version
    Python 2.7.6
+
+
+Installation vom Paket naoqi_bridge_msgs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Mit diesem Paket können sich Ros-Programme und native NAOqi-Programme Daten austauschen.
+
+     1. Starten Sie den das Shell-Programm und legen Sie einen Ordner "test" (oder etwas anderes) an::
+        $mkdir test
+     2. Im Ordner test Legen Sie einen Ordner src an::
+        test$mkdir src
+     3. Im Ordner src duplizieren Sie das Paket naoqi_bridge_msgs::
+        src$git clone https://github.com/ros-naoqi/naoqi_bridge_msgs.git 
+     4. Kompilieren Sie das Paket naoqi_bridge_msgs vom Ordner test aus::
+        src$cd ..
+        test$catkin build naoqi_bridge_msgs
+        
