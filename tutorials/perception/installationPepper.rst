@@ -153,11 +153,9 @@ Source: https://github.com/suturo16/perception.git [Branche: feature/pepper-dial
 
      2. Laden Sie das oben gennante Repository herunter und verbinden Sie es an die oben gennante Branche::
 
-        src$git clone https://github.com/suturo16/perception.git
-        
-        src$cd perception
-        
-        perception$ git checkout feature/pepper-dialogsystem
+        src$git clone https://github.com/suturo16/perception.git ::
+        src$cd perception::
+        perception$ git checkout feature/pepper-dialogsystem::
 
 
 Installation von ChatScript
