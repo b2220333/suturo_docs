@@ -118,7 +118,7 @@ Um Fernaufrufe von NAOqi-Modulen(vom Proxy-Computer aus) durchzuführen, wird di
 Prüfung der Installation aller benötigten Python-Pakete
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Zum Prüfen der Installation eines Python-Pakets "pythonPaket" führen Sie folgenden Kommando aus::
+Zum Prüfen der Installation eines Python-Pakets "pythonPaket" führen Sie folgenden Befehl aus::
 
     $python
     >>import pythonPaket
