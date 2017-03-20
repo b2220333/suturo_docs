@@ -139,7 +139,7 @@ Wäre das Paket nicht installiert worden, wäre der Import fehlgeschlagen. Jetzt
     >>import  time
     >>import  subprocess
 
-Bei fehlenden Ros-Paketen(rosxxx) sollte noch die installation von ROS-Indigo geprüft werden. Würde ein anderes Paket fehlen, sollte man versuchen, es mit folgendem Befehl zu installieren::
+Bei fehlenden Ros-Paketen(rosxxx) sollte noch die Installation von ROS-Indigo geprüft werden. Würde ein anderes Paket fehlen, sollte man versuchen, es mit folgendem Befehl zu installieren::
 
     $sudo pip apt-get install pythonpaket
 
@@ -154,7 +154,9 @@ Source: https://github.com/suturo16/perception.git [Branche: feature/pepper-dial
      2. Laden Sie das oben gennante Repository herunter und verbinden Sie es an die oben gennante Branche::
 
         src$git clone https://github.com/suturo16/perception.git
+        
         src$cd perception
+        
         perception$ git checkout feature/pepper-dialogsystem
 
 
@@ -168,7 +170,9 @@ Source: https://github.com/bwilcox-1234/ChatScript.git [Branche: master].
      2. Laden Sie das oben gennante Repository herunter und verbinden Sie es an die oben gennante Branche::
 
         dialogsystem$git clone https://github.com/bwilcox-1234/ChatScript.git
+        
         dialogsystem$cd ChatScript
+        
         ChatScript$ git checkout master
 
      3. Kopieren Sie die Datei filespepper.txt vom dialogsystem nach ChatScript/RAWDATA::
