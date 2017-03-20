@@ -196,13 +196,17 @@ Source: https://github.com/bwilcox-1234/ChatScript.git [Branche: master].
      6. Geben Sie "username" als Benutzername ein::
  
         >>Enter user name:username
+        
         ...
+        
         username>>
 
      7. Geben Sie den Befehl ":build pepper" zum Kompilieren von ChatScript-Programmen ein::
 
         username>>:build pepper
+        
         ...
+        
         PEPPER: ...
 
      8. Drücken Sie Ctrl+C zum Beenden von ChatScript
