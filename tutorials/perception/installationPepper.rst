@@ -102,6 +102,8 @@ Um Feraufrufe von NAOqi-Module(vom Proxy-Computer aus) durchzuführen, wird dies
 
    5. Prüfen Sie die Installation::
 
-      naoqi$python::
-      >>import naoqi::
+      naoqi$python
+      
+      >>import naoqi
+      
       >>
