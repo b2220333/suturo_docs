@@ -212,14 +212,14 @@ Das System wird durch ein Paar Paremeter eingestellt. Diese Parameter werden, wi
 
     1. Öffnen Sie die Datei dialogsystem/launch/dialog.launch mit einem Texteditor(gedit...)
 
-    2. In dieser Datei hält jeder Param-Tag eine Variable nämlich den Kennzeichner(name) und den Wert(value). Setzen Sie die Variable INTERFACE auf den Namen der Netzwerkschnittstelle, womit sich der Computer über das Netzwerk mit PR2 und PEPPER verbindet::
+    2. In dieser Datei hält jedes Param-Tag eine Variable nämlich den Kennzeichner(name) und den Wert(value). Setzen Sie die Variable INTERFACE auf den Namen der Netzwerkschnittstelle, womit sich der Computer über das Netzwerk mit PR2 und PEPPER verbindet::
 
        Der Standardname ist eth0: Ethernet eth, erste Schnittstelle 0
 
     3. Die anderen Parameter werden entweder automatisch aktualisiert oder ändern nicht. Jedoch kann im Notfall eine manuelle Einstellung erfolgen.
 
 
-Das Sprachdialogsystem Kompilieren 
+Das Sprachdialogsystem kompilieren 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     1. Setzen Sie den Shell-Arbeitsplatz(CWD) auf ~/test
