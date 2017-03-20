@@ -14,10 +14,10 @@ Da eine lokale(vom Roboter aus) Ausführung des Sprachdialogsystems ungeheuer st
 Installation und Einstellungen von Programmen
 ---------------------------------------------
 
-Betriebsystem
+Betriebssystem
 ^^^^^^^^^^^^^
 
-Auf dem Proxy-Computer muss ein Betriebsystem Ubuntu 14.04 LTS 64bits installiert werden::
+Auf dem Proxy-Computer muss ein Betriebssystem Ubuntu 14.04 LTS 64bits installiert werden::
 
      http://releases.ubuntu.com/14.04/
 
@@ -54,7 +54,7 @@ Prüfen Sie die Installation::
 Installation vom Paket naoqi_bridge_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Mit diesem Paket können sich Ros-Programme und native NAOqi-Programme Daten austauschen. NAOqi ist das Betriebsystem auf Pepper.
+Mit diesem Paket können sich Ros-Programme und native NAOqi-Programme Daten austauschen. NAOqi ist das Betriebssystem auf Pepper.
 
      1. Starten Sie das Shell-Programm und legen Sie einen Ordner "test" (oder etwas anderes) an::
 
