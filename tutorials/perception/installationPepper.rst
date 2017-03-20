@@ -188,6 +188,7 @@ Source: https://github.com/bwilcox-1234/ChatScript.git [Branche: master].
      5. Starten Sie das Programm LinuxChatScript64 mit folgendem Befehl::
 
         BINARIES$./LinuxChatScript64 local
+        
         >>Enter user name:
 
      6. Geben Sie "username" als Benutzername ein::
