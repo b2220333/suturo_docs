@@ -71,5 +71,6 @@ Mit diesem Paket können sich Ros-Programme und native NAOqi-Programme Daten aus
      4. Kompilieren Sie das Paket naoqi_bridge_msgs vom Ordner test aus::
      
         src$cd ..
+        
         test$catkin build naoqi_bridge_msgs
         
