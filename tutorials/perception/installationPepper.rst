@@ -102,8 +102,8 @@ Um Fernaufrufe von NAOqi-Modulen(vom Proxy-Computer aus) durchzuführen, wird di
 
    5. Prüfen Sie die Installation::
 
-      naoqi$python::
-      >>import naoqi::
+      naoqi$python
+      >>import naoqi
       >>
    
    6. Quitieren Sie das Python-Shell-Programm::
@@ -153,9 +153,11 @@ Source: https://github.com/suturo16/perception.git [Branche: feature/pepper-dial
 
      2. Laden Sie das oben gennante Repository herunter und verbinden Sie es an die oben gennante Branche::
 
-        src$git clone https://github.com/suturo16/perception.git ::
-        src$cd perception::
-        perception$ git checkout feature/pepper-dialogsystem::
+        src$git clone https://github.com/suturo16/perception.git
+        
+        src$cd perception
+        
+        perception$ git checkout feature/pepper-dialogsystem
 
 
 Installation von ChatScript
@@ -249,4 +251,7 @@ Beenden des Sprachdialogsystems
 
      1. Drücken Sie Ctrl+C zum Beenden des Sprachdialogsystems
 
-Autor:Franklnn Kenghagho Kenfack
+
+
+
+Autor:Franklin Kenghagho Kenfack
