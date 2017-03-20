@@ -103,7 +103,9 @@ Um Fernaufrufe von NAOqi-Modulen(vom Proxy-Computer aus) durchzuführen, wird di
    5. Prüfen Sie die Installation::
 
       naoqi$python
+      
       >>import naoqi
+      
       >>
    
    6. Quitieren Sie das Python-Shell-Programm::
