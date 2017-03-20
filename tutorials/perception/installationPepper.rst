@@ -112,7 +112,7 @@ Um Fernaufrufe von NAOqi-Modulen(vom Proxy-Computer aus) durchzuführen, wird di
       
       >>quit()
 
-      src$naoqi
+      naoqi$
 
 
 Prüfung der Installation aller benötigten Python-Pakete
