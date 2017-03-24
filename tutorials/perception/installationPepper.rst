@@ -143,7 +143,7 @@ Wäre das Paket nicht installiert worden, wäre der Import fehlgeschlagen. Jetzt
 
 Bei fehlenden Ros-Paketen(rosxxx) sollte noch die Installation von ROS-Indigo geprüft werden. Würde ein anderes Paket fehlen, sollte man versuchen, es mit folgendem Befehl zu installieren::
 
-    $sudo pip apt-get install pythonpaket
+    $sudo pip install pythonpaket
 
 
 Installation des Sprachdialogsystems
