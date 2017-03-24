@@ -94,7 +94,7 @@ Um Fernaufrufe von NAOqi-Modulen(vom Proxy-Computer aus) durchzuführen, wird di
 
       src$cd naoqi
 
-      naoqi$tar xzf ~/pynaoqi-python2.7-2.5.5.5-linux64.tar.gz
+      naoqi$tar xzf pynaoqi-python2.7-2.5.5.5-linux64.tar.gz
 
    4. Fügen Sie den SDK-Pfad in $PYTHONPATH hinzu::
 
