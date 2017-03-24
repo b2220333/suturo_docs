@@ -247,7 +247,7 @@ Start des Sprachdialogsystems
   
        test$source devel/setup.bash
 
-    3. Starten Sie den Sprachdialogsystem mit folgendem Befehl::
+    3. Starten Sie das Sprachdialogsystem mit folgendem Befehl::
 
        test$roslaunch dialogsystem dialog.launch
 
