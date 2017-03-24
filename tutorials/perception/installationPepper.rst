@@ -54,7 +54,7 @@ Prüfen Sie die Installation::
 Installation vom Paket naoqi_bridge_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Mit diesem Paket können sich Ros-Programme und native NAOqi-Programme Daten austauschen. NAOqi ist das Betriebssystem auf Pepper.
+Mit diesem Paket können Ros-Programme und native NAOqi-Programme miteinander Daten austauschen. NAOqi ist das Betriebssystem auf Pepper.
 
      1. Starten Sie das Shell-Programm und legen Sie einen Ordner "test" (oder etwas anderes) an::
 
