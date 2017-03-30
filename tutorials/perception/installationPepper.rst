@@ -149,7 +149,7 @@ Bei fehlenden Ros-Paketen(rosxxx) sollte noch die Installation von ROS-Indigo ge
 Installation des Sprachdialogsystems
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Source: https://github.com/suturo16/perception.git [Branche: feature/pepper-dialogsystem].
+Source: https://github.com/suturo16/perception.git [Branche: master].
 
      1. Setzen Sie den Shell-Arbeitsplatz(CWD) auf ~/test/src
 
@@ -159,7 +159,7 @@ Source: https://github.com/suturo16/perception.git [Branche: feature/pepper-dial
         
         src$cd perception
         
-        perception$ git checkout feature/pepper-dialogsystem
+        perception$ git checkout master
 
 
 Installation von ChatScript
