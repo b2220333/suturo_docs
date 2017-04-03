@@ -64,8 +64,10 @@ Contents:
    :maxdepth: 2
    :caption: Implementierung
 
-   implementierung/planning/plan_generator
    implementierung/schnittstellen
+   implementierung/planning/plans
+   implementierung/planning/plan_generator
+   implementierung/planning/cram_language
 
 
 Indices and tables
