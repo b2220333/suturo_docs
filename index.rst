@@ -64,6 +64,7 @@ Contents:
    :maxdepth: 2
    :caption: Implementierung
 
+   implementierung/architektur
    implementierung/schnittstellen
    implementierung/planning/plans
    implementierung/planning/plan_generator
