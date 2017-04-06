@@ -27,14 +27,22 @@ Knowledge
 Prolog
 ______
 
-- get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height, Width, Depth) -> Liste von Lösungen
+- get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height, Width, Depth) 
+        -> Liste von Lösungen
         In welcher Form der Timestamp kommt, ist für die Schnittstelle relativ unwichtig, da wir ihn nur umherreichen und es auf jeden Fall ein String sein wird.
+        
         Name:           Eindeutiger Identifikator eines bestimmten Objektes. Name = Type + Integer
+        
         FrameID:        Referenzrahmen für Pose
+        
         Type:           Objektklasse
+        
         TimeStamp:      Float, Sekunden seit 1970-01-01
+        
         Position:       List of Float mit len(3) für kartesische Koords in FrameID
+        
         Orientation:    Liste of Float mit len(4) für Orientierung in FrameID
+        
         Height, Width, Depth erklären sich von selbst. 
 
 - seen_since(+Name, +FrameID, +Timestamp) -> True/False
