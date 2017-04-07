@@ -336,18 +336,19 @@ graspkard/pr2_detatch_knife_r.yaml
 
 Planning
 ----------
+Auch, wenn Funktionen wie *cut-cake()* intern keine Parameter benötigen, muss für die Kommunikation von Python zu Lisp mindestens ein Parameter in der Signatur angefragt werden. Das Aufrufen von Funktionen ohne Parameter ist von Python zum Lisp-RPC-Server nicht möglich.  
 .. code::
 - RPC-Server
         - updateObserverClient(clientID, host, port)
             Der RPC-Server verwaltet eine Map von Clients und deren IPs/Ports. Bekommt er diese Anfrage updatet er die Infos des entsprechenden Clients oder legt ihn neu an.
         
-        - cutCake()
+        - cutCake(status)
             Um den Plan zum Kuchen schneiden anzustoßen. Soll sofort zurückgeben, wie lange das etwa dauern wird (also z.B. wie viele Aufträge vorher noch ausgeführt werden müssen). Return -1 bei serverseitigem Fehler.
             
-        - stressLevel()
+        - stressLevel(status)
             Gibt die Auslastung des Servers als numerischen Wert zurück. Entspricht der Anzahl der Aufgaben, die noch durchzuführen sind.
             
-        - nextTask()
+        - nextTask(status)
            Liefert die Beschreibung der nächsten, geplanten Aufgabe zurück.
 
 
