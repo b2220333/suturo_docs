@@ -336,7 +336,7 @@ graspkard/pr2_detatch_knife_r.yaml
 
 Planning
 ----------
-Auch, wenn Funktionen wie *cut-cake()* intern keine Parameter benötigen, muss für die Kommunikation von Python zu Lisp mindestens ein Parameter in der Signatur angefragt werden. Das Aufrufen von Funktionen ohne Parameter ist von Python zum Lisp-RPC-Server nicht möglich. 
+Auch, wenn Funktionen wie *cutCake()* intern keine Parameter benötigen, muss für die Kommunikation von Python zu Lisp mindestens ein Parameter in der Signatur angefragt werden. Das Aufrufen von Funktionen ohne Parameter ist von Python zum Lisp-RPC-Server nicht möglich. 
 
 .. code::
 - RPC-Server
