@@ -3,30 +3,29 @@
 Installation: Projekt und Dependencies einrichten
 =================================================
 
-Dieser Artikel soll das Vorgehen aufzeigen, um das Projekt auf euren Rechner neu aufzusetzen.
+Dieser Artikel führt die Schritte auf, die für das Aufsetzen unseres Projektes notwendig sind.
 
 
 Step-by-step Guide
 ------------------
 
-Vorrausgesetzte Software: ROS-Indigo (Empfohlenes Ros-Paket: ros-indigo-desktop-full)
+Vorausgesetzte Software: ROS-Indigo auf Ubuntu 14.04 (siehe http://wiki.ros.org/indigo/Installation/Ubuntu). Empfohlen wird das Paket ros-indigo-desktop-full.
 
 Build-Prerequisites
 ^^^^^^^^^^^^^^^^^^^
 
-Folgende Schritte müssen ausgeführt werden damit unser Projekt builded:
+Folgende Schritte müssen ausgeführt werden, damit unser Projekt baut:
 
 
     1. Installiere benötigte Packete::
 
          sudo apt-get install ros-indigo-catkin ros-indigo-rospack python-wstool
 
-
-    2. Installiert rosjava über folgenden Befehl::
+    2. Installiere rosjava über folgenden Befehl::
 
          sudo apt-get install ros-indigo-rosjava ros-indigo-rosjava-*
     
-    3. PR2 Naviagtion installieren::
+    3. Installiere PR2-Navigation::
 
          sudo apt-get install ros-indigo-pr2-navigation
 
@@ -38,62 +37,54 @@ oder alles auf einmal installieren::
 Workspace einrichten
 ^^^^^^^^^^^^^^^^^^^^
     
-    1. Erstellt euch irgendwo ein Workspace, z.B.::
+    1. Erstelle irgendwo einen Catkin-Workspace, z.B.::
        
-         mkdir ~/catkin_ws/src
+         mkdir -p ~/suturo_ws/src
 
 
-    2. Initialisiert das Workspace::
+    2. Initialisiere den Workspace::
        
-         cd ~/catkin_ws/src
+         cd ~/suturo_ws/src
          catkin_init_workspace
 
 
-    3. Sourced euer workspace oder fügt es gleich zur .bashrc hinzu::
+    3. Source den Workspace oder füge ihn gleich zur .bashrc hinzu::
 
         cd ~/catkin_init_workspace
-        catkin_make # Because the will be no devel folder if you haven't maked once
+        catkin_make # erstellt den devel-Ordner
         source ~/catkin_ws/devel/setup.bash
 
        oder::
 
-        catkin_make # Because the will be no devel folder if you haven't maked once
+        catkin_make 
         cd ~
         echo "source ~/catkin_ws/devel/setup.bash" >> .bashrc
         bash
 
-       Wichtig ist hierbei, das der sourcen eures Workspaces nachdem sourcen von rosjava in eurer .bashrc auftaucht.
 
-Wiederholt das ganze um ein Workspace einzurichten, dass nur für eure Dependencies wie knowrob und cram sind::
+.. note:: Achte darauf, dass rosjava und dein Workspace gesourced sind. Überprüfen kannst du dies mit "echo $ROS_PACKAGE_PATH".
+          Wichtig ist hierbei, dass der Workspace nach rosjava in eurer .bashrc auftaucht.
+
+Optional: Wiederholt das ganze, um einen zusätzlichen Workspace für eure Dependencies wie Knowrob und Cram einzurichten::
      
-    mkdir ~/suturo_dep/src
+    mkdir -p ~/suturo_dep/src
     cd ~/suturo_dep/src
     catkin_init_workspace
     cd ..
-    catkin_make # Because the will be no devel folder if you haven't maked once
+    catkin_make 
     source ~/catkin_ws/devel/setup.bash
     cd ~
     echo "source ~/suturo_dep/devel/setup.bash" >> .bashrc
     bash
 
-Führt folgende Befehle aus::
 
-    rosdep update
-    cd ~/suturo_dep/src # oder, wenn ihr ein package nur für die dependencies haben wollt, wechselt hier in diesem
-    wstool init # maybe unnecessary for you
-    wstool merge https://raw.github.com/knowrob/knowrob/indigo/rosinstall/knowrob-base.rosinstall
-    wstool update
-    rosdep install --ignore-src --from-paths stacks/ 
+Klone die Repositories, die du nutzen möchtest, in den src-Ordner deines Workspaces. Es gibt knowledge, planning, perception, manipulation und suturo_msgs. Für das Ausführen des gesamten Projektes werden alle Repositories benötigt. 
 
-.. note:: Quelle und evtl. weitere Infos: http://www.knowrob.org/installation/catkin
+Der entsprechende git-Befehl ist::
 
-Klont unsere Repositories in den src Ordner eures Workspaces. Ihr braucht knowledge, planning, perception, manipulation und suturo_msgs.
+    git clone <URL>
 
-Der entsprechende git - Befehl wäre::
-
-    git clone git@gitlab.informatik.uni-bremen.de:suturo/<modul name>.git
-
-Die URL's sind:
+Die entsprechenden URLs sind:
 
 +--------------+------------------------------------------+----------------------------------------------+
 | Name         | SSH                                      | HTTPS                                        |
@@ -110,19 +101,26 @@ Die URL's sind:
 +--------------+------------------------------------------+----------------------------------------------+
 
 
-.. note:: Achtet darauf dass ihr rosjava und euer workspace beim builden gesourced habt. Überprüfen könnt ihr dies mit "echo $ROS_PACKAGE_PATH"
+Nun kannst du den Workspace bauen::
+    cd ~/suturo_ws/src
+    catkin_make
 
 
-Nun könnt ihr euer Workspace builden
+Zusätzlich benötigt für Perception
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note:: TODO
 
-Optional Guide
-^^^^^^^^^^^^^^
 
-Folgende Schritte müssen ausgeführt werden damit ihr unser Projekt vollständig nutzen und ausführen könnt:
+Zusätzlich benötigt für Manipulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Giskard installieren
 """""""""""""""""""""""
-Giskard wird für Manipulation benötigt. Installationsanweisung auf https://github.com/suturo16/giskard/tree/feature/GiskardLanguage folgen. Zum Branch feature/GiskardLanguage wechseln. 
+Installationsanweisung auf https://github.com/suturo16/giskard/tree/feature/GiskardLanguage folgen. Zum Branch feature/GiskardLanguage wechseln. 
+
+
+Zusätzlich benötigt für Knowledge
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 SWI-Prolog installieren
 """""""""""""""""""""""
@@ -133,19 +131,19 @@ SWI-Prolog wird benötigt, damit die json_prolog Services aufgerufen werden kön
 
 Vor der ersten Nutzung von Prolog kann es zu verschiedenen Fehlern kommen. Seht dazu den Artikel jpl Troubleshooting.
 
-.. note:: Den artikel gibt es noch nicht.
+.. note:: Den Artikel gibt es noch nicht.
 
 
 Umgebungsvariablen
 """"""""""""""""""
 
-a. Fügt die JAVA_HOME und SWI_HOME_DIR Umgebungsvariablen hinzu::
+a. Füge die JAVA_HOME und SWI_HOME_DIR Umgebungsvariablen hinzu::
 
     export JAVA_HOME=/usr/lib/jvm/default-java
     export SWI_HOME_DIR=/usr/lib/swi-prolog
 
 
-b. Füge die Java - Ordner zu LD_LIBRARY_PATH hinzu. Wählt je den für euer System richtigen Befehl aus::
+b. Füge die Java- rdner zu LD_LIBRARY_PATH hinzu. Wähle den für dein System zutreffenden Befehl aus::
 
     # for amd_64 systems (64 bits):
     export LD_LIBRARY_PATH=/usr/lib/jvm/default-java/jre/lib/amd64:/usr/lib/jvm/default-java/jre/lib/amd64/server:$LD_LIBRARY_PATH
@@ -170,12 +168,8 @@ c. Optional: Prolog-History:
           true
          ).
 
-   Quelle und evtl. weitere Infos: http://www.knowrob.org/installation/workspace
+   Quelle und evtl. weitere Infos: http://www.knowrob.org/installation/workspace.
 
-d. Lisp über Emacs
-   Installiert folgendes um Lisp in Emacs ausführen zu können::
-
-    sudo apt-get install ros-indigo-roslisp-repl
 
 Knowrob installieren
 """"""""""""""""""""
@@ -251,6 +245,16 @@ Am besten danach im SUTURO Workspace den build und devel Ordner löschen und neu
 			export ROS_MAVEN_DEPLOYMENT_REPOSITORY=""
 
    *  ROS_MAVEN_DEPLOYMENT_REPOSITORY ist jetzt nur in der aktuellen Terminal-Session leer. In dem aktuellen Terminal sollte dann nochmal versucht werden zu bauen. Da Knowrob eigentlich nur ein mal gebaut werden muss reicht das. Wenn man aber Knowrob regelmäßig bauen möchte sollte man herausfinden ob es wichtig ist, dass in ROS_MAVEN_DEPLOYMENT_REPOSITORY der Path steht, den wir gerade gelöscht haben.
+   
+   
+Zusätzlich benötigt für Planning
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+EMACS installieren
+"""""""""""""""""""
+Installiert folgendes, um Lisp in Emacs ausführen zu können::
+
+    sudo apt-get install ros-indigo-roslisp-repl
 
 CRAM installieren
 """""""""""""""""""""""
