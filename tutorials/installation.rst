@@ -65,7 +65,7 @@ Workspace einrichten
 .. note:: Achte darauf, dass rosjava und dein Workspace gesourced sind. Überprüfen kannst du dies mit "echo $ROS_PACKAGE_PATH".
           Wichtig ist hierbei, dass der Workspace nach rosjava in eurer .bashrc auftaucht.
 
-Optional: Wiederholt das ganze, um einen zusätzlichen Workspace für eure Dependencies wie Knowrob und Cram einzurichten::
+Optional: Wiederholt das ganze, um einen zusätzlichen Workspace für Dependencies wie Knowrob und Cram einzurichten::
      
     mkdir -p ~/suturo_dep/src
     cd ~/suturo_dep/src
