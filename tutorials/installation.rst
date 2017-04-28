@@ -120,6 +120,10 @@ Optional Guide
 
 Folgende Schritte müssen ausgeführt werden damit ihr unser Projekt vollständig nutzen und ausführen könnt:
 
+Giskard installieren
+"""""""""""""""""""""""
+Giskard wird für Manipulation benötigt. Installationsanweisung auf https://github.com/suturo16/giskard/tree/feature/GiskardLanguage folgen. Zum Branch feature/GiskardLanguage wechseln. 
+
 SWI-Prolog installieren
 """""""""""""""""""""""
 
