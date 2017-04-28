@@ -252,3 +252,13 @@ Am besten danach im SUTURO Workspace den build und devel Ordner löschen und neu
 
    *  ROS_MAVEN_DEPLOYMENT_REPOSITORY ist jetzt nur in der aktuellen Terminal-Session leer. In dem aktuellen Terminal sollte dann nochmal versucht werden zu bauen. Da Knowrob eigentlich nur ein mal gebaut werden muss reicht das. Wenn man aber Knowrob regelmäßig bauen möchte sollte man herausfinden ob es wichtig ist, dass in ROS_MAVEN_DEPLOYMENT_REPOSITORY der Path steht, den wir gerade gelöscht haben.
 
+CRAM installieren
+"""""""""""""""""""""""
+Für Planning wird die minimale Installation von Cram benötigt. Dafür im src-Verzeichnis des Dependency-Workspaces die folgenden Befehle ausführen: 
+
+$ git clone https://github.com/cram2/cram_3rdparty.git
+$ git clone https://github.com/cram2/cram_core.git
+$ rosdep install --ignore-src --from-paths cram_3rdparty cram_core
+$ cd .. && catkin_make
+(siehe http://www.cram-system.org/installation)
+
