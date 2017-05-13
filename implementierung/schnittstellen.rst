@@ -328,11 +328,23 @@ graspkard/pr2_detatch_knife_r.yaml
     :Gelenklisten: 
       - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
     :Parameter:
-      - **transform** Frame der Messers in *r_wrist_roll_link*.
+      - **transform** Frame des Messers in *r_wrist_roll_link*.
       - **transform** Frame des Racks in *base_link*.
     :Feedback: *feedback* je näher an :math:`0`, desto besser.
     :Beispiel-Parameter:
       - Noch keine
+        
+graspkard/pr2_look_at.yaml
+""""""""""""""""""""""""""
+    
+    :Beschreibung: Richtet den RGB-Sensor der Kinect auf den Mittlepunkt eines Frames aus.
+    :Gelenklisten: 
+      - *graspkard/config/pr2_lookAt_joints.yaml*: Torso, Neigungs- und Drehgelenk
+    :Parameter:
+      - **transform** Frame zum Angucken in *base_link*.
+    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+    :Beispiel-Parameter:
+      - *graspkard/test_params/poi_test.yaml*
 
 Planning
 ----------
