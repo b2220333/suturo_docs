@@ -334,7 +334,7 @@ graspkard/pr2_detatch_knife_r.yaml
     :Beispiel-Parameter:
       - Noch keine
         
-graspkard/pr2_look_at.yaml
+graspkard/pr2_look_at.giskard
 """"""""""""""""""""""""""
     
     :Beschreibung: Richtet den RGB-Sensor der Kinect auf den Mittlepunkt eines Frames aus.
@@ -345,6 +345,22 @@ graspkard/pr2_look_at.yaml
     :Feedback: *feedback* je näher an :math:`0`, desto besser.
     :Beispiel-Parameter:
       - *graspkard/test_params/poi_test.yaml*
+        
+graspkard/pr2_grasp_plate_r.giskard
+""""""""""""""""""""""""""
+    
+    :Beschreibung: Nutzt den rechten Arm, um eine kreisförmige Kante anzufahren. Der Mittelpunkt der Kante wird als Frame übergeben. Die Z-Achse des Frames ist die Achse um die die Kante rotiert ist. Für die Kante wird ein Neigungswinkel angegeben, der die Neigung der Kante zur Z-Achse angibt. Wiichtig bei diesem Winkel ist, dass er vom äußeren Rand zur Achse hin gemessen wird, also üblicherweise größer als 90° ist.
+    :Gelenklisten: 
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm und Greifer
+    :Parameter:
+      - **transform** Frame als Mittelpunkt für Kante in *base_link*.
+      - **double** Radius der Kante in *m*.
+      - **double** Obere Z-Koordinate der Kante im Mittelpunkts-Frame.
+      - **double** Breite der Kante in *m*.
+      - **double** Neigung der Kante relativ zur Z-Achse des Mittelpunkts-Frames in *rad*.
+    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+    :Beispiel-Parameter:
+      - *graspkard/test_params/pr2_grasp_plate_r.yaml*
 
 Planning
 ----------
