@@ -362,6 +362,19 @@ graspkard/pr2_grasp_plate_r.giskard
     :Beispiel-Parameter:
       - *graspkard/test_params/pr2_grasp_plate_r.yaml*
 
+graspkard/pr2_release_r.giskard
+""""""""""""""""""""""""""
+    
+    :Beschreibung: Lässt ein mit dem rechten Greifer gehaltenes Objekt los. Hierfür wird der Greifer ca 12cm entlang seiner X-Achse rückwärts bewegt, während die Rotation beibehalten wird. Damit dies funktioniert, muss dem Regler die initiale Transformation des Greifers als konstanter Frame übergeben werden. Zusätzlich muss noch angegeben werden, wie weit der Greifer geöffnet werden soll.
+    :Gelenklisten: 
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm und Greifer
+    :Parameter:
+      - **transform** Ausgangsframe des Greifers in *base_link*.
+      - **double** Öffnungsweite des Greifers in *m*.
+    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+    :Beispiel-Parameter:
+      - Derzeit keine
+
 Planning
 ----------
 Auch, wenn Funktionen wie *cutCake()* intern keine Parameter benötigen, muss für die Kommunikation von Python zu Lisp mindestens ein Parameter in der Signatur angefragt werden. Das Aufrufen von Funktionen ohne Parameter ist von Python zum Lisp-RPC-Server nicht möglich. 
