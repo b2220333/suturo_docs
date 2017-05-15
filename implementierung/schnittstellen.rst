@@ -374,6 +374,21 @@ graspkard/pr2_release_r.giskard
     :Feedback: *feedback* je näher an :math:`0`, desto besser.
     :Beispiel-Parameter:
       - Derzeit keine
+        
+graspkard/pr2_move_and_flip_r.giskard
+""""""""""""""""""""""""""
+    
+    :Beschreibung: Gedacht für den vorsichtigen Transport von etwas auf einem Teller oder Kuchenheber (o.ä) und anschließendes Ablegen (Abkippen) in einer kreisförmigen Zielzone. Benötigt wird die Transformation des Kuchenhebers relativ zum rechten Greifer, der Frame der Zielzone, die Breite des Hebers und der Radius der Zielzone.
+    :Gelenklisten: 
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm und Greifer
+    :Parameter:
+      - **transform** Werkzeug relativ zu *r_wrist_roll_link*.
+      - **transform** Zielzone in *base_link*.
+      - **double** Breite des Werkzeugs in *m*.
+      - **double** Radius der Zielzone in *m*.
+    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+    :Beispiel-Parameter:
+      - *graspkard/test_params/move_and_flip.yaml*
 
 Planning
 ----------
