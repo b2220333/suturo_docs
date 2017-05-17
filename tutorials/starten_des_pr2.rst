@@ -37,11 +37,13 @@ Nun startet man folgende launchfiles
     roslaunch /etc/ros/indigo/robot.launch
     roslaunch pr2_teleop teleop_joystick.launch
     roslaunch iai_maps iai_maps.launch
-    roslaunch ~/pr2_manipulation.launch
+    
+
+.. roslaunch ~/pr2_manipulation.launch
     
 Bevor man Giskard startet, sollten die Motoren es PR2 ausgeschaltet werden.
 ::
-    roslaunch giskard_examples pr2.launch sim:=false
+    roslaunch graspkard pr2.launch
 
 
 Für die Kinect muss man openni auf dem PR2b starten. Dies macht man am besten aus byobu.
