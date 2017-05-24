@@ -41,7 +41,7 @@ Nun startet man folgende launchfiles
     
 Bevor man Giskard startet, sollten die Motoren es PR2 ausgeschaltet werden.
 ::
-    roslaunch giskard_examples pr2.launch sim:=false
+    roslaunch graspkard pr2.launch sim:=false
 
 
 Für die Kinect muss man openni auf dem PR2b starten. Dies macht man am besten aus byobu.
