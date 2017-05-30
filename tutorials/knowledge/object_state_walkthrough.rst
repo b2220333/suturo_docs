@@ -8,6 +8,10 @@ Das Package stellt einen listener für das Perception-Topic 'percepteros/object_
 MS2:
 Das Package stellt nun weitere Funktionalitäten bereit. Es können beispielsweise die Position und Orientierung von gültigen Fluent-Objekten über ein Pythonskript auf das tf topic gepublished werden.
 
+MS3:
+Python Skripte ausführbar aus Prolog Queries über Prython.
+Mehrere Objekte des gleichen Typs jetzt möglich. Der Objektname wird aus dem Objekttypen durch anhängen eines Integerwertes erzeugt.
+
 Das Package enthält:
 
 * eine Prolog-Klasse 'prolog_object_state.pl' um die KnowRob-internen Objekte zu erzeugen
@@ -17,6 +21,7 @@ Das Package enthält:
 
 * einen Python-Broadcaster namens "fluents_tf_publisher.py"
 * einen Dummy Publisher für 'percepteros/object_detection' namens 'dummy_publisher.py'  
+* eine Prolog -> Python Schnittstelle als Proof of Concept
 
 .. note:: Vorerst solltet ihr nur den Python-Subscriber benutzen, da der Java-Subscriber noch fehlerhaft ist. Wenn ihr 'object_state.launch' ausführt wird standartmäßig der Python-Subscriber gestartet.
 
