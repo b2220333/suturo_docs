@@ -52,23 +52,24 @@ ______
         Trennt zwei Objekte mit den gegebenen Frames, so dass die zuvor konstante Transformation genutzt wird, um die neue "absolute" Position des Objektes zu berechnen und zu publishen.
 
 - cap_available_on_robot(Capability, Robot)
+
         "Capability" in der Form:         
-                                        srdl2cap:'AcousticPerceptionCapability'
-                                        
-                                        srdl2cap:'PerceptionCapability'
-                                        
-                                        srdl2cap:'ObjectRecognitionCapability'
-                                        
-                                        srdl2cap:'VisualPerceptionCapability'                                        
-                                        ...
+                srdl2cap:'AcousticPerceptionCapability'
+
+                srdl2cap:'PerceptionCapability'
+
+                srdl2cap:'ObjectRecognitionCapability'
+
+                srdl2cap:'VisualPerceptionCapability'                                        
+                ...
         
         "Robot" in der Form:              
-                                        pepper:'JulietteY20MP_robot1'
-                                        
-                                        oder
-                                        
-                                        pr2:'PR2Robot1'
-        
+                pepper:'JulietteY20MP_robot1'
+
+                oder
+
+                pr2:'PR2Robot1'
+
 Service
 ______    
         
