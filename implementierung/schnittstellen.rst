@@ -53,22 +53,22 @@ ______
 
 - cap_available_on_robot(Capability, Robot)
 
-        "Capability" in der Form:         
-                srdl2cap:'AcousticPerceptionCapability'
+"Capability" in der Form:
+        srdl2cap:'AcousticPerceptionCapability'
 
-                srdl2cap:'PerceptionCapability'
+        srdl2cap:'PerceptionCapability'
 
-                srdl2cap:'ObjectRecognitionCapability'
+        srdl2cap:'ObjectRecognitionCapability'
 
-                srdl2cap:'VisualPerceptionCapability'                                        
-                ...
-        
-        "Robot" in der Form:              
-                pepper:'JulietteY20MP_robot1'
+        srdl2cap:'VisualPerceptionCapability'
+        ...
 
-                oder
+"Robot" in der Form:              
+        pepper:'JulietteY20MP_robot1'
 
-                pr2:'PR2Robot1'
+        oder
+
+        pr2:'PR2Robot1'
 
 Service
 ______    
