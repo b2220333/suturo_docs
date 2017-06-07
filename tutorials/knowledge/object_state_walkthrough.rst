@@ -17,13 +17,18 @@ Es wurden einige Erweiterungen hinzugefügt, um mit den während des 3. Meilenst
 
 Das Package enthält:
 
-* Prolog-Module:
+* Prolog-Module
+
   * ('prolog_object_state.pl'): wird für alle wichtigen Features in Knowledge verwendet.
+
 * Skripts
+  
   * ('subscriber.py'): hört das ROS-Topic 'percepteros/object_detection' ab und verarbeitet die gesammelten Daten für die Repräsentation in KnowRob weiter.
   * ('fluents_tf_publisher.py'): ein Publisher, der bei Bedarf Objektposition, -Orientierung und -Dimensionen an TF schicken kann.
   * ('dummy_publisher.py'): simuliert Perzeption, die vom Subscriber verarbeitet werden; eher für Testzwecke relevant.
+
 * Launchfiles
+
   * ('object_state.launch'): startet alle Module von Knowledge nacheinander.
   * ('prolog.launch'): startet nur das Prolog-Modul; eher für manuelles Testen relevant.
 
