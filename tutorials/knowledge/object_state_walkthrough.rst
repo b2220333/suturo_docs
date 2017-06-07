@@ -20,6 +20,7 @@ Das Package enthält:
 * Prolog-Module
 
   * ('prolog_object_state.pl'): wird für alle wichtigen Features in Knowledge verwendet.
+  * ('prython.pl'): enthält die Funktionalität in Prolog Python-Funktionen und Objekte zu nutzen.
 
 * Skripts
   
