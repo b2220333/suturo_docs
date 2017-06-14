@@ -8,17 +8,30 @@ Das Package stellt einen listener für das Perception-Topic 'percepteros/object_
 MS2:
 Das Package stellt nun weitere Funktionalitäten bereit. Es können beispielsweise die Position und Orientierung von gültigen Fluent-Objekten über ein Pythonskript auf das tf topic gepublished werden.
 
+MS3:
+Python Skripte ausführbar aus Prolog Queries über Prython.
+Mehrere Objekte des gleichen Typs jetzt möglich. Der Objektname wird aus dem Objekttypen durch anhängen eines Integerwertes erzeugt.
+
+MS4: 
+Es wurden einige Erweiterungen hinzugefügt, um mit den während des 3. Meilensteins eingeführten multiplen Objekten konsistent zu bleiben. Prython wurde in diesem Meilenstein weiterentwickelt und wird bereits in den neuen Funktionen verwendet.
+
 Das Package enthält:
 
-* eine Prolog-Klasse 'prolog_object_state.pl' um die KnowRob-internen Objekte zu erzeugen
-* einen Subscriber für 'percepteros/object_detection' namens 'Listener.java' (Fehlerhaft, Stand 2/2017)
-* einen Subscriber für 'percepteros/object_detection' namens 'subscriber.py' 
-* Launchfiles für je einen Subscriber, die Prolog-Klasse sowie für alle zur Ausführung nötigen Komponenten zusammen, erkennbar am Dateinamen
+* Prolog-Module
 
-* einen Python-Broadcaster namens "fluents_tf_publisher.py"
-* einen Dummy Publisher für 'percepteros/object_detection' namens 'dummy_publisher.py'  
+  * ('prolog_object_state.pl'): wird für alle wichtigen Features in Knowledge verwendet.
+  * ('prython.pl'): enthält die Funktionalität in Prolog Python-Funktionen und Objekte zu nutzen.
 
-.. note:: Vorerst solltet ihr nur den Python-Subscriber benutzen, da der Java-Subscriber noch fehlerhaft ist. Wenn ihr 'object_state.launch' ausführt wird standartmäßig der Python-Subscriber gestartet.
+* Skripts
+  
+  * ('subscriber.py'): hört das ROS-Topic 'percepteros/object_detection' ab und verarbeitet die gesammelten Daten für die Repräsentation in KnowRob weiter.
+  * ('fluents_tf_publisher.py'): ein Publisher, der bei Bedarf Objektposition, -Orientierung und -Dimensionen an TF schicken kann.
+  * ('dummy_publisher.py'): simuliert Perzeption, die vom Subscriber verarbeitet werden; eher für Testzwecke relevant.
+
+* Launchfiles
+
+  * ('object_state.launch'): startet alle Module von Knowledge nacheinander.
+  * ('prolog.launch'): startet nur das Prolog-Modul; eher für manuelles Testen relevant.
 
 
 Verwendung und Testlauf von objectDetection
