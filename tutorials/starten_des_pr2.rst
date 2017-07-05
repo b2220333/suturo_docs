@@ -36,6 +36,7 @@ Nun startet man folgende launchfiles
 ::
     roslaunch /etc/ros/indigo/robot.launch
     roslaunch iai_maps iai_maps.launch
+    roslaunch ~/pr2_manipulation.launch
     
 
 .. roslaunch ~/pr2_manipulation.launch
