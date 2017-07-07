@@ -51,6 +51,12 @@ Für die Kinect muss man openni auf dem PR2b starten. Dies macht man am besten a
     ssh pr2b
     roslaunch /etc/ros/indigo/openni_head.launch
 
+
+PR2 Lokalisieren
+-----------------
+Wenn der PR2 noch nicht bzw. falsch lokalisiert ist, muss man in Rviz unter "Global Options" den "Fixed Frame" auf map setzten, sonst funktioniert das nicht. Dannach in Rviz in der oberen Toolbar "2D Pose Estimate" auswählen und dementsprechend in der Map in Rviz platzieren. Es hilf dabei ein PoseArray auf dem topic "/particlecloud" zu haben. Mit diesem kann man sehen, wo der Roboter denkt, dass er gerade ist. Dannach einfach mit dem Roboter etwas durch die Gegend fahren, bis die meisten Pfeile verschwinden. Das sollte ihn Lokalisieren.
+
+
 PR2 beenden
 --------------
 Wenn man fertig ist, führt man diese Befehle aus, um die gestarteten Prozesse zu beenden und den PR2 freizugeben.
