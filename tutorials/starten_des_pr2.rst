@@ -35,6 +35,7 @@ In byobu kann man mit f2 ein neues Terminal erstellen und mit f3 und f4 wechselt
 Nun startet man folgende launchfiles
 ::
     roslaunch /etc/ros/indigo/robot.launch
+    roslaunch pr2_manipulation.launch
     roslaunch iai_maps iai_maps.launch
     
 
