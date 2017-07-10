@@ -424,10 +424,21 @@ Auch, wenn Funktionen wie *cutCake()* intern keine Parameter benötigen, muss f�
         - stressLevel(status)
             Gibt die Auslastung des Servers als numerischen Wert zurück. Entspricht der Anzahl der Aufgaben, die noch durchzuführen sind.
             
-        - nextTask(status)
-           Liefert die Beschreibung der nächsten, geplanten Aufgabe zurück.
-
-
+        - do(task)
+           Führt die gegebene Aufgabe **task** aus.
+                       
+        - setCake(guestId, amount)
+           Setzt die Anzahl Kuchenstücke (als integer) für den Gast **guestId** (z.B. 'Franklin') fest.
+                       
+        - setDeposit(guestId, location)
+           Setzt den Lieferort des Kuchen für den Gast mit Namen **guestId**. Der Lieferort gibt als String einen Ort an, z.B. 'isle' oder 'door'.
+                       
+        - increaseCake(guestId, amount)
+           Erhöht die Anzahl gewünschter Kuchenstücke des Gastes um **amount**.
+                 
+        - decreaseCake(guestId, amount)
+           Verringert die Anzahl gewünschter Kuchenstücke des Gastes um **amount**.
+            
 Pepper
 ----------
 .. code::
