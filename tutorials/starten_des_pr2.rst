@@ -30,7 +30,7 @@ Mit robot claim beansprucht man den PR2 für sich.
 Als nächstes startet man byobu, damit die Prozesse nicht beendet werden, falls man die Verbindung zum PR2 verliert.
 In byobu kann man mit f2 ein neues Terminal erstellen und mit f3 und f4 wechselt man durch die Terminals durch.
 ::
-    byubo
+    byobu
 
 Nun startet man folgende launchfiles
 ::
