@@ -42,20 +42,19 @@ ______
 
         :Parameter:     
                 +---------------+-------------------------------------------------------------------------------+
-                |*Name*         | Eindeutiger Identifikator eines bestimmten Objektes. Name = Type + Integer    |
+                |**Name**       | Eindeutiger Identifikator eines bestimmten Objektes. Name = Type + Integer    |
                 +---------------+-------------------------------------------------------------------------------+
-                |*FrameID*      | Referenzrahmen für Pose                                                       |
+                |**FrameID**    | Referenzrahmen für Pose                                                       |
                 +---------------+-------------------------------------------------------------------------------+
-                |*Type*         | Objektklassifikation                                                          |
+                |**Type**       | Objektklassifikation                                                          |
                 +---------------+-------------------------------------------------------------------------------+
-                |*TimeStamp*    | Float, Sekunden seit 1970-01-01                                               |
+                |**TimeStamp**  | Float, Sekunden seit 1970-01-01                                               |
                 +---------------+-------------------------------------------------------------------------------+
-                |*Position*     | List of Float mit len(3) für kartesische Koords in FrameID                    |
+                |**Position**   | List of Float mit len(3) für kartesische Koords in FrameID                    |
                 +---------------+-------------------------------------------------------------------------------+
-                |*Orientation*  | Liste of Float mit len(4) für Orientierung in FrameID                         |
+                |**Orientation**| Liste of Float mit len(4) für Orientierung in FrameID                         |
                 +---------------+-------------------------------------------------------------------------------+
-                |*Height,Width,*|                                                                               |
-                |     *Depth*   | erklären sich von selbst.                                                     |
+                |**Height, Width, Depth** | erklären sich von selbst.                                           |
                 +---------------+-------------------------------------------------------------------------------+
                 
 
