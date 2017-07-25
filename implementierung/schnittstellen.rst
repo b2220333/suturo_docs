@@ -27,8 +27,8 @@ Knowledge
 Prolog
 ______
 
-- get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height, Width, Depth)
-
+get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height, Width, Depth)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
         :Beschreibung:  Praedikat zur Abfrage von Objektinformationen aus der KB
         :Verwendung:    Aufruf mit einer beliebigen Anzahl an gebundenen und ungebundenen Variablen. Die Antwort auf die Query ist entsprechend eindeutig oder hat mehrere Antworten.
         :Beispielcall:  get_object_info('Knife1', _, Type, _, [Position,[OX,OY,_,_]],_,_,_).
@@ -45,7 +45,7 @@ ______
                 :TimeStamp:     Float, Sekunden seit 1970-01-01
                 :Position:      List of Float mit len(3) für kartesische Koords in FrameID
                 :Orientation:   Liste of Float mit len(4) für Orientierung in FrameID
-                | Height, Width, Depth erklären sich von selbst.
+        |       Height, Width, Depth erklären sich von selbst.
                 
 
 - set_info(+Object, +[Info])
