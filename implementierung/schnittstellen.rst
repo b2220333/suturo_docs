@@ -38,14 +38,13 @@ get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height,
                         get_object_infos(Name, FrameID, Timestamp, Height, Width, Depth)
                         get_object_infos(Name, FrameID, Type, Timestamp, [Position, Orientation], Height, Width, Depth)
         :Parameter:     
-        ::
                 :Name:          Eindeutiger Identifikator eines bestimmten Objektes. Name = Type + Integer
                 :FrameID:       Referenzrahmen für Pose
                 :Type:          Objektklasse
                 :TimeStamp:     Float, Sekunden seit 1970-01-01
                 :Position:      List of Float mit len(3) für kartesische Koords in FrameID
                 :Orientation:   Liste of Float mit len(4) für Orientierung in FrameID
-                Height, Width, Depth erklären sich von selbst.
+                :Height, Width, Depth: erklären sich von selbst.
                 
 
 - set_info(+Object, +[Info])
