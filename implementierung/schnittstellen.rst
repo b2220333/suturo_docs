@@ -45,25 +45,25 @@ get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height,
                 :TimeStamp:     Float, Sekunden seit 1970-01-01
                 :Position:      List of Float mit len(3) für kartesische Koords in FrameID
                 :Orientation:   Liste of Float mit len(4) für Orientierung in FrameID
-        |       Height, Width, Depth erklären sich von selbst.
+                Height, Width, Depth erklären sich von selbst.
                 
 
 - set_info(+Object, +[Info])
-|       Dieses Prädikat ermöglicht das Ablegen und Ändern von Informationen zu einem Objekt oder als Parametersatz.
+       Dieses Prädikat ermöglicht das Ablegen und Ändern von Informationen zu einem Objekt oder als Parametersatz.
         Ein erfolgreiches ablegen der Informationen wird mit True bestätigt.
-|       Object:         Das Objekt oder die Zuordnung der Information. Dies kann durch folgende Angaben erfolgen:
-|               ObjectInstance:         Knowrob Objektinstanz in der Form 'Knife_xYz'
-|               ObjectName:             rdf Parameter mit der Kante knowrob:nameOfObject und dem Objektnamen als String
-|                                       aus create_object_info() wäre dies der Name 'Knife1', Knife2' etc.
-|               ObjectType:             Knowrobtyp des Objektes welches erzeugt werden soll um die Daten abzulegen. Bsp. 'Knife'
-|       Info:           Die Informationen welche abgelegt werden sollen als [Bezeichnung, Wert] Listenelemente. Dies führt zu einen Aufruf des Prädikates ähnlich zu set_info('Knife42', [[xCoord, 1.0],[yCoord,2.0],[zCoord,5.0],[isDirty, true],...])
+       Object:         Das Objekt oder die Zuordnung der Information. Dies kann durch folgende Angaben erfolgen:
+               ObjectInstance:         Knowrob Objektinstanz in der Form 'Knife_xYz'
+               ObjectName:             rdf Parameter mit der Kante knowrob:nameOfObject und dem Objektnamen als String
+                                       aus create_object_info() wäre dies der Name 'Knife1', Knife2' etc.
+               ObjectType:             Knowrobtyp des Objektes welches erzeugt werden soll um die Daten abzulegen. Bsp. 'Knife'
+       Info:           Die Informationen welche abgelegt werden sollen als [Bezeichnung, Wert] Listenelemente. Dies führt zu einen Aufruf des Prädikates ähnlich zu set_info('Knife42', [[xCoord, 1.0],[yCoord,2.0],[zCoord,5.0],[isDirty, true],...])
         
                         Ein Info-Wertepaar der Form [nameOfObject, Name] wird ebenfalls als Identifier benutzt und würde versuchen ein entsprechendes Objekt in der KB zu finden. Ist dieses noch nicht vorhanden, wird es angelegt.
                         
 - get_info(+Variables, -Returns)
-|       Fragt beliebige Informationen ab die den in Variables gegeben Konditionen entsprechen.
-|       Bsp.aufruf wäre get_info([xCoord, [nameOfObject, 'Knife42'], isDirty], Returns) --> Antwort: -[[isDirty, true],[xCoord,1.0]].
-|       Variables:      Liste mit Konditionen als [Bezeichnung, Wert] e.g. [nameOfObject, 'Knife42'] und Abfragewerten wie xCoord, y Coord, typeOfObject, etc.
+       Fragt beliebige Informationen ab die den in Variables gegeben Konditionen entsprechen.
+       Bsp.aufruf wäre get_info([xCoord, [nameOfObject, 'Knife42'], isDirty], Returns) --> Antwort: -[[isDirty, true],[xCoord,1.0]].
+       Variables:      Liste mit Konditionen als [Bezeichnung, Wert] e.g. [nameOfObject, 'Knife42'] und Abfragewerten wie xCoord, y Coord, typeOfObject, etc.
 
 - seen_since(+Name, +FrameID, +Timestamp) -> True/False
         Wurde das Objekt mit Namen "Name" und der Frame-ID "FrameID" seit dem Timestamp "Timestamp" wieder gesehen?
@@ -72,19 +72,19 @@ get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height,
         Trennt zwei Objekte mit den gegebenen Frames, so dass die zuvor konstante Transformation genutzt wird, um die neue "absolute" Position des Objektes zu berechnen und zu publishen.
 
 - cap_available_on_robot(Capability, Robot)
-|       Kann genutzt werden um einen Roboter zu identifizieren mit der bestimmten Fähigkeit oder um die Fähigkeiten eines bestimten Roboters zu erfragen.
+       Kann genutzt werden um einen Roboter zu identifizieren mit der bestimmten Fähigkeit oder um die Fähigkeiten eines bestimten Roboters zu erfragen.
 
-|       Capability in der Form:
-|               srdl2cap:'AcousticPerceptionCapability'
-|               srdl2cap:'PerceptionCapability'
-|               srdl2cap:'ObjectRecognitionCapability'
-|               srdl2cap:'VisualPerceptionCapability'
-|               ...
+       Capability in der Form:
+               srdl2cap:'AcousticPerceptionCapability'
+               srdl2cap:'PerceptionCapability'
+               srdl2cap:'ObjectRecognitionCapability'
+               srdl2cap:'VisualPerceptionCapability'
+               ...
 
-|       Robot in der Form:              
-|               pepper:'JulietteY20MP_robot1'
-|               oder
-|               pr2:'PR2Robot1'
+       Robot in der Form:              
+               pepper:'JulietteY20MP_robot1'
+               oder
+               pr2:'PR2Robot1'
 
 Service
 ______    
