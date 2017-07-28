@@ -423,18 +423,14 @@ Auch, wenn Funktionen wie *cutCake()* intern keine Parameter benötigen, muss f�
         - do(task)
            Führt die gegebene Aufgabe **task** aus.
                        
-        - setCake(guestId, amount)
-           Setzt die Anzahl Kuchenstücke (als integer) für den Gast **guestId** (z.B. 'Franklin') fest.
-                       
-        - setDeposit(guestId, location)
-           Setzt den Lieferort des Kuchen für den Gast mit Namen **guestId**. Der Lieferort gibt als String einen Ort an, z.B. 'isle' oder 'door'.
-                       
-        - increaseCake(guestId, amount)
-           Erhöht die Anzahl gewünschter Kuchenstücke des Gastes um **amount**.
-                 
-        - decreaseCake(guestId, amount)
-           Verringert die Anzahl gewünschter Kuchenstücke des Gastes um **amount**.
-            
+        - assertDialogElement(json-string)
+           Sendet das JSON an die Knowledgebase. Das Format ist hier https://docs.google.com/document/d/1wCUxW6c1LhdxML294Lvj3MJEqbX7I0oGpTdR5ZNIo_w definiert.
+        
+        - getCustomerInfo(customer-id)
+           Liefert die Info zum Customer mit gegebener ID als JSON.
+        
+        - getAllCustomerInfos(status)
+           Liefert Liste aller Customer Infos zurück.
 Pepper
 ----------
 .. code::
@@ -444,3 +440,6 @@ Pepper
             
         - notify()
             Benachrichtigung, dass der Kuchen geschnitten ist.
+            
+        - new_notify(json-string)
+            Benrachrichtigung wenn eine customer order fertig ist.
