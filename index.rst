@@ -36,6 +36,7 @@ Contents:
    tutorials/planning/troubleshooting_planning
    tutorials/planning/rpc_server_fuer_pepper
    tutorials/planning/prolog_calls
+   tutorials/planning/pepper_knowledge_communication
 
 .. toctree::
    :maxdepth: 2
