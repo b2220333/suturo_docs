@@ -86,3 +86,11 @@ hasu@hawkin-suturo:~/suturo_ws/src/knowledge/object_state/prolog$ rosservice cal
 status: 3
 solution: {}
 hasu@hawkin-suturo:~/suturo_ws/src/knowledge/object_state/prolog$ 
+
+
+
+----------------
+
+rechner runter stellen -> alexis fragen, feste IP
+
+namespace of pr2 and turtles
