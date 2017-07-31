@@ -39,6 +39,7 @@ Nun startet man folgende launchfiles
     roslaunch iai_maps iai_maps.launch  ;; wenn man die ursprüngliche Karte haben möchte
     roslaunch maps.launch		;; für unsere eigene, große Karte vom Lab
 
+
 Anmerkung: Die Semantic Map stimmt von den Positionen der Frames der Objekte mit unserer Karte zwar scheinbar überein, aber es wurde noch nicht getestet.    
 
 .. roslaunch ~/pr2_manipulation.launch
