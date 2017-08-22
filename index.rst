@@ -8,6 +8,18 @@ Welcome to CaterROS' documentation!
 
 Contents:
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Overview of components
+   
+   components description/perception
+   components description/dialogsystem
+   components description/manipulation
+   components description/knowledge
+   components description/planning
+  
+
 .. toctree::
    :maxdepth: 2
    :caption: Organisation
