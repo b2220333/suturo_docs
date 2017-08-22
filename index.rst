@@ -11,14 +11,14 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Overview of components
+   :caption: Components of the CaterROS system
    
-   components description/overview
-   components description/perception
-   components description/dialogsystem
-   components description/manipulation
-   components description/knowledge
-   components description/planning
+   components/overview
+   components/perception
+   components/dialogsystem
+   components/manipulation
+   components/knowledge
+   components/planning
   
 
 .. toctree::
