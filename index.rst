@@ -13,6 +13,7 @@ Contents:
    :maxdepth: 2
    :caption: Overview of components
    
+   components description/overview
    components description/perception
    components description/dialogsystem
    components description/manipulation
