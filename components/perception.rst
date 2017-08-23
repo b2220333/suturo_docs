@@ -9,10 +9,12 @@ Perception
 <General description and purpose>
 
 
-Component 1
+CaterrosRun
 ----------
+This is a customized version of the robosherlock run functionality. It starts robosherlock while offering the possibility to change the executed Pipeline during runtime. A service is offered at percepteros/set_pipeline, which takes a list of object names for which it will then start a customized pipeline. Currently only one object is supported, this can however easily be expanded by adding appropriate pipelines. 
+Pipelines are defined as yaml files in the config folder. In order to let the system know a new pipeline exists, the name of the pipeline has to be added to the setPipelineCallback function in CaterrosPipelineManager.
 
-Component 2
+CakeAnnotator
 ----------
 
 ...
