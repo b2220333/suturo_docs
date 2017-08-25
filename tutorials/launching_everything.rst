@@ -7,7 +7,7 @@ launching everything
 	roslaunch suturo_action_server pr2_action_server.launch
 
 3. Launch Knowledge. Preferably localy, since when launched on Bernd it has a weird delay (info from 29.06.2017, remove when fixed.):
-	roslaunch object_state object_state.launch 
+	roslaunch knowledge_launch suturo_knowledge_full.launch
 
 4. Launch Perception. Either on the Robot or on Bernd. (When last checked on 28.06.2017, it was working better on the PR2, but this might change.)
 	rosrun percepteros caterrosRun cateros.xml
