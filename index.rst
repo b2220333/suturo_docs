@@ -33,6 +33,7 @@ Contents:
    :caption: Tutorials & Tools
    
    tutorials/neue_artikel_schreiben
+   tutorials/doxygen_dokumentation_schreiben
    tutorials/installation
    tutorials/pullreq_git
    tutorials/travis_ci
