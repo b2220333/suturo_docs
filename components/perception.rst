@@ -25,6 +25,12 @@ Initially, all Annotators have to be known to RoboSherlock. They can be defined 
 
 CakeAnnotator
 ----------
+Implemented classes: CakeAnnotator
 
-...
+Required Pipeline: CollectionReader, ImagePreprocessor, PointCloudFilter, NormalEstimator, PlaneAnnotator, PointCloudClusterExtractor, ClusterColorHistogramCalculator, CakeAnnotator
+
+ROSPublisher
+----------
+
+
 ----------
