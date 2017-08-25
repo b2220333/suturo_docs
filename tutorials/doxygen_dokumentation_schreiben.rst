@@ -4,9 +4,9 @@ Tutorial: Doxygen Dokumentation schreiben
 Kommentare im Code machen
 --------------
 
-Für Doxygen sollte der Code über entsprechende Kommentare verfügen, sodass bei Methoden klar ist was sie machen. Dafür gibt es entsprechende Syntax, die man sich unter `c++ <http://csweb.cs.wfu.edu/~fulp/CSC112/codeStyle.html>` für C++ anschauen kann.
+Für Doxygen sollte der Code über entsprechende Kommentare verfügen, sodass bei Methoden klar ist was sie machen. Dafür gibt es entsprechende Syntax, die man sich unter `c++ <http://csweb.cs.wfu.edu/~fulp/CSC112/codeStyle.html>`_ für C++ anschauen kann.
 
-Das Schreiben der entsprechenden Kommentare wird durch Texteditorplugins erleichtert. Für Atom gibt es dafür `docblockr https://atom.io/packages/docblockr`, für sublime `DoxyDoxygen https://packagecontrol.io/packages/DoxyDoxygen`.
+Das Schreiben der entsprechenden Kommentare wird durch Texteditorplugins erleichtert. Für Atom gibt es dafür `docblockr <https://atom.io/packages/docblockr>`_, für sublime `DoxyDoxygen <https://packagecontrol.io/packages/DoxyDoxygen>`_.
 
 Anschließend wird der Code mit Kommentaren von einem Converter (Doxygen) in eine Dokumenatition verwandelt. Dabei gilt: Je umfangreicher und informativer die Kommentare, desto besser die Dokumentation!
 
