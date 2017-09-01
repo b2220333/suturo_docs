@@ -30,14 +30,17 @@ Mit robot claim beansprucht man den PR2 für sich.
 Als nächstes startet man byobu, damit die Prozesse nicht beendet werden, falls man die Verbindung zum PR2 verliert.
 In byobu kann man mit f2 ein neues Terminal erstellen und mit f3 und f4 wechselt man durch die Terminals durch.
 ::
-    byubo
+    byobu
 
 Nun startet man folgende launchfiles
 ::
     roslaunch /etc/ros/indigo/robot.launch
-    roslaunch iai_maps iai_maps.launch
-    roslaunch ~/pr2_manipulation.launch
-    
+    roslaunch pr2_manipulation.launch
+    roslaunch iai_maps iai_maps.launch  ;; wenn man die ursprüngliche Karte haben möchte
+    roslaunch maps.launch		;; für unsere eigene, große Karte vom Lab
+
+
+Anmerkung: Die Semantic Map stimmt von den Positionen der Frames der Objekte mit unserer Karte zwar scheinbar überein, aber es wurde noch nicht getestet.    
 
 .. roslaunch ~/pr2_manipulation.launch
     
@@ -50,6 +53,12 @@ Für die Kinect muss man openni auf dem PR2b starten. Dies macht man am besten a
 ::
     ssh pr2b
     roslaunch /etc/ros/indigo/openni_head.launch
+
+
+PR2 Lokalisieren
+-----------------
+Wenn der PR2 noch nicht bzw. falsch lokalisiert ist, muss man in Rviz unter "Global Options" den "Fixed Frame" auf map setzten, sonst funktioniert das nicht. Dannach in Rviz in der oberen Toolbar "2D Pose Estimate" auswählen und dementsprechend in der Map in Rviz platzieren. Es hilf dabei ein PoseArray auf dem topic "/particlecloud" zu haben. Mit diesem kann man sehen, wo der Roboter denkt, dass er gerade ist. Dannach einfach mit dem Roboter etwas durch die Gegend fahren, bis die meisten Pfeile verschwinden. Das sollte ihn Lokalisieren.
+
 
 PR2 beenden
 --------------

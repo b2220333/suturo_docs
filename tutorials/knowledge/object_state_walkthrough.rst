@@ -2,18 +2,21 @@
 Package object_state 
 -------------------------------
 
-MS1:
-Das Package stellt einen listener für das Perception-Topic 'percepteros/object_detection' bereit und hört es ab. Die Informationen aus dem Perception-Topic werden dann weiterverarbeitet, indem eine KnowRob-Repräsentation erzeugt wird. Mittels dieser können wir dann Wissen inferieren.
+**MS1:**
+	Das Package stellt einen listener für das Perception-Topic 'percepteros/object_detection' bereit und hört es ab. Die Informationen aus dem Perception-Topic werden dann weiterverarbeitet, indem eine KnowRob-Repräsentation erzeugt wird. Mittels dieser können wir dann Wissen inferieren.
 
-MS2:
-Das Package stellt nun weitere Funktionalitäten bereit. Es können beispielsweise die Position und Orientierung von gültigen Fluent-Objekten über ein Pythonskript auf das tf topic gepublished werden.
+**MS2:**
+	Das Package stellt nun weitere Funktionalitäten bereit. Es können beispielsweise die Position und Orientierung von gültigen Fluent-Objekten über ein Pythonskript auf das tf topic gepublished werden.
 
-MS3:
-Python Skripte ausführbar aus Prolog Queries über Prython.
-Mehrere Objekte des gleichen Typs jetzt möglich. Der Objektname wird aus dem Objekttypen durch anhängen eines Integerwertes erzeugt.
+**MS3:**
+	Python Skripte ausführbar aus Prolog Queries über Prython.
+	Mehrere Objekte des gleichen Typs jetzt möglich. Der Objektname wird aus dem Objekttypen durch anhängen eines Integerwertes erzeugt.
 
-MS4: 
-Es wurden einige Erweiterungen hinzugefügt, um mit den während des 3. Meilensteins eingeführten multiplen Objekten konsistent zu bleiben. Prython wurde in diesem Meilenstein weiterentwickelt und wird bereits in den neuen Funktionen verwendet.
+**MS4:** 
+	Es wurden einige Erweiterungen hinzugefügt, um mit den während des 3. Meilensteins eingeführten multiplen Objekten konsistent zu bleiben. Prython wurde in diesem Meilenstein weiterentwickelt und wird bereits in den neuen Funktionen verwendet.
+
+**MS5:**
+	Erweiterung um generische Methoden zur Ablage und Abfrage von jedweder Information und Wissen in die KB.
 
 Das Package enthält:
 

@@ -266,3 +266,47 @@ $ rosdep install --ignore-src --from-paths cram_3rdparty cram_core
 $ cd .. && catkin_make
 (siehe http://www.cram-system.org/installation)
 
+
+Downwards Planner für den Plangenerator installieren
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Für den Plangenerator verwenden wir den Fast Downward Planer von http://www.fast-downward.org/.
+
+Um diesen für den Plangenerator nutzbar zu machen, muss zunächst ein Ordner angelegt werden, z.B. "pddl" im Dependency-Workspace. In diesen wird eine Datei mit dem Namen "setup.py" eingefügt mit dem Inhalt: ::
+
+	#!/usr/bin/env python
+
+	from distutils.core import setup
+
+	setup(name='pddl',
+     	version='1.0',
+     	description='pddl stuff',
+     	author='someone',
+     	author_email='someone@stuff.net',
+     	url='https://www.python.org/sigs/distutils-sig/',
+     	packages=['downward'],
+    	) 
+
+
+Die detaillierte Beschreibung zum Einrichten des Fast Downward Planers findet sich hier: http://www.fast-downward.org/ObtainingAndRunningFastDownward. 
+
+Um das Vorhandensein aller nötigen Dependencies sicherzustellen, führe ::
+	sudo apt-get install cmake g++ g++-multilib mercurial make python
+aus. 
+
+Danach clone das entsprechende Verzeichnis im vorher angelegten Ordner in den Ordner "downward" ::
+	cd pddl
+	hg clone http://hg.fast-downward.org downward
+
+Dann kann der Planer im Ordner "downward" gebaut werden: ::
+	cd downward
+	./build.py
+
+Nun erstellt die leere Datei "__init__.py" im "downwards"-Ordner. 
+Gehe in den Unterordner driver und kommentiere in der Datei main.py die Zeile ::
+	# sys.exit(exitcode)
+aus, da der Server vom Plangenerator sonst nichts zurückliefern kann, wenn er aufgerufen wird. 
+
+Nun führe in dem erstellen Ordner aus: ::
+	sudo pip install -e . 
+Nun lässt sich der Planer von überall als Python-Paket importieren und der Plangenerator erhält Zugriff auf ihn. 

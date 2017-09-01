@@ -27,23 +27,23 @@ Knowledge
 Prolog
 ______
 
-- get_object_info(Name, FrameID, Type, Timestamp, [Position, Orientation], Height, Width, Depth) 
-        -> Liste von Lösungen
-        In welcher Form der Timestamp kommt, ist für die Schnittstelle relativ unwichtig, da wir ihn nur umherreichen und es auf jeden Fall ein String sein wird.
+
+- set_info(+Object, +[Info])
+       Dieses Prädikat ermöglicht das Ablegen und Ändern von Informationen zu einem Objekt oder als Parametersatz.
+        Ein erfolgreiches ablegen der Informationen wird mit True bestätigt.
+       Object:         Das Objekt oder die Zuordnung der Information. Dies kann durch folgende Angaben erfolgen:
+               ObjectInstance:         Knowrob Objektinstanz in der Form 'Knife_xYz'
+               ObjectName:             rdf Parameter mit der Kante knowrob:nameOfObject und dem Objektnamen als String
+                                       aus create_object_info() wäre dies der Name 'Knife1', Knife2' etc.
+               ObjectType:             Knowrobtyp des Objektes welches erzeugt werden soll um die Daten abzulegen. Bsp. 'Knife'
+       Info:           Die Informationen welche abgelegt werden sollen als [Bezeichnung, Wert] Listenelemente. Dies führt zu einen Aufruf des Prädikates ähnlich zu set_info('Knife42', [[xCoord, 1.0],[yCoord,2.0],[zCoord,5.0],[isDirty, true],...])
         
-        Name:           Eindeutiger Identifikator eines bestimmten Objektes. Name = Type + Integer
-        
-        FrameID:        Referenzrahmen für Pose
-        
-        Type:           Objektklasse
-        
-        TimeStamp:      Float, Sekunden seit 1970-01-01
-        
-        Position:       List of Float mit len(3) für kartesische Koords in FrameID
-        
-        Orientation:    Liste of Float mit len(4) für Orientierung in FrameID
-        
-        Height, Width, Depth erklären sich von selbst. 
+                        Ein Info-Wertepaar der Form [nameOfObject, Name] wird ebenfalls als Identifier benutzt und würde versuchen ein entsprechendes Objekt in der KB zu finden. Ist dieses noch nicht vorhanden, wird es angelegt.
+                        
+- get_info(+Variables, -Returns)
+       Fragt beliebige Informationen ab die den in Variables gegeben Konditionen entsprechen.
+       Bsp.aufruf wäre get_info([xCoord, [nameOfObject, 'Knife42'], isDirty], Returns) --> Antwort: -[[isDirty, true],[xCoord,1.0]].
+       Variables:      Liste mit Konditionen als [Bezeichnung, Wert] e.g. [nameOfObject, 'Knife42'] und Abfragewerten wie xCoord, y Coord, typeOfObject, etc.
 
 - seen_since(+Name, +FrameID, +Timestamp) -> True/False
         Wurde das Objekt mit Namen "Name" und der Frame-ID "FrameID" seit dem Timestamp "Timestamp" wieder gesehen?
@@ -52,23 +52,19 @@ ______
         Trennt zwei Objekte mit den gegebenen Frames, so dass die zuvor konstante Transformation genutzt wird, um die neue "absolute" Position des Objektes zu berechnen und zu publishen.
 
 - cap_available_on_robot(Capability, Robot)
+       Kann genutzt werden um einen Roboter zu identifizieren mit der bestimmten Fähigkeit oder um die Fähigkeiten eines bestimten Roboters zu erfragen.
 
-        Capability in der Form:
-                srdl2cap:'AcousticPerceptionCapability'
+       Capability in der Form:
+               srdl2cap:'AcousticPerceptionCapability'
+               srdl2cap:'PerceptionCapability'
+               srdl2cap:'ObjectRecognitionCapability'
+               srdl2cap:'VisualPerceptionCapability'
+               ...
 
-                srdl2cap:'PerceptionCapability'
-
-                srdl2cap:'ObjectRecognitionCapability'
-
-                srdl2cap:'VisualPerceptionCapability'
-                ...
-
-        Robot in der Form:              
-                pepper:'JulietteY20MP_robot1'
-
-                oder
-
-                pr2:'PR2Robot1'
+       Robot in der Form:              
+               pepper:'JulietteY20MP_robot1'
+               oder
+               pr2:'PR2Robot1'
 
 Service
 ______    
@@ -424,10 +420,17 @@ Auch, wenn Funktionen wie *cutCake()* intern keine Parameter benötigen, muss f�
         - stressLevel(status)
             Gibt die Auslastung des Servers als numerischen Wert zurück. Entspricht der Anzahl der Aufgaben, die noch durchzuführen sind.
             
-        - nextTask(status)
-           Liefert die Beschreibung der nächsten, geplanten Aufgabe zurück.
-
-
+        - do(task)
+           Führt die gegebene Aufgabe **task** aus.
+                       
+        - assertDialogElement(json-string)
+           Sendet das JSON an die Knowledgebase. Das Format ist hier https://docs.google.com/document/d/1wCUxW6c1LhdxML294Lvj3MJEqbX7I0oGpTdR5ZNIo_w definiert.
+        
+        - getCustomerInfo(customer-id)
+           Liefert die Info zum Customer mit gegebener ID als JSON.
+        
+        - getAllCustomerInfos(status)
+           Liefert Liste aller Customer Infos zurück.
 Pepper
 ----------
 .. code::
@@ -437,3 +440,6 @@ Pepper
             
         - notify()
             Benachrichtigung, dass der Kuchen geschnitten ist.
+            
+        - new_notify(json-string)
+            Benrachrichtigung wenn eine customer order fertig ist.

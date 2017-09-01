@@ -8,6 +8,19 @@ Welcome to CaterROS' documentation!
 
 Contents:
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Components of the CaterROS system
+   
+   components/overview
+   components/perception
+   components/dialogsystem
+   components/manipulation
+   components/knowledge
+   components/planning
+  
+
 .. toctree::
    :maxdepth: 2
    :caption: Organisation
@@ -20,6 +33,7 @@ Contents:
    :caption: Tutorials & Tools
    
    tutorials/neue_artikel_schreiben
+   tutorials/doxygen_dokumentation_schreiben
    tutorials/installation
    tutorials/pullreq_git
    tutorials/travis_ci
@@ -36,6 +50,7 @@ Contents:
    tutorials/planning/troubleshooting_planning
    tutorials/planning/rpc_server_fuer_pepper
    tutorials/planning/prolog_calls
+   tutorials/planning/pepper_knowledge_communication
 
 .. toctree::
    :maxdepth: 2
