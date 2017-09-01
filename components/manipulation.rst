@@ -7,8 +7,35 @@ Memo: Die Notiz am Ende bitte wieder entfernen =)
 Manipulation
 =============
 
-<General description and purpose>
+Welcome to the documentation page of the manipulation components used in the CaterROS project! On this page we provide installation instructions for the system, an overview over our components and instructions on how to use them.
 
+Installation
+------------
+To install the manipulation system to you workspace, you need clone the repository to the source folder of your workspace. After that you can use `wstool` to install the needed dependencies.
+
+.. code-block:: bash
+    :caption: HTTPS
+
+    cd ~/path_to_my_ws/src
+    git clone https://github.com/suturo16/manipulation.git
+    wstool merge manipulation/dependencies.rosinstall
+    wstool update
+
+If you have an ssh key setup for the use with GitHub, you can also use the ssh to clone the repository and its dependencies.
+
+.. code-block:: bash
+    :caption: SSH
+
+    cd ~/path_to_my_ws/src
+    git clone git@github.com:suturo16/manipulation.git
+    wstool merge manipulation/ssh.rosinstall
+    wstool update
+
+All that's left to do now, is build your workspace once using catkin.
+
+System Overview
+----------
+Overall the system provides the ability to use the constraint based motion frame work `giskard` to move the PR2 robot, as well as a variety of controllers needed for the CaterROS scenario. 
 
 Collision Avoidance
 ----------
