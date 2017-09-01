@@ -10,7 +10,7 @@ The purpose of perception in this project is to detect various objects and facts
 
 Tools for serving cake, the cake itself and the position of the robot in the kitchen are detected.
 
-For data a kinect is used, and laserscanners for finding the position.
+For data acquisition a kinect on the robots head and a laserscanner at the base of the robot are used.
 
 Installation
 ----------
@@ -138,10 +138,25 @@ CakeAnnotator
 ----------
 Implemented classes: CakeAnnotator
 
-Required Pipeline: CollectionReader, ImagePreprocessor, PointCloudFilter, NormalEstimator, PlaneAnnotator, PointCloudClusterExtractor, ClusterColorHistogramCalculator, CakeAnnotator
+Uses results from the following annotators: PointCloudClusterExtractor, ClusterColorHistogramCalculator
+
+Requirement: Localized robot
+
+Results in: Recognition annotation and pose annotation for boxes.
+
+The core functionality of this module is to detect boxes of the color which is specified in the Annotator xml file. In order to classify an object as a box, there need to be 3 visible planes which satisfy a number of constraints. The biggest plane is found first, the 2 subsequent planes are each smaller than it's predecessor. Both of the smaller planes need to be perpendicular to the biggest plane, and the smallest plane also needs to be perpendicular to the second biggest plane. 
+
+TODO Bild
+
+Cakes are always assumed to be standing on a table which results in their z-axis pointing in the same direction as the z-axis of the map frame. Therefore the z-axis of the first plane is restricted to be the z-axis of the map.
+
+
 
 ROSPublisher
 ----------
+Message type:
 
+Topic name:
+The ROSPublisher advertises a topic on the ROS Network. On this topic it publishes all objects with a recognition annotation. Contained in the published message are the object pose as well as the name, type and dimensions as needed.
 
 ----------
