@@ -17,6 +17,27 @@ plan_execution
 
 plan_generator
 ----------
+The plan_generator module provides access to the classical planning system Fast Downward from http://www.fast-downward.org/ using a ROS service in python. It can be used to generate a plan for a given task within a given domain. In the case of the CaterROS café, it can be used to find a plan for the task of serving a given amount of pieces of cake in the CaterROS domain. Nevertheless, the underlying service can also be used for any other task and corresponding domain.
+
+To use the plan generator for CaterROS, you have to: 
+1. Follow the installation instructions at: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+2. Run the server for the python service: 
+      rosrun plan_generator generate_plan.py
+3. Start the demo as explanined at: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+The Fast Downward planning system needs two inputs: a domain definition and a task definition written in the Planning Domain Definition Language (PDDL). You can find a good introduction on PDDL at: http://www.cs.toronto.edu/~sheila/2542/s14/A1/introtopddl2.pdf. 
+
+
+provides a service that can be used to generate a plan for a given task within a given domain dynamically. The resulting plan is contained in a json string that can easily be transformed into a list of CRAM's action designators. 
+
+In our implementation, the service is called within the plan_execution module. 
+
+Fast Downward is based on the Planning Domain Definition Language (PDDL). The algorithm needs two files as input: a domain file and a task file. The domain file for our scenario can be found in the pddl folder of the directory. The corresponding task file can be generated using the method generate-pddl-problem (name domain objects init-predicates goal-predicates) from pddl-problem-generation.lisp in the lisp folder. 
+
+
+
 
 planning_common
 ----------
