@@ -176,7 +176,8 @@ During our controller development, we defined aliases wihtin our bash environmen
 
 Mass Checking of Controllers
 ----------------------------
-The *suturo_action_tester* package provides the *controller_checker* executable that recursively searches a folder for controller files and uses them to generate controllers. If problems arise during this process, the error messages are displayed. At the end of the execution, the number of all found controller files and the number of successfully generated controllers are displayed. The tool was initially developed to easily find controllers which were faulty because of a giskard language update.
+The *suturo_action_tester* package provides the *controller_checker* executable that recursively searches a folder for controller files and uses them to generate controllers. If problems arise during this process, the error messages are displayed. At the end of the execution, the number of all found controller files and the number of successfully generated controllers are displayed. All of the successfully generated controller's inputs are logged to a file called *controller_interfaces*, which is created in the directory, the checker is executed in.
+The tool was initially developed to easily find controllers which were faulty because of a giskard language update.
 The checker currently uses the yaml language, as well as the two custom languages developed for the CaterROS project.
 
 .. code-block:: bash
@@ -199,3 +200,45 @@ TODO
 
 Languages
 =========
+The *giskard_suturo_parser* package contains two parsers for custom controller languages that were developed during the CaterROS project. 
+
+The goal of the first language was to have a language that was more readable than the yaml language provided by the giskard library. The language is designed to work well with Python syntax highlighting in regular text editors. For brevities sake, we will refer to this language as GLang. Systems loading controllers from disk associate the suffix *.giskard* with GLang.
+The structure of a controller file for this language is very simple. 
+
+.. code-block:: python
+    :caption: Structure of a GLang File
+
+    scope = {
+        value1 = someExpression;
+        ...
+        valueN = someOtherExpression
+    }    
+
+    controllableConstraints = {
+        controllableConstraint(lowerLimit, upperLimit, weight, "Name1");
+	    controllableConstraint(lowerLimit2, upperLimit2, weight2, "Name2")
+    }
+
+    softConstraints = {
+        softConstraint(lowerLimit, upperLimit, weight, expression, "Some name");
+        softConstraint(lowerLimit2, upperLimit2, weight2, expression2, "Some other name")
+    }
+
+    hardConstraints = {
+        hardConstraint(lowerLimit - someExpression, upperLimit - someExpression, someExpression);
+        hardConstraint(lowerLimit2 - someOtherExpression, upperLimit2 - someOtherExpression, someOtherExpression)
+    }
+
+The overall form is pretty simple. However note that the last entry of any structure is not followed by a semicolon. A complete list of commands and attributes supported by the language can be found `here <https://github.com/suturo16/manipulation/blob/feature/MS6/giskard_suturo_parser/GLang%20reference>`_.
+
+The goal of the second language was to support the modularization of controllers and a definition of custom functions. Together these features are supposed to enable developers to build libraries for giskard controllers and ultimately use these to generate controllers automatically. We'll call it GLang++ from now on (because uncreative naming patterns are a proud tradition). 
+GLang++ has not actually been used in controllers used by the CaterROS system.
+A first controller using that language has been built for the *fetch* robot. It is part of the `fetch_giskard <https://github.com/ARoefer/fetch_giskard>`_ package and is named `pos_controller.gpp <https://github.com/ARoefer/fetch_giskard/blob/master/test_controllers/pos_controller.gpp>`_.
+The file illustrates how GLang++ controllers are structured. A full list of built-in functions of the language can be found `here <https://github.com/suturo16/manipulation/blob/feature/MS6/giskard_suturo_parser/GLang%2B%2B%20reference>`_.
+
+
+
+.. IMPORTANT::
+    Both languages implement a depth-first parser. This means that operators will be bound from right to left, not left to right. So :code:`1 / norm(v) * v` is interpreted as :code:`1 / (norm(v) * v)`, not as :code:`(1 / norm(v)) * v`.
+
+
