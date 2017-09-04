@@ -147,8 +147,55 @@ The collision avoidance tries do avoid collisions with point clouds. The point c
 Usage:
 Additionally to the Actionserver you have to launch the octomap_server package. You can do that by running roslaunch suturo_action_server octomap_mapping.launch. The octomap_server package listens for point clouds on the topic */kinect_head/depth_registered/points*. This can be changed in the launch file. After the octomap_server was launched the Actionserver should automatically use the collision avoidance for controllers with collision queries.
 
-Component 2
-----------
+Testing and Tools
+=================
+The *manipulation* repository contains a few tools for easier development and testing of controllers. This section will introduce them.
 
-...
-----------
+Client for Easy Controller Testing
+----------------------------------
+In addition to the action server itself, the *suturo_action_server* package also provides a simple test client that loads parameter assignments from yaml files. This way users don't have to build the goal messages for the action server by hand for every test.
+
+.. code-block:: bash
+    :caption: Call Pattern for the Test Client
+
+    rosrun suturo_action_server client_test <Controller File> <Parameters.yaml> <Feedback Value>
+
+The parameters' file must contain a list of yaml dictionaries, which have to match the following keys:
+
+.. code-block:: YAML
+    :caption: Parameter Dictionary in yaml
+
+    name: <String>
+    type: double | transform | elapsedtime | vector | visualize
+    const: true | false
+    value: <String>
+
+The argument :code:`Feedback Value` provides the name of the value that is logged to the action server's feedback topic. 
+
+During our controller development, we defined aliases wihtin our bash environment for common client runs. This way we could test the manipulation aspect of our system without the need for higher level components.  
+
+Mass Checking of Controllers
+----------------------------
+The *suturo_action_tester* package provides the *controller_checker* executable that recursively searches a folder for controller files and uses them to generate controllers. If problems arise during this process, the error messages are displayed. At the end of the execution, the number of all found controller files and the number of successfully generated controllers are displayed. The tool was initially developed to easily find controllers which were faulty because of a giskard language update.
+The checker currently uses the yaml language, as well as the two custom languages developed for the CaterROS project.
+
+.. code-block:: bash
+    :caption: Call Pattern for the Controller Checker
+
+    rosrun suturo_action_tester controller_checker <PATH 1> <PATH 2> ....
+
+
+Mockup Environment
+------------------
+Aside from the controller checker, the *suturo_action_tester* package also provides a Python node called *ObstacleScene* and an RVIZ panel called *Suturo Simulation Panel*. Together, these two provide a very simple test environment that allows users to build and save scenarios using interactive markers in RVIZ. The data of these markers is published to TF and can be used by the action server.
+
+.. NOTE::
+    These two systems are deprecated and only being documented here for the sake of completeness. The `giskard_ide <https://github.com/aroefer/giskard_ide>`_ package should be used for this purpose now.
+
+
+Controllers
+===========
+TODO
+
+Languages
+=========
