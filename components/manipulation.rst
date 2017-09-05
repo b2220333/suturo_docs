@@ -235,10 +235,3 @@ The goal of the second language was to support the modularization of controllers
 GLang++ has not actually been used in controllers used by the CaterROS system.
 A first controller using that language has been built for the *fetch* robot. It is part of the `fetch_giskard <https://github.com/ARoefer/fetch_giskard>`_ package and is named `pos_controller.gpp <https://github.com/ARoefer/fetch_giskard/blob/master/test_controllers/pos_controller.gpp>`_.
 The file illustrates how GLang++ controllers are structured. A full list of built-in functions of the language can be found `here <https://github.com/suturo16/manipulation/blob/feature/MS6/giskard_suturo_parser/GLang%2B%2B%20reference>`_.
-
-
-
-.. IMPORTANT::
-    Both languages implement a depth-first parser. This means that operators will be bound from right to left, not left to right. So :code:`1 / norm(v) * v` is interpreted as :code:`1 / (norm(v) * v)`, not as :code:`(1 / norm(v)) * v`.
-
-
