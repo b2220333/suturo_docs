@@ -136,18 +136,18 @@ __________
 graspkard/gripper_control.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Steuert ein Positionsziel für die Greiferöffnung an.
+    :Beschreibung: Changes the gripper opening width to the desired value.
     :Gelenklisten: 
-      - *graspkard/config/pr2_right_gripper.yaml*: Rechter Greifer
-      - *graspkard/config/pr2_left_gripper.yaml*: Linker Greifer
+      - *graspkard/config/pr2_right_gripper.yaml*: Right gripper
+      - *graspkard/config/pr2_left_gripper.yaml*: Left gripper
     :Parameter:
-      - **double**: Angestrebte Öffnungsweite in *m*
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/grasp_l_50.yaml* Zugreifen mit dem linken Greifer bei 50% Stärke
-      - *graspkard/test_params/grasp_l_50.yaml* Zugreifen mit dem rechten Greifer bei 50% Stärke
-      - *graspkard/test_params/release_l_50.yaml* Loslassen mit dem linken Greifer bei 50% Stärke
-      - *graspkard/test_params/release_l_50.yaml* Loslassen mit dem rechten Greifer bei 50% Stärke
+      - **double**: Desired gripper opening width *m*
+    :Feedback: *feedback* The closer to :math:`0` the better.
+    :Example parameters:
+      - *graspkard/test_params/grasp_l_50.yaml* Grasping with the left gripper with 50% strength
+      - *graspkard/test_params/grasp_l_50.yaml* Grasping with the right gripper with 50% strength
+      - *graspkard/test_params/release_l_50.yaml* Releasing the left gripper with 50% strength
+      - *graspkard/test_params/release_l_50.yaml* Releaseing the right gripper with 50% strength
 
 graspkard/pr2_grasp_control_r.yaml
 """"""""""""""""""""""""""

@@ -193,7 +193,7 @@ Aside from the controller checker, the *suturo_action_tester* package also provi
 
 Controllers
 ===========
-TODO
+a list including every controller with documentation can be found `here <http://suturo-docs.readthedocs.io/en/latest/implementierung/schnittstellen.html#controller>`_
 
 Languages
 =========
