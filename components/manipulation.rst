@@ -38,8 +38,10 @@ System Overview and Usage
 Overall the system provides the ability to use the constraint based motion frame work `Giskard` to move the PR2 robot, as well as a variety of controllers needed for the CaterROS scenario. The heart of the system is our custom action server. It requires a controller and assignments for the conroller's parameters as goals and uses these to generate commands to move the robot. During the execution, the server outputs feedback and debug information. The feedback includes a value calculated within the controller that rates how well the overall goal of the controller is satisfied. 
 Additionally, the repository provides a couple of tools for manually testing controllers.
 
-.. figure:: action_server_diagram.png  
+.. figure:: action_server.png  
     :alt: Action Server Overview
+    :scale: 50%
+    :align: center
     
     An overview of the structure and communication of the suturo action server. 
 
