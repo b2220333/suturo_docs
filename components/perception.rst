@@ -157,4 +157,10 @@ ROSPublisher
 Message type:
 
 Topic name:
+
 The ROSPublisher advertises a topic on the ROS Network. On this topic it publishes all objects with a recognition annotation. Contained in the published message are the object pose as well as the name, type and dimensions as needed.
+
+ChangeDetector
+----------
+The change detector is an experimental feature which calculates the changed clusters between two pointclouds. There are two different methods for this implemented in SzeneRecorder.cpp. The first Method uses Octrees and the pcl function OctreeChangeDetection to find voxels in the second Octree which were not present in the first Octree. The distance of the new Voxels is then checked against the distance in the first image in order to decide, whether a voxel is new because it was occluded or because it was added to the scene.
+The second approach uses the depth images and applies a threshold to the difference between the two images. The contours of the resulting binary image are then used to calculate the clusters, which are again annotated to be newly added or formerly occluded.
