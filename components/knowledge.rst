@@ -9,11 +9,28 @@ Knowledge
 <General description and purpose>
 
 
-Component 1
+Installation
+----------
+To install the knowledge system to your workspace, you need clone the repository to the src folder of your workspace. 
+The easiest way to do this, is to copy the following lines into your terminal and replace the path with your local path.
+Make sure that you have created a workspace before executing the following commands.
+
+.. code-block:: bash
+    :caption: setup
+	
+	cd ~/suturo16/suturo_ws/src/
+	git clone git@github.com:suturo16/knowledge.git
+	cd ../
+	catkin_make
+
+World state
 ----------
 
-Component 2
+CaterROS Cafeteria Modelling
 ----------
 
-...
+Pepper and openEASE
+----------
+
+Prython
 ----------
