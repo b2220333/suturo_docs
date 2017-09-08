@@ -228,7 +228,7 @@ The structure of a controller file for this language is very simple.
 
 The overall form is pretty simple. However note that the last entry of any structure is not followed by a semicolon. A complete list of commands and attributes supported by the language can be found `here <https://github.com/suturo16/manipulation/blob/feature/MS6/giskard_suturo_parser/GLang%20reference>`_.
 
-.. WARNING::
+.. IMPORTANT::
     The GLang parser has an inconsistent evaluation order. The same operators are evaluated from left to right. Otherwise equations are evaluated from right to left. Example: :code:`10 - 5 - 2` is evaluated to :code:`3`; :code:`10 + 5 - 2 + 3` is evaluated to :code:`10` because it is bound as :code:`10 + (5 - (2 + 3))`. A fix for this bug is contained in `this commit <https://github.com/suturo16/manipulation/blob/d7d79ba8ae549873f8e1e1e5126da83b0ef44ec9/giskard_suturo_parser/include/giskard_suturo_parser/giskard_parser.hpp>`_. However it is currently not included in the master, as it will break some of our controllers.
 
 The goal of the second language was to support the modularization of controllers and a definition of custom functions. Together these features are supposed to enable developers to build libraries for giskard controllers and ultimately use these to generate controllers automatically. We'll call it GLang++ from now on (because uncreative naming patterns are a proud tradition). 
