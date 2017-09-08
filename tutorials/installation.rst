@@ -294,19 +294,32 @@ Um das Vorhandensein aller nötigen Dependencies sicherzustellen, führe ::
 	sudo apt-get install cmake g++ g++-multilib mercurial make python
 aus. 
 
-Danach clone das entsprechende Verzeichnis im vorher angelegten Ordner in den Ordner "downward" ::
+Danach clone das entsprechende Verzeichnis im vorher angelegten Ordner in den Ordner "downward" 
+
+.. code:: bash
+
 	cd pddl
 	hg clone http://hg.fast-downward.org downward
 
-Dann kann der Planer im Ordner "downward" gebaut werden: ::
+Dann kann der Planer im Ordner "downward" gebaut werden: 
+
+.. code:: bash
+
 	cd downward
 	./build.py
 
 Nun erstellt die leere Datei "__init__.py" im "downwards"-Ordner. 
-Gehe in den Unterordner driver und kommentiere in der Datei main.py die Zeile ::
+Gehe in den Unterordner driver und kommentiere in der Datei main.py die Zeile 
+
+.. code:: python
+
 	# sys.exit(exitcode)
+
 aus, da der Server vom Plangenerator sonst nichts zurückliefern kann, wenn er aufgerufen wird. 
 
-Nun führe in dem erstellen Ordner aus: ::
+Nun führe in dem erstellen Ordner aus: 
+
+.. code:: bash
+
 	sudo pip install -e . 
 Nun lässt sich der Planer von überall als Python-Paket importieren und der Plangenerator erhält Zugriff auf ihn. 

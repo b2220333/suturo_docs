@@ -42,7 +42,8 @@ Usage of Semrec
 	3. load the lisp package this dependency has been added to. 
 
 2. run semrec 
-::
+.. code:: bash
+
 	rosrun semrec semrec
 
 3. load package

@@ -115,37 +115,37 @@ Wenn der Heap leer ist, sind alle Optionen das Problem zu lösen durchgespielt.
 
 .. code:: cpp
 
-Heap<Partial> H;
-State S;
-State G;
+	Heap<Partial> H;
+	State S;
+	State G;
 
-void init(start, goal) {
-	S = start;
-	G = goal;
+	void init(start, goal) {
+		S = start;
+		G = goal;
 
-	H = Heap<>();
-	H << Partial(S, G, {}, {}, findOps(S, G));
-}
-
-Plan getPlan() {
-	while(!H.empty()) {
-		Partial p = H.pop();
-		Operator o = p.O.pop();
-
-		State G_T = o.applyPre(p.G);
-
-		if (G_T / p.S == {} && verify(p.Q_l + o + p.Q_r)) {
-			return p.Q_l + o + p.Q_r;
-		} else {
-			if (!p.O.empty())
-				H.push(p);
-
-			H.push(Partial(p.S, G_T, p.Q_l, o + p.Q_r, findOps(p.S, G_T)));
-		}
+		H = Heap<>();
+		H << Partial(S, G, {}, {}, findOps(S, G));
 	}
 
-	return 0;
-}
+	Plan getPlan() {
+		while(!H.empty()) {
+			Partial p = H.pop();
+			Operator o = p.O.pop();
+
+			State G_T = o.applyPre(p.G);
+
+			if (G_T / p.S == {} && verify(p.Q_l + o + p.Q_r)) {
+				return p.Q_l + o + p.Q_r;
+			} else {
+				if (!p.O.empty())
+					H.push(p);
+
+				H.push(Partial(p.S, G_T, p.Q_l, o + p.Q_r, findOps(p.S, G_T)));
+			}
+		}
+
+		return 0;
+	}
 
 
 Der Pseudocode zeigt eine recht einfache Implmentierung des Algorithmus. Diese kann noch etwas erweitert werden, um frühzeitig unlösbare Probleme zu erkennen. Sobald :math:`\exists p \in G_T \setminus S_T: \forall o \in O: p \not \in post_o` gilt, ist ein Teilproblem unlösbar, da :math:`p` somit entweder eine unveränderbare, oder irreversible Eigenschaft ist. Ein reales Beispiel für eine irreversible Eigentschaft wäre das Aufschlagen eines Eis.

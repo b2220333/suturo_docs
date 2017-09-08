@@ -7,7 +7,7 @@ Im Folgenden finden sich die Definitionen der Schnittstellen der einzelnen Grupp
 
 Perception
 ----------
-.. code::
+
 Services
 ________
 
@@ -23,7 +23,7 @@ ______
 Knowledge
 ---------
 
-.. code::
+
 Prolog
 ______
 
@@ -33,8 +33,7 @@ ______
         Ein erfolgreiches ablegen der Informationen wird mit True bestätigt.
        Object:         Das Objekt oder die Zuordnung der Information. Dies kann durch folgende Angaben erfolgen:
                ObjectInstance:         Knowrob Objektinstanz in der Form 'Knife_xYz'
-               ObjectName:             rdf Parameter mit der Kante knowrob:nameOfObject und dem Objektnamen als String
-                                       aus create_object_info() wäre dies der Name 'Knife1', Knife2' etc.
+               ObjectName:             rdf Parameter mit der Kante knowrob:nameOfObject und dem Objektnamen als String aus create_object_info() wäre dies der Name 'Knife1', Knife2' etc.
                ObjectType:             Knowrobtyp des Objektes welches erzeugt werden soll um die Daten abzulegen. Bsp. 'Knife'
        Info:           Die Informationen welche abgelegt werden sollen als [Bezeichnung, Wert] Listenelemente. Dies führt zu einen Aufruf des Prädikates ähnlich zu set_info('Knife42', [[xCoord, 1.0],[yCoord,2.0],[zCoord,5.0],[isDirty, true],...])
         
@@ -410,7 +409,8 @@ Planning
 Auch, wenn Funktionen wie *cutCake()* intern keine Parameter benötigen, muss für die Kommunikation von Python zu Lisp mindestens ein Parameter in der Signatur angefragt werden. Das Aufrufen von Funktionen ohne Parameter ist von Python zum Lisp-RPC-Server nicht möglich. 
 
 .. code::
-- RPC-Server
+  
+  - RPC-Server
         - updateObserverClient(clientID, host, port)
             Der RPC-Server verwaltet eine Map von Clients und deren IPs/Ports. Bekommt er diese Anfrage updatet er die Infos des entsprechenden Clients oder legt ihn neu an.
         
@@ -434,7 +434,8 @@ Auch, wenn Funktionen wie *cutCake()* intern keine Parameter benötigen, muss f�
 Pepper
 ----------
 .. code::
-- RPC-Server
+  
+  - RPC-Server
         - updateObserverClient(clientID, host, port)
             Der RPC-Server verwaltet eine Map von Clients und deren IPs/Ports. Bekommt er diese Anfrage updatet er die Infos des entsprechenden Clients oder legt ihn neu an.
             

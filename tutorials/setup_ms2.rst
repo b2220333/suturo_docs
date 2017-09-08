@@ -73,7 +73,7 @@ debug: check the launch file for right IP and stuffs like dat.
 
 
 
-------------------------------------------
+
 hasu@hawkin-suturo:~/suturo_ws/src/knowledge/object_state/prolog$ rosservice call /json_prolog/next_solution "id: '1'" 
 status: 3
 solution: {}
