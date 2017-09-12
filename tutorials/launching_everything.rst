@@ -17,6 +17,7 @@ launching everything
 
 6. Launch peppers dialog system on Bernd.
 	cd
+	
 	pepperdialog/pepperdialog/launcher.sh
 
 Nice to know
