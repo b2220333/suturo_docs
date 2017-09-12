@@ -12,6 +12,12 @@ launching everything
 4. Launch Perception. Either on the Robot or on Bernd. (When last checked on 28.06.2017, it was working better on the PR2, but this might change.)
 	rosrun percepteros caterrosRun cateros.xml
 
+5. Launch plan generator on Bernd.
+	rosrun plan_generator generate_plan_server.py
+
+6. Launch peppers dialog system on Bernd.
+	cd
+	pepperdialog/pepperdialog/launcher.sh
 
 Nice to know
 ------------
