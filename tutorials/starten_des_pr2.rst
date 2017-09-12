@@ -65,6 +65,41 @@ Für die Kinect muss man openni auf dem PR2b starten. Dies macht man am besten a
 
     ssh pr2b
     roslaunch /etc/ros/indigo/openni_head.launch
+    
+Launch the SUTURO nodes on Bernd
+--------------------------------
+
+Connect to our server Bernd with as the user ''caterros'' at IP ''192.168.100.234''. Launch byobu and start the following nodes. In the end there should be 5 channels in your byobu when you finish.
+
+Launch Manipulation action server. Either localy on your mashine - if you have everything installed - or on Bernd:
+
+    .. code:: bash
+    
+	roslaunch suturo_action_server pr2_action_server.launch
+
+Launch Knowledge. Preferably localy, since when launched on Bernd it has a weird delay (info from 29.06.2017, remove when fixed.)
+
+    .. code:: bash
+    
+	roslaunch knowledge_launch suturo_knowledge_full.launch
+
+Launch Perception. Either on the Robot or on Bernd. (When last checked on 28.06.2017, it was working better on the PR2, but this might change.)
+
+    .. code:: bash
+    
+	rosrun percepteros caterrosRun cateros.xml
+
+Launch plan generator on Bernd.
+
+    .. code:: bash
+    
+	rosrun plan_generator generate_plan_server.py
+
+Launch peppers dialog system on Bernd.
+
+    .. code:: bash
+    
+	~/pepperdialog/pepperdialog/launcher.sh
 
 
 PR2 Lokalisieren
