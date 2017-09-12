@@ -16,9 +16,7 @@ launching everything
 	rosrun plan_generator generate_plan_server.py
 
 6. Launch peppers dialog system on Bernd.
-	cd
-	
-	pepperdialog/pepperdialog/launcher.sh
+	~/pepperdialog/pepperdialog/launcher.sh
 
 Nice to know
 ------------
