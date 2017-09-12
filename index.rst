@@ -40,7 +40,6 @@ Contents:
    tutorials/semrec_install
    tutorials/starten_des_pr2
    tutorials/setup_ms2
-   tutorials/launching_everything
 
 .. toctree::
    :maxdepth: 2
