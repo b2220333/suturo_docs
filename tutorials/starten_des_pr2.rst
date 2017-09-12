@@ -1,4 +1,4 @@
-Tutorial: Start the PR2
+tutorials/launching_everythingTutorial: Start the PR2
 ================================
 
 bashrc setup
@@ -112,7 +112,7 @@ Nice to know
 - IP of Bernd: 192.168.100.234
 - if you want to run rviz all the time but your pc is not the newest, you can put most of the workload for running rviz on the pr2b. For that you need to install (`vglconnect <https://sourceforge.net/projects/virtualgl/files/2.5.2/>`_.) Then you can run: 
 
-	.. code:: bash
+    .. code:: bash
 	
 	vglconnect caterros@pr2b
 	vglrun rosrun rviz rviz
