@@ -1,4 +1,4 @@
-tutorials/launching_everythingTutorial: Start the PR2
+Tutorial: Start the PR2
 ================================
 
 bashrc setup
