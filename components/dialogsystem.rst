@@ -14,6 +14,8 @@ The task of the robot in the project consists in taking care of the clients in a
 Architecture
 ----------
 
+
+
 Face Recognition
 ----------
 
@@ -35,10 +37,7 @@ System Core
 ChatScript
 ----------
 
-Speech Recognition
-----------
-
-Parameter Update
+Speech Synthesis
 ----------
 
 RPC-Client
@@ -47,6 +46,13 @@ RPC-Client
 RPC-Server
 ----------
 
+Parameter Update
+----------
+
 Utility
 ----------
 
+
+
+Installation
+----------
