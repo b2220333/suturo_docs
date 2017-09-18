@@ -11,11 +11,42 @@ The task of the robot in the project consists in taking care of the clients in a
 
 
 
-Component 1
+Architecture
 ----------
 
-Component 2
+Face Recognition
 ----------
 
-...
+Ros-based Image Streaming
 ----------
+
+Speech Recognition
+----------
+
+Gstreamer-based Audio Streaming
+----------
+
+Basic Awareness
+----------
+
+System Core
+----------
+
+ChatScript
+----------
+
+Speech Recognition
+----------
+
+Parameter Update
+----------
+
+RPC-Client
+----------
+
+RPC-Server
+----------
+
+Utility
+----------
+
