@@ -163,6 +163,23 @@ Results in: Recognition annotation and pose annotation for the spatula.
 
 The core functionality of this module is to detect the spatula according to a parameter set. The Annotator works the following way: it analyses all the clusters and identifies the first cluster with sufficently close parameters as a spatula. The parameters are the eigenvalues from a 3D principal componant analysis and the hue value. The euclidean distance serves as a distance measure. As the only the handle of the spatula is recognized as a cluster, the first eigenvector and the up-vector of the scene serve as a basis for the axis computation.
 
+ObjectRegionFilter
+----------
+
+Implemented classes: ObjectRegionFilter
+
+Uses results from the following annotators: none
+
+Requirement: located Robot
+
+Results in: Filtered point cloud around specified object location.
+
+This Annotator was designed to stabilize the perception of objects whose approximate location is known beforhand. It operates on the following parameters given in a specified yaml file:
+regionID: this specifies for every pipeline initiation which region parameters should be used 
+viewsToProcess: the name of the cas view to process although in its current state only point clouds with a pcl::PointXYZRGBA type are valid
+region center: [x, y, z] coordinates of the region relative to the head_mount_kinect_rgb_optical_frame frame
+range: the width of the region for each axis
+
 ROSPublisher
 ----------
 Message type:
