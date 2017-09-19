@@ -150,7 +150,18 @@ TODO Bild
 
 Cakes are always assumed to be standing on a table which results in their z-axis pointing in the same direction as the z-axis of the map frame. Therefore the z-axis of the first plane is restricted to be the z-axis of the map.
 
+SpatulaRecognition
+----------
 
+Implemented classes: SpatulaRecognition
+
+Uses results from the following annotators: PointCloudClusterExtractor
+
+Requirement: None
+
+Results in: Recognition annotation and pose annotation for the spatula.
+
+The core functionality of this module is to detect the spatula according to a parameter set. The Annotator works the following way: it analyses all the clusters and identifies the first cluster with sufficently close parameters as a spatula. The parameters are the eigenvalues from a 3D principal componant analysis and the hue value. The euclidean distance serves as a distance measure. As the only the handle of the spatula is recognized as a cluster, the first eigenvector and the up-vector of the scene serve as a basis for the axis computation.
 
 ROSPublisher
 ----------
