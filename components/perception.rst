@@ -175,9 +175,13 @@ Requirement: located Robot
 Results in: Filtered point cloud around specified object location.
 
 This Annotator was designed to stabilize the perception of objects whose approximate location is known beforhand. It operates on the following parameters given in a specified yaml file:
+
 regionID: this specifies for every pipeline initiation which region parameters should be used 
+
 viewsToProcess: the name of the cas view to process although in its current state only point clouds with a pcl::PointXYZRGBA type are valid
+
 region center: [x, y, z] coordinates of the region relative to the head_mount_kinect_rgb_optical_frame frame
+
 range: the width of the region for each axis
 
 ROSPublisher
