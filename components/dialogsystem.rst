@@ -23,9 +23,9 @@ Architecture
 
 As we can see from the above architecture, the Dialog System is highly heterogeneous from the os perspective. 
 
--NAOqi OS: operating system of the target robot(Pepper). Pure libraries were needed for robot control access.
--ROS Indigo: needed for a more efficient management of the Dialog System's components and their intercommunication. Moreover, this packaging of components into ros nodes allows the Dialog System to interact with ROS environments. Just to recall that ROS Indigo is a virtual OS running on top of Linux Ubuntu
--Linux Ubuntu 14.04 LTS: needed to run critical components which could neither be completely built from scratch, neither be appropriately adapted according to a chosen OS in the deadlines of the project. They could only be appropriately adapted to the project without changing the target OS to run them.
+- NAOqi OS: operating system of the target robot(Pepper). Pure libraries were needed for robot control access.
+- ROS Indigo: needed for a more efficient management of the Dialog System's components and their intercommunication. Moreover, this packaging of components into ros nodes allows the Dialog System to interact with ROS environments. Just to recall that ROS Indigo is a virtual OS running on top of Linux Ubuntu.
+- Linux Ubuntu 14.04 LTS: needed to run critical components which could neither be completely built from scratch, neither be appropriately adapted according to a chosen OS in the deadlines of the project. They could only be appropriately adapted to the project without changing the target OS to run them.
 
 Face Recognition
 ----------
