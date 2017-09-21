@@ -19,7 +19,7 @@ Architecture
     :scale: 50%
     :align: center
     
-    **Fig1. Dialog System Architecture**
+    *Fig1. Dialog System Architecture*
 
 Face Recognition
 ----------
