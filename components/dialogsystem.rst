@@ -49,13 +49,23 @@ Face Recognition
 
 This module is represented by the component **rosfaceAnalyzer** in the architecture and accessible at faceAnalyzer.py_. It subscribes to ROS Image topic described above, detects faces based on Haar-like features described in haarcascadeFrontalfaceDefault.xml_, introduces the detected faces into the dataset at faces_ and the detections into the folder detection_. Then, it trains the classifier for face recognition  from time to time with the data from faces_. This module communicates with the *Dialog Manager* through suitably defined ROS messages, servers and actions accessible at dialogsystemMsgs_. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
 
-- **VIDEOMODE**: indicates the position of the target camera. Value is **local** for a pc-webcam or **remote** for a robot camera
-- **PEPPERIP**: indicates the Ip address of Pepper
-- **PEPPERPORT**: indicates the port, Pepper should be accessed through
+- **CVRESET**: indicates whether the module should be reinitialized at start or not. Value is **off** for volatile mode(all data lost on stop) and **on** for permanent mode(the model is preserved even on stop)
+- **PATH_TO_DATASET**: absolute path to dataset folder. Any image must be saved with the format *personName_id_instance.jpg*. Example: franklin_1_3.jpg is the third image of the person having Franklin as name and 1 as Identification number.
+- **PATH_TO_DETECTOR**: absolute path to detection folder
+- **CVTHRESHOLD**: under this threshold, the recognized face is accepted
+- **CVRTHRESHOLD**: under this threshold, the recognized face is considered as resemblance. Over this threshold, the recognized face is ignored
+- **CVFACEWINDOW**: the minimal size of the side of the square, a detected face can fit in
+- **CVDIMENSION**:  length of the image after pca-based compression(number of dimensions retained)
+- **CVNEIGHBOR**: minimal number of meaningfull objects that should be detected around a presumed detected face before the latter is accepted
+- **SCALE**: for scaling images before applying the detector, because The detector was trained on fixed-size images
+- **CVSCANFREQUENCY**: for consistent visualization, a moving average with a window of size CVSCANFREQUENCY over the image stream takes place
+- **CVINSTANCEFREQUENCY**: maximal number of images to save per face when detected
+- **CVIDIMENSIONDEFAULT**: default size of the side of the square, each detected face should fit in
+- **CVIDIMENSION**: size of the side of the square, each detected face should fit in. Same as **CVIDIMENSIONDEFAULT**, but dynamic because inferred from the available sizes of faces in the dataset.
 
 .. _faceAnalyzer.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/faceAnalyzer.py
 
-.. _haarcascadeFrontalfaceDefault.xml: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/data/facerecognition/haarcascadeFrontalfaceDefault.xml
+.. _haarcascadeFrontalfaceDefault.xml: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/data/facerecognition
 
 .. _faces: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/data/facerecognition
 
