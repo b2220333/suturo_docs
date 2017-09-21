@@ -57,7 +57,7 @@ This module is represented by the component **rosfaceAnalyzer** in the architect
 - **CVFACEWINDOW**: the minimal size of the side of the square, a detected face can fit in
 - **CVDIMENSION**:  length of the image after pca-based compression(number of dimensions retained)
 - **CVNEIGHBOR**: minimal number of meaningfull objects that should be detected around a presumed detected face before the latter is accepted
-- **SCALE**: for scaling images before applying the detector, because The detector was trained on fixed-size images
+- **CVSCALE**: for scaling images before applying the detector, because The detector was trained on fixed-size images
 - **CVSCANFREQUENCY**: for consistent visualization, a moving average with a window of size CVSCANFREQUENCY over the image stream takes place
 - **CVINSTANCEFREQUENCY**: maximal number of images to save per face when detected
 - **CVIDIMENSIONDEFAULT**: default size of the side of the square, each detected face should fit in
