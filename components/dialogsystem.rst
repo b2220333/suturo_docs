@@ -20,7 +20,7 @@ Architecture
     :align: center
     
 .. class:: center
-    **Fig1- Dialog System Architecture.**
+    "**Fig1- Dialog System Architecture.**"
 
 Face Recognition
 ----------
