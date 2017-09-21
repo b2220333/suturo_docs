@@ -32,7 +32,8 @@ Consequently, the simplest way to launch the Dialog system consists in installin
 Ros-based Image Streaming
 ----------
 
-This module is represented by the component *rosCamera* in the architecture and accessible from rosCamera.py_.
+This module is represented by the component **rosCamera** in the architecture and accessible from rosCamera.py_.
+
 .. _rosCamera.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/rosCamera.py
 
 Face Recognition
