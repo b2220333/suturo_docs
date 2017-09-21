@@ -32,7 +32,7 @@ Consequently, the simplest way to launch the Dialog system consists in installin
 Ros-based Image Streaming
 ----------
 
-This module is represented by the component **rosCamera** in the architecture and accessible from rosCamera.py_. It samples images from the upper 2D-camera of Pepper, converts them into ROS images  and publishes them over  the ROS Image topic. The ROS parameters of this nodes are accessible from dialog.launch_ and follow:
+This module is represented by the component **rosCamera** in the architecture and accessible at rosCamera.py_. It samples images from the upper 2D-camera of Pepper, converts them into ROS images  and publishes them over  the ROS Image topic. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
 
 - **VIDEOMODE**: indicates the position of the target camera. Value is **local** for a pc-webcam or **remote** for a robot camera
 - **PEPPERIP**: indicates the Ip address of Pepper
@@ -46,6 +46,23 @@ This module is represented by the component **rosCamera** in the architecture an
 
 Face Recognition
 ----------
+
+This module is represented by the component **rosfaceAnalyzer** in the architecture and accessible at faceAnalyzer.py_. It subscribes to ROS Image topic described above, detects faces based on Haar-like features described in haarcascadeFrontalfaceDefault.xml_, introduces the detected faces into the dataset at faces_ and the detections into the folder detection_. Then, it trains the classifier for face recognition  from time to time with the data from faces_. This module communicates with the *Dialog Manager* through suitably defined ROS messages, servers and actions accessible at dialogsystemMsgs_. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
+
+- **VIDEOMODE**: indicates the position of the target camera. Value is **local** for a pc-webcam or **remote** for a robot camera
+- **PEPPERIP**: indicates the Ip address of Pepper
+- **PEPPERPORT**: indicates the port, Pepper should be accessed through
+
+.. _faceAnalyzer.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/faceAnalyzer.py
+
+.. _haarcascadeFrontalfaceDefault.xml: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/data/facerecognition/haarcascadeFrontalfaceDefault.xml
+
+.. _faces: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/data/facerecognition
+
+.. _detection: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/data/facerecognition
+
+.. _dialogsystemMsgs: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem_msgs
+
 
 Speech Recognition
 ----------
