@@ -29,10 +29,13 @@ As we can see from the above architecture, the Dialog System is highly heterogen
 
 Consequently, the simplest way to launch the Dialog system consists in installing and running it remotely on any Linux Ubuntu 14.04 LTS platform.
 
-Face Recognition
+Ros-based Image Streaming
 ----------
 
-Ros-based Image Streaming
+This module is represented by the component *rosCamera* in the architecture and accessible from rosCamera.py_.
+.. _rosCamera.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/rosCamera.py
+
+Face Recognition
 ----------
 
 Speech Recognition
