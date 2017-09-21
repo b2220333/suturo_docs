@@ -14,7 +14,12 @@ The task of the robot in the project consists in taking care of the clients in a
 Architecture
 ----------
 
-
+.. figure:: SDSarchitecture.png  
+    :alt: Dialog System's Overview
+    :scale: 50%
+    :align: center
+    
+    Dialog System Architecture.
 
 Face Recognition
 ----------
