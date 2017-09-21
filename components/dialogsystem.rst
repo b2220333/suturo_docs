@@ -32,9 +32,17 @@ Consequently, the simplest way to launch the Dialog system consists in installin
 Ros-based Image Streaming
 ----------
 
-This module is represented by the component **rosCamera** in the architecture and accessible from rosCamera.py_.
+This module is represented by the component **rosCamera** in the architecture and accessible from rosCamera.py_. It samples images from the upper 2D-camera of Pepper, converts them into ROS images  and publishes them over  the ROS Image topic. The ROS parameters of this nodes are accessible from dialog.launch_ and follow:
+
+- **VIDEOMODE**: indicates the position of the target camera. Value is **local** for a pc-webcam or **remote** for a robot camera
+- **PEPPERIP**: indicates the Ip address of Pepper
+- **PEPPERPORT**: indicates the port, Pepper should be accessed through
 
 .. _rosCamera.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/rosCamera.py
+
+.. _dialog.launch: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/launch/dialog.launch
+
+
 
 Face Recognition
 ----------
