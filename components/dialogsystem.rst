@@ -103,6 +103,17 @@ This module is represented by the component **rosSpeechRecognizer** in the archi
 Gstreamer-based Audio Streaming
 ----------
 
+This module is represented by the component **rosMicrophone** in the architecture and accessible at gstreamerSphinx.py_. It configures and starts a Gstreamer-TCP-client on Pepper, which receives audio samples from the microphone of Pepper and sends them regularly to the Gstreamer-TCP-server described above for decoding into text. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
+
+- **RHOST**: indicates the IP address of the robot Pepper
+- **RPORT**: indicates the port, which the SSH service for launching the Gstreamer-TCP-client can be accessed through
+- **RUSERNAME**: indicates the username of the user accessing the ssh service on the robot
+- **PASSWORD**: indicates the password of the user accessing the ssh service on the robot
+- **HOST**: indicates the IP address of the host, which the Gstreamer-TCP-client is running on
+- **PORT**: indicates the port, which the Gstreamer-TCP-client is listening to
+
+.. _gstreamerSphinx.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/gstreamer_sphinx.py
+
 Basic Awareness
 ----------
 
