@@ -89,9 +89,9 @@ This module is represented by the component **rosSpeechRecognizer** in the archi
 - **NBTHREADS**: the number of instances of speech recognizer to execute simultaneously and then combine their results into a more accurate one. It allows an ensemble learning-based recognition 
 - **BEAMSIZE**: only the **BEAMSIZE** best results from the **NBTHREADS** available  must be combined to get the final result
 - **INDEX**: this parameter is a positive integer and is used for naming of dictionary and language models. Example: **NBTHREADS**=2 and **INDEX**=33,then the folder **DATAPATH** will contain the files pepper33.dic(dictionary model of first thread/instance), pepper33.lm, pepper34.dic, pepper34.lm(language model of second thread)
- - **HOST**: IP address of the underlying computer
- - **PORT**: port of the Gstreamer-TCP-server
- - **RPCPORT**: port of the RPC server, the decoded speech will be sent to
+- **HOST**: IP address of the underlying computer
+- **PORT**: port of the Gstreamer-TCP-server
+- **RPCPORT**: port of the RPC server, the decoded speech will be sent to
  
 .. _sphinxAsr.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/sphinx_asr.py
 
