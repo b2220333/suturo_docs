@@ -92,7 +92,8 @@ This module is represented by the component **rosSpeechRecognizer** in the archi
 - **HOST**: IP address of the underlying computer
 - **PORT**: port of the Gstreamer-TCP-server
 - **RPCPORT**: port of the RPC server, the decoded speech will be sent to
- 
+- **ORDER**: used to synchronize starts of Gstreamer-TCP-client and Gstreamer-TCP-server. while value is 0, the Gstreamer-TCP-client must wait for Gstreamer-TCP-server to start
+
 .. _sphinxAsr.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/sphinx_asr.py
 
 .. _continuous.cpp: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/CMU/cnodes/continuous.cpp    
@@ -111,12 +112,13 @@ Gstreamer-based Audio Streaming
 
 This module is represented by the component **rosMicrophone** in the architecture and accessible at gstreamerSphinx.py_. It configures and starts a Gstreamer-TCP-client on Pepper, which receives audio samples from the microphone of Pepper and sends them regularly to the Gstreamer-TCP-server described above for decoding into text. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
 
-- **RHOST**: indicates the IP address of the robot Pepper
+- **RHOST**: indicates the IP address of the host, which the Gstreamer-TCP-client runs on. Pepper's IP by default
 - **RPORT**: indicates the port, which the SSH service for launching the Gstreamer-TCP-client can be accessed through
 - **RUSERNAME**: indicates the username of the user accessing the ssh service on the robot
 - **PASSWORD**: indicates the password of the user accessing the ssh service on the robot
 - **HOST**: indicates the IP address of the host, which the Gstreamer-TCP-client is running on
-- **PORT**: indicates the port, which the Gstreamer-TCP-client is listening to
+- **PORT**: indicates the port, which the Gstreamer-TCP-server is listening to
+- **ORDER**: used to synchronize starts of Gstreamer-TCP-client and Gstreamer-TCP-server. while value is 0, the Gstreamer-TCP-client must wait for Gstreamer-TCP-server to start
 
 .. _gstreamerSphinx.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/gstreamer_sphinx.py
 
@@ -125,12 +127,12 @@ Basic Awareness
 
 This module is represented by the component **rosBasicAwareness** in the architecture and accessible at speechRecognizer.py_. It starts a pure NAOqi empty behavior_ as proxy on Pepper to get a total robot control, launches some services from the robot libraries to guarantee the basic awareness(stimuli tracking, Human detection, breathing), receives decoded speech from the RPC-server and forwards it to the dialog manager for further processing. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
 
-- **RHOST**: indicates the IP address of the robot Pepper
-- **RPORT**: indicates the port, which the SSH service for launching the Gstreamer-TCP-client can be accessed through
-- **RUSERNAME**: indicates the username of the user accessing the ssh service on the robot
-- **PASSWORD**: indicates the password of the user accessing the ssh service on the robot
-- **HOST**: indicates the IP address of the host, which the Gstreamer-TCP-client is running on
-- **PORT**: indicates the port, which the Gstreamer-TCP-client is listening to
+- **PEPPERIP**: indicates the IP address of the robot Pepper
+- **PEPPERPORT**: indicates the port, which Pepper is accessed through
+- **NAOQIPACKAGEUUID**: indicates the identification number of the empty behavior_ on the robot
+- **PATHTOBEHAVIOR**: indicates the path to the empty behavior_ given **NAOQIPACKAGEUUID** on the robot
+- **busy**: used to clearly distinguish the speaking phases from the hearing phases of the robot. If value is 1(*robot is speaking*), then **rosBasicAwareness** ignores results from speech recognizer. reset to 0 after speaking
+
 
 .. _speechRecognizer.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/speechRecognizer.py
 
