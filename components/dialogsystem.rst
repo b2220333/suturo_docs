@@ -81,11 +81,11 @@ Speech Recognition
 This module is represented by the component **rosSpeechRecognizer** in the architecture and accessible at sphinxAsr.py_. It sets the parameters of the pure c++ module **PocketSphinx** and starts it. **PocketSphinx** receives Speech from a Gstreamer-TCP-server, recognizes it and then publishes the result for further processing. It is accessible at continuous.cpp_ and was derived from CMUSphinx_.  The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
 
 - **ASRCWD**: path prefix to access **PocketSphinx**
-- **MLLR**: base path to access the speaker adapter of the speech recognizer. Allows online adaptation to speaker
-- **HMM**: base path to access the acoustic model of the speech recognizer
+- **MLLR**: base path to access the speaker adapter_ of the speech recognizer. Allows online adaptation to speaker
+- **HMM**: base path to access the acoustic model_ of the speech recognizer
 - **ASRPATH**: base path to access the speech recognizer's object file
 - **TRESHOLD**: the decoded speech is only considered under this threshold
-- **DATAPATH**: base path to access the dictionary and language models of the speech recognizer
+- **DATAPATH**: base path to access the dictionary and language models_ of the speech recognizer
 - **NBTHREADS**: the number of instances of speech recognizer to execute simultaneously and then combine their results into a more accurate one. It allows an ensemble learning-based recognition 
 - **BEAMSIZE**: only the **BEAMSIZE** best results from the **NBTHREADS** available  must be combined to get the final result
 - **INDEX**: this parameter is a positive integer and is used for naming of dictionary and language models. Example: **NBTHREADS**=2 and **INDEX**=33,then the folder **DATAPATH** will contain the files pepper33.dic(dictionary model of first thread/instance), pepper33.lm, pepper34.dic, pepper34.lm(language model of second thread)
@@ -98,6 +98,12 @@ This module is represented by the component **rosSpeechRecognizer** in the archi
 .. _continuous.cpp: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/CMU/cnodes/continuous.cpp    
 
 .. _CMUSphinx: https://github.com/cmusphinx/pocketsphinx/blob/master/src/programs/continuous.c
+
+.. _adapter: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/model
+
+.. _model: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/model/en-us-adapt
+
+.. _models: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/data
 
 
 Gstreamer-based Audio Streaming
@@ -116,6 +122,20 @@ This module is represented by the component **rosMicrophone** in the architectur
 
 Basic Awareness
 ----------
+
+This module is represented by the component **rosBasicAwareness** in the architecture and accessible at speechRecognizer.py_. It starts a pure NAOqi empty behavior_ as proxy on Pepper to get a total robot control, launches some services from the robot libraries to guarantee the basic awareness(stimuli tracking, Human detection, breathing), receives decoded speech from the RPC-server and forwards it to the dialog manager for further processing. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
+
+- **RHOST**: indicates the IP address of the robot Pepper
+- **RPORT**: indicates the port, which the SSH service for launching the Gstreamer-TCP-client can be accessed through
+- **RUSERNAME**: indicates the username of the user accessing the ssh service on the robot
+- **PASSWORD**: indicates the password of the user accessing the ssh service on the robot
+- **HOST**: indicates the IP address of the host, which the Gstreamer-TCP-client is running on
+- **PORT**: indicates the port, which the Gstreamer-TCP-client is listening to
+
+.. _speechRecognizer.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/speechRecognizer.py
+
+.. _behavior: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/NAOqi
+
 
 System Core
 ----------
