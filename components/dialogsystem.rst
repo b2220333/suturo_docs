@@ -88,7 +88,7 @@ This module is represented by the component **rosSpeechRecognizer** in the archi
 
 .. _continuous.cpp: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/CMU/cnodes/continuous.cpp    
 
-.. _CMUSphinx.py: https://github.com/cmusphinx/pocketsphinx/blob/master/src/programs/continuous.c
+.. _CMUSphinx: https://github.com/cmusphinx/pocketsphinx/blob/master/src/programs/continuous.c
 
 
 Gstreamer-based Audio Streaming
