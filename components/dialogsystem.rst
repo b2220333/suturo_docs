@@ -78,15 +78,17 @@ Speech Recognition
 ----------
 
 
-This module is represented by the component **rosSpeechRecognizer** in the architecture and accessible at asrSphinx.py_.It sets the parameters of the pure c++ module **PocketSphinx** and starts it. **PocketSphinx** receives Speech from a Gstreamer-TCP-Server, recognizes it, then publishes the result for further processing. It is accessible at continuous.cpp_.  The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
+This module is represented by the component **rosSpeechRecognizer** in the architecture and accessible at sphinxAsr.py_. It sets the parameters of the pure c++ module **PocketSphinx** and starts it. **PocketSphinx** receives Speech from a Gstreamer-TCP-Server, recognizes it and then publishes the result for further processing. It is accessible at continuous.cpp_ and was derived from CMUSphinx_.  The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
 
 - **VIDEOMODE**: indicates the position of the target camera. Value is **local** for a pc-webcam or **remote** for a robot camera
 - **PEPPERIP**: indicates the Ip address of Pepper
 - **PEPPERPORT**: indicates the port, Pepper should be accessed through
 
-.. _asrSphinx.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/asr_sphinx.py
+.. _sphinxAsr.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/sphinx_asr.py
 
 .. _continuous.cpp: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/CMU/cnodes/continuous.cpp    
+
+.. _CMUSphinx.py: https://github.com/cmusphinx/pocketsphinx/blob/master/src/programs/continuous.c
 
 
 Gstreamer-based Audio Streaming
