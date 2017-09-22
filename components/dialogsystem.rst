@@ -78,12 +78,21 @@ Speech Recognition
 ----------
 
 
-This module is represented by the component **rosSpeechRecognizer** in the architecture and accessible at sphinxAsr.py_. It sets the parameters of the pure c++ module **PocketSphinx** and starts it. **PocketSphinx** receives Speech from a Gstreamer-TCP-Server, recognizes it and then publishes the result for further processing. It is accessible at continuous.cpp_ and was derived from CMUSphinx_.  The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
+This module is represented by the component **rosSpeechRecognizer** in the architecture and accessible at sphinxAsr.py_. It sets the parameters of the pure c++ module **PocketSphinx** and starts it. **PocketSphinx** receives Speech from a Gstreamer-TCP-server, recognizes it and then publishes the result for further processing. It is accessible at continuous.cpp_ and was derived from CMUSphinx_.  The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
 
-- **VIDEOMODE**: indicates the position of the target camera. Value is **local** for a pc-webcam or **remote** for a robot camera
-- **PEPPERIP**: indicates the Ip address of Pepper
-- **PEPPERPORT**: indicates the port, Pepper should be accessed through
-
+- **ASRCWD**: path prefix to access **PocketSphinx**
+- **MLLR**: base path to access the speaker adapter of the speech recognizer. Allows online adaptation to speaker
+- **HMM**: base path to access the acoustic model of the speech recognizer
+- **ASRPATH**: base path to access the speech recognizer's object file
+- **TRESHOLD**: the decoded speech is only considered under this threshold
+- **DATAPATH**: base path to access the dictionary and language models of the speech recognizer
+- **NBTHREADS**: the number of instances of speech recognizer to execute simultaneously and then combine their results into a more accurate one. It allows an ensemble learning-based recognition 
+- **BEAMSIZE**: only the **BEAMSIZE** best results from the **NBTHREADS** available  must be combined to get the final result
+- **INDEX**: this parameter is a positive integer and is used for naming of dictionary and language models. Example: **NBTHREADS**=2 and **INDEX**=33,then the folder **DATAPATH** will contain the files pepper33.dic(dictionary model of first thread/instance), pepper33.lm, pepper34.dic, pepper34.lm(language model of second thread)
+ - **HOST**: IP address of the underlying computer
+ - **PORT**: port of the Gstreamer-TCP-server
+ - **RPCPORT**: port of the RPC server, the decoded speech will be sent to
+ 
 .. _sphinxAsr.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/sphinx_asr.py
 
 .. _continuous.cpp: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/CMU/cnodes/continuous.cpp    
