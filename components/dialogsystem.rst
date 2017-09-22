@@ -88,7 +88,7 @@ This module is represented by the component **rosSpeechRecognizer** in the archi
 - **DATAPATH**: base path to access the dictionary and language models_ of the speech recognizer
 - **NBTHREADS**: the number of instances of speech recognizer to execute simultaneously and then combine their results into a more accurate one. It allows an ensemble learning-based recognition 
 - **BEAMSIZE**: only the **BEAMSIZE** best results from the **NBTHREADS** available  must be combined to get the final result
-- **INDEX**: this parameter is a positive integer and is used for naming of dictionary and language models. Example: **NBTHREADS**=2 and **INDEX**=33,then the folder **DATAPATH** will contain the files pepper33.dic(dictionary model of first thread/instance), pepper33.lm, pepper34.dic, pepper34.lm(language model of second thread)
+- **INDEX**: this parameter is a positive integer and is used for naming of dictionary and language models. Example: **NBTHREADS** = 2 and **INDEX** = 33, then the folder **DATAPATH** will contain the files pepper33.dic(dictionary model of first thread/instance), pepper33.lm, pepper34.dic, pepper34.lm(language model of second thread)
 - **HOST**: IP address of the underlying computer
 - **PORT**: port of the Gstreamer-TCP-server
 - **RPCPORT**: port of the RPC server, the decoded speech will be sent to
@@ -139,10 +139,26 @@ This module is represented by the component **rosBasicAwareness** in the archite
 .. _behavior: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/NAOqi
 
 
-System Core
+ChatScript
 ----------
 
-ChatScript
+This module is represented by the component **rosChatScript** in the architecture and accessible at dialogCoreServerManager.py_. It starts and interacts with the **ChatScript** platform accessible at ChatScript_. The **ChatScript** platform is a text-based natural language processing toolkit. It provides us with a language to completely specify the core_ of the Dialog System(understanding, dialog flow control, answer generation ) and a server-like interpreter of those specifications. In the Dialog System's pipeline, **rosChatScript** acts like a bridge between the speech recognition and the speech synthesis through the dialog manager. The ROS parameters of this nodes are accessible at dialog.launch_ and follow:
+
+- **CORESERVERIP**: indicates the IP address of the host, which the server-like interpreter of **ChatScript** runs on
+- **CORESERVERPORT**: indicates the port, which the server-like interpreter is accessed through
+- **CORESERVERCWD**: indicates the absolute path to ChatScript's folder
+- **CORESERVERPATH**: indicates the relative path from **CORESERVERCWD** to ChatScript's object file
+- **PATH_TO_USERDIALOGDATA**: indicates relative path to dialog-related user data's folder
+
+
+.. _dialogCoreServerManager.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/dialogCoreServerManager.py
+
+.. _ChatScript: https://github.com/bwilcox-1234/ChatScript/tree/master/BINARIES
+
+.. _core: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/PEPPER1
+
+
+Dialog Management
 ----------
 
 Speech Synthesis
