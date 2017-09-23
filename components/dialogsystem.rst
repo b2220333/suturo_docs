@@ -255,4 +255,4 @@ To start,
 
 .. _launcher: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/launcher.sh
 
-.. _suturo16.0.0.0.pkg: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/NAOqi
+.. _suturo16-0.0.0.pkg: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/NAOqi
