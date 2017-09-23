@@ -159,24 +159,100 @@ This module is represented by the component **rosChatScript** in the architectur
 
 
 Dialog Management
-----------
+-----------------
+
+This module is represented by the component rosDialogManager in the architecture and accessible at dialogManager.py_. It serves as router to all other components for their connections and communications. The module has currently no ROS parameters at dialog.launch_.
+
+.. _dialogManager.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/dialogManager.py
 
 Speech Synthesis
-----------
+----------------
+
+This module is represented by the component **rosSpeechSynthesis** in the architecture and accessible at naoSpeech.py_. It receives textual outputs from the **rosDialogManager** module and then calls pure NAOqi libraries to synthesize speech from the input text. The ROS parameters are accessible at dialog.launch_ and follow:
+
+- **PEPPERIP**: indicates the IP address of the robot Pepper
+- **PEPPERPORT**: indicates the port, which Pepper is accessed through
+
+.. _naoSpeech.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/nao_speech.py
+
 
 RPC-Client
 ----------
 
+This module is the client part of the component **rosRPCCommunicator** in the architecture and accessible at rpcClient.py_. It directly receives from a topic requests published by the dialog manager and forwards them through RPC calls to the robot PR2. The ROS parameters are accessible at dialog.launch_ and follow:
+
+- **PR2IP**: indicates the IP address of the robot PR2
+- **PR2PORT**: indicates the port, which PR2 is accessed through
+
+.. _rpcClient.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/rpc_client.py
+
 RPC-Server
 ----------
 
-Parameter Update
-----------
+This module is the server part of the component **rosRPCCommunicator** in the architecture and accessible at rpcServer.py_. On the one hand, It directly receives textual outputs from the speech recognition, then retrieves from the received text structured information thank to the Dialog System's **utility** component and forwards the structured information to the **rosBasicAwareness** module. On the other hand, it receives feedbacks from the robot PR2 and forwards it to the dialog manager. The ROS parameters are accessible at dialog.launch_ and follow:
+
+- **RPCSERVERIP**: indicates the IP address of the host, which this server runs on
+- **RPCSERVERIPPORT**: indicates the port, which this server is accessed through
+- **FOLDER**: indicates the absolute path to the dataset_(set of sentences, expressions and words) for speech recognition
+
+.. _rpcServer.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/rpc_server.py
+
+Network Parameter Update
+------------------------
+
+This module is represented by the component **rosParameterUpdater** in the architecture and accessible at netparamupdater.py_. It sleeps and wakes up at regular intervals of time to silently update network parameters(changing permanently) such as IP addresses and ports of hosts and programs taking place in the whole project *SUTURO* from the inside environment(Dialog System, Pepper) as well as from the outside environment(Perception, Planning, Knowledge, Manipulation, PR2). It presents RPC-server like and RPC-client like functionalities to send and receive updates. The updates do not require any restart of the programs or computers. The ROS parameters are accessible at dialog.launch_ and follow:
+
+- **PR2IP**: indicates the IP address of the robot PR2
+- **PR2PORT**: indicates the port, which PR2 is accessed through
+- **PEPPERIP**: indicates the IP address of the robot Pepper
+- **PEPPERPORT**: indicates the port, which Pepper is accessed through
+- **RPCSERVERIP**: indicates the IP address of the host, which this module runs on
+- **RPCSERVERIPPORT**: indicates the port, which this module is accessed through
+
+.. _netparamupdater.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/netpramupdater.py
+
 
 Utility
-----------
+-------
+
+This module acts as proper library of the Dialog System and is accessible at utility.py_. It provides the above described components with a set of mathematical functionalities. It generates several datasets(set of sentences, expressions and words) from a single dataset_ in order to implement an Ensemble-Learning technique for speech recognition. Moreover, it implements a vector space classifier for information retrieval during the speech recognition and a couple of encoding-decoding algorithms for a bijection NxN to N. The module has currently no ROS parameters at dialog.launch_. 
+
+.. _utility.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/utility.py
+
+.. _dataset: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/launch/pepper12.corpus
 
 
+Prerequisites, Installation and Start
+-------------------------------------
 
-Installation and Start
-----------
+As prerequisites,
+
+- Linux Ubuntu 14.04 LTS 64bits
+- Python 2.7 64bits
+- ROS Indigo
+
+To install,
+
+- Create a general workspace folder and name it as you want. Let say **Dialog**
+- Clone the pepper-dialog's git repository_ in the general workspace folder **Dialog**
+- Copy the installation file installer.sh_ of the pepper-dialog's repository to the general workspace folder **Dialog**
+- Download the package pynaoqi SDK version 2.5.5.5 from the Aldebaran-Softbank Robotics's website_. You may need to create a user account before downloading the tar.gz package. The download folder must neither be **pepper-dialog** nor inside it. 
+- Download and install Choregraphe version 2.5.5.5 from the Aldebaran-Softbank Robotics's website_.
+- Open the file *installer.sh* in **Dialog** and set the environment variable **PYTHON_NAOQI_TAR_GZ_PATH** to the above downloaded package's absolute file path
+- Run the installer: **./installer.sh**
+
+To start,
+
+- Make sure the parameters are correctly set at dialog.launch_. The Ip addresses and ports should be imperatively adapted.
+- Install the pure NAOqi package suturo16-0.0.0.pkg_ on Pepper robot using Choregraphe  2.5.*
+- run the launcher_ located in folder **Dialog/pepperdialog**: **./launcher.sh**  
+
+.. _repository:  https://github.com/suturo16/pepper-dialog
+
+.. _website: https://community.aldebaran.com
+
+.. _installer.sh: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/installer.sh
+
+.. _launcher: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/launcher.sh
+
+.. _suturo16.0.0.0.pkg: https://github.com/suturo16/pepper-dialog/tree/master/dialogsystem/NAOqi
