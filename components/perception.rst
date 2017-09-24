@@ -53,7 +53,7 @@ How to use: Is present in the pipeline for cake detection, which can be started 
 
 Changeable parameters (in perception/percepteros/descriptors/annotators/BoardAnnotator.xml):
 
-None
+* None
 
 
 The BoardAnnotator uses the pose of the cake to determine the possible places for the board (must be directly the cake) and then searches for circles in the vincinity.
@@ -70,19 +70,13 @@ How to use: Is present in the pipeline for knife detection, which can be started
 
 Changeable parameters (in perception/percepteros/descriptors/annotators/ColorClusterer.xml):
 
-minHue(Standard: 150) - Minimal hue value points must have to pass as belonging to the rack.
-
-maxHue(Standard: 360) - Maximal hue value points can have to pass as belonging to the rack.
-
-diffHue(Standard: 7) - Difference of hue values used in color clustering on the rack.
-
-diffVal(Standard: 10) - Difference of value values used in color clustering on the rack.
-
-diffDist(Standard: 0.01) - Cutoff value of point distance used in color clustering on the rack.
-
-minPoints(Standard: 3000) - Minimal number of points of correct color to make a cluster a rack.
-
-minCluster(Standard: 1000) - Minimal number of points for clusters found in color clustering on the rack.
+* minHue(Standard: 150) - Minimal hue value points must have to pass as belonging to the rack.
+* maxHue(Standard: 360) - Maximal hue value points can have to pass as belonging to the rack.
+* diffHue(Standard: 7) - Difference of hue values used in color clustering on the rack.
+* diffVal(Standard: 10) - Difference of value values used in color clustering on the rack.
+* diffDist(Standard: 0.01) - Cutoff value of point distance used in color clustering on the rack.
+* minPoints(Standard: 3000) - Minimal number of points of correct color to make a cluster a rack.
+* minCluster(Standard: 1000) - Minimal number of points for clusters found in color clustering on the rack.
 
 
 The ColorClusterer checks all clusters if they have enough points of the rack color, and thus finds the rack.
@@ -104,9 +98,8 @@ How to use: Is present in the pipeline for knife detection, which can be started
 
 Changeable parameters (in perception/percepteros/descriptors/annotators/KnifeAnnotator.xml):
 
-minHue(Standard: 40) - Minimal hue value a tool cluster must have in order to be considered a knife.
-
-maxHue(Standard: 70) - Maximal hue value a tool cluster can have in order to be considered a knife.
+* minHue(Standard: 40) - Minimal hue value a tool cluster must have in order to be considered a knife.
+* maxHue(Standard: 70) - Maximal hue value a tool cluster can have in order to be considered a knife.
 
 
 The KnifeAnnotator checks all tool clusters for the correct color of the knife (yellow) and calculates the right pose for the knife.
@@ -124,9 +117,8 @@ How to use: Is present in the pipeline for plate detection, which can be started
 
 Changeable parameters (in perception/percepteros/descriptors/annotators/PlateAnnotator.xml):
 
-minHue(Standard: 100) - Minimal hue value a cluster must have in order to be considered a plate.
-
-maxHue(Standard: 360) - Maximal hue value a cluster can have in order to be considered a plate.
+* minHue(Standard: 100) - Minimal hue value a cluster must have in order to be considered a plate.
+* maxHue(Standard: 360) - Maximal hue value a cluster can have in order to be considered a plate.
 
 
 The PlateAnnotator checks all color clusters for detected circles, and tries to fit a second circle into the cluster.
