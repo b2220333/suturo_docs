@@ -3,7 +3,9 @@
 Installation: Start ueber Pepper
 =================================
 
-This manual is deprecated. please go to PEPPESTART_. However the manual may still help you to understand the Dialog System.
+**This manual is deprecated. please go to PEPPESTART_. However the manual may still help you to understand the Dialog System.**
+
+.. _PEPPERSTART: https://github.com/suturo16/suturo_docs/blob/master/components/dialogsystem.rst
 
 In diesem Tutorium wird zum einen beschrieben, wie Pepper- und PR2-Roboter miteinander verbunden werden. Zum anderen lernt man, wie das Sprachdialogsystem von Pepper gestartet wird.
 
