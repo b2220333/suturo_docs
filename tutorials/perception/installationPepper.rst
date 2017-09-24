@@ -3,7 +3,7 @@
 Installation: Start ueber Pepper
 =================================
 
-**This manual is deprecated. please go to PEPPESTART_. However the manual may still help you to understand the Dialog System.**
+This manual is deprecated. please go to PEPPESTART_. However the manual may still help you to understand the Dialog System.
 
 .. _PEPPERSTART: https://github.com/suturo16/suturo_docs/blob/master/components/dialogsystem.rst
 
