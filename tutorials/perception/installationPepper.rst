@@ -3,8 +3,7 @@
 Installation: Start ueber Pepper
 =================================
 
-This manual is deprecated. please go to PEPPERSTART_. However the manual may still help you to understand the Dialog System.
-
+**Diese Beschreibung is veraltet. Bitte berücksichtigen Sie das Kapitel Dialog System. Allerdings können Ihnen die unten vorliegenden Anweisungen auch beim Verstehen des Sprachdialogsystem helfen.**
 
 
 In diesem Tutorium wird zum einen beschrieben, wie Pepper- und PR2-Roboter miteinander verbunden werden. Zum anderen lernt man, wie das Sprachdialogsystem von Pepper gestartet wird.
