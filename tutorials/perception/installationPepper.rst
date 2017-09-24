@@ -3,7 +3,7 @@
 Installation: Start ueber Pepper
 =================================
 
-**Diese Beschreibung is veraltet. Bitte berücksichtigen Sie das Kapitel Dialog System. Allerdings können Ihnen die unten vorliegenden Anweisungen auch beim Verstehen des Sprachdialogsystem helfen.**
+**Diese Beschreibung is veraltet. Bitte berücksichtigen Sie das Kapitel zum Dialog System. Allerdings können Ihnen die unten vorliegenden Anweisungen auch beim Verstehen des Sprachdialogsystems helfen.**
 
 
 In diesem Tutorium wird zum einen beschrieben, wie Pepper- und PR2-Roboter miteinander verbunden werden. Zum anderen lernt man, wie das Sprachdialogsystem von Pepper gestartet wird.
