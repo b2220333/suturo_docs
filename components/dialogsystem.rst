@@ -224,10 +224,11 @@ This module acts as proper library of the Dialog System and is accessible at uti
 
 .. _dataset: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/launch/pepper12.corpus
 
-.. _PEPPERSTART:
 
 Prerequisites, Installation and Start
 -------------------------------------
+
+.. _PEPPERSTART:
 
 As prerequisites,
 
