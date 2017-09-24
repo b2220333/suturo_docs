@@ -172,6 +172,7 @@ This module is represented by the component **rosSpeechSynthesis** in the archit
 
 - **PEPPERIP**: indicates the IP address of the robot Pepper
 - **PEPPERPORT**: indicates the port, which Pepper is accessed through
+- **busy**: used to clearly distinguish the speaking phases from the hearing phases of the robot. If value is 1(*robot is speaking*), then **rosBasicAwareness** ignores results from speech recognizer. reset to 0 after speaking
 
 .. _naoSpeech.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/nao_speech.py
 
@@ -189,7 +190,7 @@ This module is the client part of the component **rosRPCCommunicator** in the ar
 RPC-Server
 ----------
 
-This module is the server part of the component **rosRPCCommunicator** in the architecture and accessible at rpcServer.py_. On the one hand, It directly receives textual outputs from the speech recognition, then retrieves from the received text structured information thank to the Dialog System's **utility** component and forwards the structured information to the **rosBasicAwareness** module. On the other hand, it receives feedbacks from the robot PR2 and forwards it to the dialog manager. The ROS parameters are accessible at dialog.launch_ and follow:
+This module is the server part of the component **rosRPCCommunicator** in the architecture and accessible at rpcServer.py_. On the one hand, It directly receives textual outputs from the speech recognition, then retrieves from the received text structured information thank to the Dialog System's **utility** component and forwards the structured information to the **rosBasicAwareness** module. On the other hand, it receives feedbacks from the robot PR2 and forwards them to the dialog manager. The ROS parameters are accessible at dialog.launch_ and follow:
 
 - **RPCSERVERIP**: indicates the IP address of the host, which this server runs on
 - **RPCSERVERIPPORT**: indicates the port, which this server is accessed through
@@ -197,10 +198,12 @@ This module is the server part of the component **rosRPCCommunicator** in the ar
 
 .. _rpcServer.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/rpc_server.py
 
+.. _dataset: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/launch/pepper12.corpus
+
 Network Parameter Update
 ------------------------
 
-This module is represented by the component **rosParameterUpdater** in the architecture and accessible at netparamupdater.py_. It sleeps and wakes up at regular intervals of time to silently update network parameters(changing permanently) such as IP addresses and ports of hosts and programs taking place in the whole project *SUTURO* from the inside environment(Dialog System, Pepper) as well as from the outside environment(Perception, Planning, Knowledge, Manipulation, PR2). It presents RPC-server like and RPC-client like functionalities to send and receive updates. The updates do not require any restart of the programs or computers. The ROS parameters are accessible at dialog.launch_ and follow:
+This module is represented by the component **rosParameterUpdater** in the architecture and accessible at netparamupdater.py_. It sleeps and wakes up at regular intervals of time to silently update network parameters(changing permanently) such as IP addresses and ports of hosts and programs taking place in the whole project *SUTURO* from the inside environment(Dialog System, Pepper) as well as from the outside environment(Perception, Planning, Knowledge, Manipulation, PR2). It presents RPC-server-like and RPC-client-like functionalities to send and receive updates. The updates do not require any restart of the programs or computers. The ROS parameters are accessible at dialog.launch_ and follow:
 
 - **PR2IP**: indicates the IP address of the robot PR2
 - **PR2PORT**: indicates the port, which PR2 is accessed through
@@ -237,14 +240,14 @@ To install,
 - Clone the pepper-dialog's git repository_ in the general workspace folder **Dialog**
 - Copy the installation file installer.sh_ of the pepper-dialog's repository to the general workspace folder **Dialog**
 - Download the package pynaoqi SDK version 2.5.5.5 from the Aldebaran-Softbank Robotics's website_. You may need to create a user account before downloading the tar.gz package. The download folder must neither be **pepper-dialog** nor inside it. 
-- Download and install Choregraphe version 2.5.5.5 from the Aldebaran-Softbank Robotics's website_.
 - Open the file *installer.sh* in **Dialog** and set the environment variable **PYTHON_NAOQI_TAR_GZ_PATH** to the above downloaded package's absolute file path
+- Download and install Choregraphe version 2.5.5.5 from the Aldebaran-Softbank Robotics's website_.
+- Install the pure NAOqi package suturo16-0.0.0.pkg_ on Pepper robot using Choregraphe  2.5.*
 - Run the installer: **./installer.sh**
 
 To start,
 
 - Make sure the parameters are correctly set at dialog.launch_. The Ip addresses and ports should be imperatively adapted.
-- Install the pure NAOqi package suturo16-0.0.0.pkg_ on Pepper robot using Choregraphe  2.5.*
 - run the launcher_ located in folder **Dialog/pepperdialog**: **./launcher.sh**  
 
 .. _repository:  https://github.com/suturo16/pepper-dialog
