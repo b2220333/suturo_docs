@@ -194,7 +194,7 @@ This module is the server part of the component **rosRPCCommunicator** in the ar
 
 - **RPCSERVERIP**: indicates the IP address of the host, which this server runs on
 - **RPCSERVERIPPORT**: indicates the port, which this server is accessed through
-- **FOLDER**: indicates the absolute path to the dataset_(set of sentences, expressions and words) for speech recognition
+- **FOLDER**: indicates the absolute path to the dataset_ (set of sentences, expressions and words) for speech recognition
 
 .. _rpcServer.py: https://github.com/suturo16/pepper-dialog/blob/master/dialogsystem/nodes/rpc_server.py
 
