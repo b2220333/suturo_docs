@@ -6,7 +6,7 @@
 Dialog System
 =============
 
-This software allows the Pepper robot to hold a human-like conversation in the SUTURO16 Project from the Institute of Artificial Intelligence -University of Bremen. PEPPERSTART_
+This software allows the Pepper robot to hold a human-like conversation in the SUTURO16 Project from the Institute of Artificial Intelligence -University of Bremen.
 The task of the robot in the project consists in taking care of the clients in a Cafe. The robot welcomes the clients, informs them about the Cafe services, takes their orders, forwards them to the robot baker and informs the clients on the evolution of their requests. 
 
 
@@ -228,7 +228,7 @@ This module acts as proper library of the Dialog System and is accessible at uti
 Prerequisites, Installation and Start
 -------------------------------------
 
-.. _PEPPERSTART:
+
 
 As prerequisites,
 
