@@ -2,21 +2,47 @@
       Zur Dokumentation: Die Dokumentation soll so geschrieben sein, dass sie später anderen eine gute Übersicht über unser System gibt und dessen Nutzung vereinfacht. Wir sollen alle Komponenten unseres Systems (alle Features, die es so gibt oder Teile der Architektur, z.B. welche Dateien was enthalten, welche Regler es gibt...) beschreiben. Dabei helfen auch Grafiken, wie die Komponenten untereinander verbunden sind. Die Beschreibung soll eher auf "Highlevel"-Ebene sein, d.h. was die Features ungefähr machen und wo man sie findet, eine API ist nicht notwendig. Jeder sollte die von ihm entwickelten Features nach Möglichkeit selbst beschreiben!
       Memo: Die Notiz am Ende bitte wieder entfernen =)
 
-=============
 Planning
-=============
+========
 
-<General description and purpose>
+.. note::
+	Describing what Planning is all about and what nice and cool features we have.
+
+Installation
+------------
+
+.. note::
+	Simple. Just git clone. And rosinstall :D (in theory)
+
+Architecture
+------------
+
+.. note::
+	Explain how and why we use CRAM (v2).
+	List packages, describe what uses what and why.
 
 
-pepper_communication
-----------
+Communication
+-------------
 
-plan_execution
-----------
+.. note::
+	Someone will explain how the communication works in here.
 
-plan_generator
-----------
+Plans/Actions
+-------------
+
+.. note::
+	What actions do we have?
+	
+Executing Plans
+---------------
+
+.. note::
+	Explain how to execute plans.
+
+Plan Generation
+---------------
+
 The plan_generator module provides access to the classical planning system Fast Downward from http://www.fast-downward.org/ using a ROS service in python. It can be used to generate a plan for a given task within a given domain. In the case of the CaterROS café, it can be used to find a plan for the task of serving a given amount of pieces of cake in the CaterROS domain. Nevertheless, the underlying service can also be used for any other task and corresponding domain.
 
 To use the plan generator for CaterROS, you have to: 
@@ -43,24 +69,27 @@ Fast Downward is based on the Planning Domain Definition Language (PDDL). The al
 
 
 
+Mockups
+-------
 
-planning_common
-----------
+.. note::
+	How to and why use mockups.
 
-planning_communication
-----------
+Robot-specific Commands
+-----------------------
 
-planning_launch
-----------
+.. note::
+	Hmmm
+	
+PR2
+___
 
-pr2_command_pool
-----------
+.. note::
+	Explain how reacting to feedback works for example.
 
+Turtlebot
+_________
 
-sut_mockups
-----------
+.. note::
+	Explain location designator usage and costmaps.
 
-
-
-turtle_command_pool
-----------
