@@ -25,8 +25,92 @@ Architecture
 Communication
 -------------
 
-.. note::
-	Someone will explain how the communication works in here.
+There are three robots whose actions and knowledge are to combine. The planning_communication package prvides the communication between the Peppers dialogsystem and the ROS network, where the PR2 and Tortugabots are monitored. To include Pepper we implemented an RPC server on the Planning side, whose functions can be called from everywhere within the network, while concentrating on Peppers information. On the other hand the Planning side can feed Pepper with data and notify her about important changes in the world. To enhance the monitoring aspect of the Planning system, we save and update connection credentials of every system communicating with Plannings server.
+
+**Setup Pepper Communication**
+
+A setup file launches the RPC server and registers Peppers IP and Post to the list of available clients. Also it sends the IP and Port of the current machine to Pepper. This seput is called by the plan_execution init function, but if we want to look deeper into the planning_communication package, let's make the setup by ourselves. The final call, updating Peppers information about this machine, would fail anyway, if Peppers server isn't currently running.
+
+**RPC-Server**
+
+To initialize the RPC server, first load the planning_communication system in your REPL:
+
+.. code:: lisp
+	
+	, r-l-s RET
+	planning_communication RET
+	RET
+	,!p pcomm RET
+
+Now that we work in the pcomm package, run the init-function of the server:
+
+.. code:: lisp
+	
+	(init-rpc-server)
+	
+This function will simply start up a new ROSnode in the REPL and register all the functions provided by our RPC interface. The core functions used by Pepper are updateObserverClient, asserDialogElement, getGuestInfo and getAllGuestInfo.
+
+**updateObserverClient** takes the ID of the robot (0 for Pepper), its ip as a string and its port as a number.
+**assertDialogElement** takes a JSON string, that will be translated and forwarded to te knowledgebase. The whole variety of JSON queries is explained later. An example JSON string to order two pieces of cake looks like this:
+
+.. code::
+
+	{
+	guestId:1,
+	query: 	{
+		type:setCake,
+	  	amount:2,
+	  	guestName:Arthur
+	    	}
+	}
+
+The function will always answer the request with a JSON as well, telling if the request was processed successfully. This is the answer to the order sent previously:
+
+.. code::
+
+	{
+	guestId:1,
+	return: {
+		type:setCake,
+	  	success:1,
+	  	tableId:table1
+	    	}
+	}
+
+Only upon the request of a new order (type: setCake) the response contains the tableId of the guest, every other response lacks this information.
+
+**getGuestInfo** needs a guest-id and returns all information about the order identified by this specific guest-id. A common response for the guest-id 1, considering we transmitted the order above, looks like this:
+
+.. code::
+
+	{
+	guestId : 1,
+	return: {	
+		type: getGuestInfo,
+		name: Arthur,
+		location: table1, 
+		total: 2,
+		delivered: 0
+		}
+	}
+
+**getAllGuestInfos** returns a list, containing all orders in the same format as a request for a specific guest (see **getGuestInfo**). It is called with any arbitrary parameter (there is a conflict when calling RPC function from Python to LISP, when the LISP function has no parameters).  
+
+**RPC-Client**
+
+The core functionality of the RPC client is to send RPC to Pepper. Mainly we use update-connection-credentials and fire-rpc-to-client. To make those calls more developer/user friendly, we have a list of clients, that use the Planning RPC server. We can take those connection credentials to fire a call to clients, using only their keynames.
+
+**update-connection-credentials** will send the IP and port of the current machine (where the Planning server is running) to a remote client identified by its keyname, or to a yet unknown client using its IP and Port. The client must have an *updateObserverClient* function implemented on their side. After this call, the remote client will have information about our server. Here is an example usage:
+
+.. code:: lisp
+	
+	(update-connection-credentials :client :pepper)
+
+**fire-rpc-to-client** calls a function at a remote client. It uses the clients keyname, the function name and arguments needed in the function:
+
+.. code:: lisp
+	
+	(fire-rpc-to-client :pepper "notify")
 
 Plans/Actions
 -------------
