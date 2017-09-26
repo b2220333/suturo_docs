@@ -77,6 +77,10 @@ The description of the dependencies of each module can be found below.
 Planning
 ------------------------------ 
 
+Clone suturo_msgs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The planning module depends on the suturo_msgs module. Clone it into the src folder of your project workspace.
+
 Install EMACS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Since the planning module is implemented in Lisp, you can execute it from Emacs::
@@ -87,4 +91,19 @@ Install CRAM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The planning module is based on the Cognitive Robot Abstract Machine (CRAM, see http://ai.uni-bremen.de/research/cram for further information). You need the minimal installation of it to run the module. Therefore execute the following commands within the src folder of your dependency workspace::
 
-    
+    git clone https://github.com/cram2/cram_3rdparty.git
+    git clone https://github.com/cram2/cram_core.git
+    rosdep install --ignore-src --from-paths cram_3rdparty cram_core
+    cd .. && catkin_make
+
+Build the planning module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Return to your project workspace and try to build it. 
+
+If actionlib_lisp cannot be found, you are missing the roslisp_common package. It should have been automatically installed within the ros installation but if it was not, you can add it manually. Therefore, go into the src folder of your dependency workspace and execute::
+
+        git clone git@github.com:ros/roslisp_common.git
+        cd .. && catkin_make
+       
+Now try again to build your project workspace.
