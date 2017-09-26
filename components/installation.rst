@@ -1,4 +1,4 @@
-Installation: Setup all components
+Installation: Setting up all components
 =================================================
 
 This article provides a step-by-step guide to setup the Caterros project including all dependencies. 
@@ -73,13 +73,12 @@ After you have set up the corresponding dependencies, you can build your workspa
 
 The description of the dependencies of each module can be found below.
 
+suturo_msgs
+------------------------------ 
+This module is needed by all the other modules, so clone it first into the src folder of your project workspace.
 
 Planning
 ------------------------------ 
-
-Clone suturo_msgs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The planning module depends on the suturo_msgs module. Clone it into the src folder of your project workspace.
 
 Install EMACS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -140,7 +139,7 @@ If you want to use the plan generator, you have to install the fast downward pla
  
  6. Create an empty file named "__init__.py" within the "downward"-folder.
  
- 7. Go to the subfolder "driver" and uncomment the line::
+ 7. Go to the subfolder "driver" and within the file "main.py" uncomment the line "sys.exit(exitcode)"::
  
         # sys.exit(exitcode)
         
@@ -149,6 +148,10 @@ If you want to use the plan generator, you have to install the fast downward pla
  8. Now, you can finally install the planner as a python module. This is necessary so that the plan generator can get access to it. Go to the folder you created in step 1 and execute::
  
         sudo pip install -e .
+	
+If you don't have pip installed, you can execute::
+
+	sudo apt-get -y install python-pip
  
 Build the planning module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
