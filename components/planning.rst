@@ -184,8 +184,40 @@ Plans/Actions
 Executing Plans
 ---------------
 
-.. note::
-	Explain how to execute plans.
+There are two ways to execute the plans. Either by calling the ``execute`` function directly or by having guests in the knowledge base and let the system decide what to do on it's own.
+
+**Setup**
+
+To call the plans you need to load the ``plan-execution-system`` in the ``plan_execution_system``. So open up the roslisp REPL by opening a terminal and typing::
+
+	roslisp_repl
+
+In the REPL type::
+	
+	CL-USER> (ros-load:load-system "plan_execution_system" :plan-execution-system)
+	
+And go into the package::
+
+	CL-USER> (in-package :pexecution)
+
+
+**Direct**
+
+Now you just have to call::
+
+	PEXECUTION> (execute "demo")
+	
+To start the demo task. The task gets evaluated to designators and those get referenced to real plans. In ``toplevel.lisp`` is a function ``task->designators`` in which all the tasks and theirs corresponding designators are defined. The most important ones are the "steps", which can be executed in order to execute the whole scenario of the CaterROS project. The ``prep``, ``cut`` and ``deliver`` ones are also important as they are the ones called by the guest-centered method, but htey can also be executed directly.
+
+**Guest-centered**
+
+Now you call::
+
+	PEXECUTION> (start-caterros)
+
+This starts the guest-centered plan execution loop (or GCPEL, as I certainly will never call it). As long as there is no guest present in the knowledge base the loop prints a message that it's waiting for a guest. When a guest arrives and makes an order, the loop will start executing the plans. First it will execute the ``prep`` task, to grasp the tools. Then it will ``cut`` as often as the guest ordered pieces of cake. And lastly it will ``deliver`` the plate with the cake onto the TurtleBot, which will then bring it to the table.
+
+If you want to test this without using Pepper`s Dialog system, you can call the ``test-guest`` function. It will generate a dummy guest in the knowledge base.
 
 Plan Generation
 ---------------
