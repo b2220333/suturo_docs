@@ -16,11 +16,63 @@ Installation
 
 Architecture
 ------------
+	
+Modules
+_______
+
+**planning_common**
+
+The common module of our planning system. It holds functionality which is or was considered to be universally useful for our system. This ranges from simple utility functions and object definitions to the interface for calling prolog function of the knowledge base and robot-agnostic service calls and such. In here you can also find everything that didn't belong in the other packages but didn't warrant it's own package.
+
+
+**Robot-specific command pools**
+
+The robot-specific modules hold functionality especially necessary for that robot.
+
+The pr2_command_pool package mostly holds calls to the action_move_robot function from planning_common to move the PR2. Some utility for these calls can also be found here.
+
+The turtle_command_pool package holds stuff.
 
 .. note::
-	Explain how and why we use CRAM (v2).
-	List packages, describe what uses what and why.
+	Please elaborate here about the turtle package.
 
+	
+**planning_communication**
+
+The planning_communication module contains a RPC server implementation to enable the planning system to communicate with Pepper. It also contains a RPC client for the system to call functions of Pepper's RPC server.
+Additionally the parser for Pepper's JSON-data-structures can be found here.
+
+
+**plan_generator**
+
+This module consists of an Python service to call the plan generator and the Lisp interface to generate problems for the generator and a parser for the generated plans.
+
+	
+**plan_execution**
+
+The top-level module of our system. If you want to execute our plans, you have to load the system in this package. It contains all of our plans and the utilities to execute them. This includes our CRAM process modules and designator referencing.
+
+The loop-function for the guest-centered plan execution can also be found here.
+
+
+**sut_mockups**
+
+There are mockups for all major nodes of the other systems. Those can be found in this package.
+
+
+**planning_launch**
+
+This package only holds two launch files for launching our mockups.
+
+
+Plan Architecure
+________________
+
+As mentioned above we use the CRAM framework in our system. More specifically we use process modules and action designators to make our plans dynamic. For a more detailed look at CRAM itself check the `website <http://cram-system.org/>`_
+
+In the planning_execution package are the files ``toplevel``, ``process-modules``, ``selecting-process-modules`` and ``action-designators``. Those contain everything that uses CRAM in our code. In ``toplevel`` we have the ``execute`` function which takes a string and executes the corresponding task. We define a task as a set of actions, or rather action designators. Each of the action designators gets referenced by using prolog to query the knowledge base. After this they get executed by the right process module. This happens automatically, as we have defined rules in ``selecting-process-modules`` to match process modules to designators. The process modules then directly call the plans in ``plans.lisp`` with the referenced information in the designator. The plans can also call sub-plans, but they don't use any more designators. All the information a single plan needs is obtained when an action designator is first referenced.
+
+For the guest-centered execution we have the ``manager``. The name is a bit misleading, as this module doesn't actually manage the plan state or anything. It provides a function ``start-caterros`` which starts a loop that can be started anytime and then waits for guests to arrive. This is where the communication module comes into play. Through the RPC communication with Pepper the knowledge base gets updated parallel to the running loop. The loop can query the knowledge base through prolog.
 
 Communication
 -------------
