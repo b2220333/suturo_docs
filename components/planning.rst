@@ -14,9 +14,20 @@ Installation
 .. note::
 	Simple. Just git clone. And rosinstall :D (in theory)
 
+System Overview
+---------------
+
+The planning system of the CaterROS project controls all the other systems of the project and let's them work together. It uses the planning framework CRAM to control the PR2 and TurtleBot via flexible plans. The system communicates with the Pepper robot's systems to gather knowledge about the dialog with guests.
+
+The main focus of the system is of course the execution of plans. There are two ways supported by the system: Direct and Guest-centered Execution. Direct means a user of the system executes a plan by calling the appropiate function and the system halts after the completion. The guest-centered on the other hand can run permanently until explicitly stoppped. It keeps track of the current state of the PR2 and decides what to do based on the guest's orders. This enables the system to dynamically react to changes in the guest's orders. Additionally to the predefined plans, the system also can generate plans based on the orders by guests.
+
 Architecture
-------------
+____________
+
+Let's have a look at our architecture. The following picture depicts our modules and how they use each other.
 	
+.. note::
+	Here should be a picture of the architecture.
 Modules
 _______
 
