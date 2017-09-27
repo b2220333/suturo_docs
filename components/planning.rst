@@ -215,12 +215,26 @@ In our implementation, the service is called within the plan_execution module.
 Fast Downward is based on the Planning Domain Definition Language (PDDL). The algorithm needs two files as input: a domain file and a task file. The domain file for our scenario can be found in the pddl folder of the directory. The corresponding task file can be generated using the method generate-pddl-problem (name domain objects init-predicates goal-predicates) from pddl-problem-generation.lisp in the lisp folder. 
 
 
-
 Mockups
 -------
 
-.. note::
-	How to and why use mockups.
+The mockups package provides mockups scripts for all major components of the CaterROS project (excluding Knowledge) written in Python.
+
+**Usage**
+
+To start the mockups there are two launch files in the ``planning_launch`` package. You can start the mockups themselves with::
+
+	roslaunch planning_launch mockups.launch
+
+If you want to use the knowledge base, use::
+
+	roslaunch planning_launch mockups_w_knowledge.launch
+
+It can happen that the ``tf_subscriber`` node fails to launch properly when launching latter the first time. If this happens, just relaunch it and it should be fine.
+
+You can only run plans if you launch with knowledge, because every plan needs to query the knowledge base. The first launch file is only for testing purposes when implementing service or action calls for example. But with the knowledge base launched you can run any plan and check if the plans themselves can be run without errors.
+
+Most of the mockups have some support for the ROS parameter server. The graspkard mockup can either always instantly return an error value of 0 or simulate a optimization process over a few seconds. And the perception publisher's objects can be altered as well. For more detailed information on the how just look at the code. It's pretty simple. 
 
 Robot-specific Commands
 -----------------------
