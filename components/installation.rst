@@ -210,6 +210,7 @@ TurtleBot
 On the turtlebot itself there already should be everything necessary for it to run. To make sure, you can however check if this package https://github.com/code-iai/tortugabot is there. Also it should already have amcl, move_base, and tortugabot_bringup. 
 
 If it has all of the above, the only thing you need to to is clone this package onto the robot::
+
     git clone https://github.com/suturo16/sut_tortugabot.git
 
 It contains all the launch files which it needs to run in order to work within this system.
