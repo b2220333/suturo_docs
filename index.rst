@@ -20,6 +20,7 @@ Contents:
    components/manipulation
    components/knowledge
    components/planning
+   components/turtlebot
   
 
 .. toctree::
