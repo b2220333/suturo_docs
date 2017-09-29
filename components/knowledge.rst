@@ -6,7 +6,8 @@
 Knowledge
 =============
 
-<General description and purpose>
+The knowledge modules are basically about storing information and making it accessable in an easy way. 
+Part of these information surely are about the world and its objects. For robots it is crucial to use these information, especially about objects, in order to interact with them. Another part of the information stored is information emerging from a spoken dialog. Intentions about a dialog for example, are stored in the knowledge base. 
 
 
 Installation
