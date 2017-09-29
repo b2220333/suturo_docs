@@ -20,8 +20,9 @@ Contents:
    components/manipulation
    components/knowledge
    components/planning
+   components/pr2
    components/turtlebot
-  
+   components/launching
 
 .. toctree::
    :maxdepth: 2
