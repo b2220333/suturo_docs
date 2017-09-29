@@ -172,56 +172,20 @@ Plans
 -------------
 We defined different plans to realize our scenario: 
 
-**grasp**
+	**- grasp:**
+	There is one plan that enables the PR2 to grasp various objects. How to grasp the actual object is decided on the basis of the given object type. Possible objects that can be grasped are: a knife, a plate, a spatula and a cylinder. 
 
-There is one plan that enables the PR2 to grasp various objects. How to grasp the actual object is decided on the basis of the given object type. Possible objects that can be grasped are: a knife, a plate, a spatula and a cylinder. 
+	**- place-object:**
+	The plan place-object can be used hold a given object to a given location. Optionally, the object can be released so that this plan can also be used to drop objects to a given location. The given object has to be grasped already. 
 
-**place-object**
+	**- detach-object-from-rack:**
+	This plan is used to detach objects that should be taken from the rack. It assumes that the given object was grasped already. In our scenario, this is only used for getting the knife. 
 
-The plan place-object can be used hold a given object to a given location. Optionally, the object can be released so that this plan can also be used to drop objects to a given location. The given object has to be grasped already. 
+	**- cut-object:**
+	The plan cut-object is used to cut a given object (in our case: a cake) with a given knife. It assumes that the knife is grasped 	already. Additionally, a target can be defined optionally. If a target is given, the slice that was cut is moved there. In our scenario, we pass the spatula as a target so that the PR2 pushs the piece of cake onto it after it was cut. 
 
-**detach-object-from-rack**
-
-This plan is used to detach objects that should be taken from the rack. It assumes that the given object was grasped already. In our scenario, this is only used for getting the knife. 
-
-**cut-object:**
-
-The plan cut-object is used to cut a given object (in our case: a cake) with a given knife. It assumes that the knife is grasped 	already. Additionally, a target can be defined optionally. If a target is given, the slice that was cut is moved there. In our scenario, we pass the spatula as a target so that the PR2 pushs the piece of cake onto it after it was cut. 
-
-**move-n-flip:**
-
-Move-n-flip is used to move a given tool to a given location and then flip it. In our scenario, we use it to drop the piece of cake on the plate after it was pushed on the spatula. 
-
-
-Plan Generation
----------------
-
-The plan_generator module provides access to the classical planning system Fast Downward from http://www.fast-downward.org/ using a ROS service in python. Fast Downward can be used to generate a plan (as a sequence of actions) for a given task within a given domain. In the case of the CaterROS café, it is used to find a plan for the task of serving a given amount of pieces of cake in the CaterROS domain. This plan is generated dynamically at the beginning and executed without any changes afterwards.
-
-The Fast Downward planning system needs two inputs: a domain definition and a task definition written in the Planning Domain Definition Language (PDDL). You can find a good introduction on PDDL at: http://www.cs.toronto.edu/~sheila/2542/s14/A1/introtopddl2.pdf. 
-
-To use the plan generator for CaterROS, you have to: 
-1. Follow the installation instructions at: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-2. Run the server for the python service 
-
-      .. code:: bash
-
-            rosrun plan_generator generate_plan.py
-
-
-
-
-
-
-
-provides a service that can be used to generate a plan for a given task within a given domain dynamically. The resulting plan is contained in a json string that can easily be transformed into a list of CRAM's action designators. 
-
-In our implementation, the service is called within the plan_execution module. 
-
-Fast Downward is based on the Planning Domain Definition Language (PDDL). The algorithm needs two files as input: a domain file and a task file. The domain file for our scenario can be found in the pddl folder of the directory. The corresponding task file can be generated using the method generate-pddl-problem (name domain objects init-predicates goal-predicates) from pddl-problem-generation.lisp in the lisp folder. 
-
-
+	**- move-n-flip:**
+	Move-n-flip is used to move a given tool to a given location and then flip it. In our scenario, we use it to drop the piece of cake on the plate after it was pushed on the spatula. 
 
 Executing Plans
 ---------------
@@ -261,6 +225,34 @@ This starts the guest-centered plan execution loop (or GCPEL, as I certainly wil
 
 If you want to test this without using Pepper`s Dialog system, you can call the ``test-guest`` function. It will generate a dummy guest in the knowledge base.
 
+Plan Generation
+---------------
+
+The plan_generator module provides access to the classical planning system Fast Downward from http://www.fast-downward.org/ using a ROS service in python. It can be used to generate a plan for a given task within a given domain. In the case of the CaterROS café, it can be used to find a plan for the task of serving a given amount of pieces of cake in the CaterROS domain. Nevertheless, the underlying service can also be used for any other task and corresponding domain.
+
+To use the plan generator for CaterROS, you have to: 
+1. Follow the installation instructions at: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+2. Run the server for the python service 
+
+      .. code:: bash
+
+            rosrun plan_generator generate_plan.py
+
+3. Start the demo as explanined at: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+The Fast Downward planning system needs two inputs: a domain definition and a task definition written in the Planning Domain Definition Language (PDDL). You can find a good introduction on PDDL at: http://www.cs.toronto.edu/~sheila/2542/s14/A1/introtopddl2.pdf. 
+
+
+provides a service that can be used to generate a plan for a given task within a given domain dynamically. The resulting plan is contained in a json string that can easily be transformed into a list of CRAM's action designators. 
+
+In our implementation, the service is called within the plan_execution module. 
+
+Fast Downward is based on the Planning Domain Definition Language (PDDL). The algorithm needs two files as input: a domain file and a task file. The domain file for our scenario can be found in the pddl folder of the directory. The corresponding task file can be generated using the method generate-pddl-problem (name domain objects init-predicates goal-predicates) from pddl-problem-generation.lisp in the lisp folder. 
+
+
 Mockups
 -------
 
@@ -297,3 +289,12 @@ ___
 Turtlebot
 _________
 
+The turtle_command_pool holds the designator definitions and an action client which will forward the pose to the action server of the tortugabot. 
+
+The chain is basically the following:
+plan_execution has an action designator, which tells the tortugabot to go to the location of an location designator. The pose which is transmitted to the location designator, is the pose of the table the current customer is at - we receive that information from knowledge. 
+The location designator is being resolved with the help of mullitple costmaps.
+First a circle is created with a certain radius around the position point of the table (or the tf-frame of the table). Then another circle is created, smaller in radius, around the same point. This one gets substracted from the first, so that one receives an O-shape/doughnout. 
+After this, another costmap is overlayed, which substracts all kinds of obsticles which are within the doughnout, from the doughnout. This prevents point creation within walls, since these would be unreachable. 
+Then we receive a pose from that costmap, which through the action designator, is build into a cl-tf:pose-stamped.
+This gets forwarded to the action server of the turtlebot, and the turtle will then try and find a path to that point. 
