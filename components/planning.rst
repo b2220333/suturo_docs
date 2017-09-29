@@ -289,3 +289,12 @@ ___
 Turtlebot
 _________
 
+The turtle_command_pool holds the designator definitions and an action client which will forward the pose to the action server of the tortugabot. 
+
+The chain is basically the following:
+plan_execution has an action designator, which tells the tortugabot to go to the location of an location designator. The pose which is transmitted to the location designator, is the pose of the table the current customer is at - we receive that information from knowledge. 
+The location designator is being resolved with the help of mullitple costmaps.
+First a circle is created with a certain radius around the position point of the table (or the tf-frame of the table). Then another circle is created, smaller in radius, around the same point. This one gets substracted from the first, so that one receives an O-shape/doughnout. 
+After this, another costmap is overlayed, which substracts all kinds of obsticles which are within the doughnout, from the doughnout. This prevents point creation within walls, since these would be unreachable. 
+Then we receive a pose from that costmap, which through the action designator, is build into a cl-tf:pose-stamped.
+This gets forwarded to the action server of the turtlebot, and the turtle will then try and find a path to that point. 
