@@ -6,10 +6,7 @@ Prerequisites
 
 - You can launch the nodes on any machine you want as long as all of them share the same master (most likely the PR2).
 - Of course to launch a specific system, you have to have that system installed on the machine. Check the system's documentation for installation instructions.
-
-Optional
-byobu
-
+- Have the :doc:`pr2` and :doc:`turtlebot` up and running.
 
 
 Launch the CaterROS nodes
