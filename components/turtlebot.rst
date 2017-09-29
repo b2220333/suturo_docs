@@ -31,11 +31,11 @@ Which is an alias to set the PR2 as master. Then open byobu.
 
 This will launch internally (in summary)::
 
-	t1_minimal_bringup.launch 			|that brings up the motordriver (roboclaw), the laser (hokyo), 
-	joystic teleop, and a few other things. (a little chain of launch files)
-	t1_amcl_laser_without_map.launch 	|this is amcl aka. localization. Without the map server since the map is published by the PR2.
-	t1_move_base_laser.launch 			|brings up move_base so that the robot can drive around.
+	t1_minimal_bringup.launch 			
+	t1_amcl_laser_without_map.launch 	
+	t1_move_base_laser.launch 			
 
+The first one brings up the motordriver (roboclaw), the laser (hokyo), joystic teleop, and a few other things. (a little chain of launch files.) The second is amcl aka. localization. Without the map server since the map is published by the PR2. The last brings up move_base so that the robot can drive around.
 
 Done!
 
