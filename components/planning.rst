@@ -38,29 +38,29 @@ If you want to use the plan generator you have to install the fast downward plan
 
     You can choose arbitrary values for the given fields.
     
- 3. To ensure that all necessary dependencies are installed, execute::
+3. To ensure that all necessary dependencies are installed, execute::
  
         sudo apt-get install cmake g++ g++-multilib mercurial make python python-pip
         
- 4. Then, you can clone the planer to the folder that you created in step 1::
+4. Then, you can clone the planer to the folder that you created in step 1::
  
         cd planner
 	    hg clone http://hg.fast-downward.org downward
         
- 5. Build the planner::
+5. Build the planner::
  
         cd downward
 	    ./build.py
  
- 6. Create an empty file named "__init__.py" within the "downward"-folder.
+6. Create an empty file named "__init__.py" within the "downward"-folder.
  
- 7. Go to the subfolder "driver" and within the file "main.py" uncomment the line "sys.exit(exitcode)"::
+7. Go to the subfolder "driver" and within the file "main.py" uncomment the line "sys.exit(exitcode)"::
  
         # sys.exit(exitcode)
         
    This is needed because otherwise the plan generator's server won't be able to give a return value when being called.
    
- 8. Now, you can finally install the planner as a python module. This is necessary so that the plan generator can get access to it. Go to the folder you created in step 1 and execute::
+8. Now, you can finally install the planner as a python module. This is necessary so that the plan generator can get access to it. Go to the folder you created in step 1 and execute::
  
         sudo pip install -e .
 
