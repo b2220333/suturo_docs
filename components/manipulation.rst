@@ -56,6 +56,7 @@ The action server executable is provided by the :code:`suturo_action_server` pac
         l_gripper_joint: /l_gripper_controller/command
     joint_state_command_topic: /js_command
     visualization_target_frame: base_link
+    cpqs_target_frame: base_link
 
 In some cases it might be neccessary to control certain joints using position commands instead of velocitiy commands. These joints can be specified using :code:`position_controllers` map of the configuration. In this map the names of the names of joints are associated with the names of the topics on which the position commands should be published.
 
@@ -64,6 +65,9 @@ Another exception that can be managed by the action server are grippers. These a
 The parameter :code:`joint_state_command_topic` specifies a topic on which the commands are published as *sensor_msgs/JointState*. This is mainly a feature to make the server compatible with the current version of the `iai_naive_kinematics_sim <https://github.com/code-iai/iai_naive_kinematics_sim>`_.
 
 The parameter :code:`visualization_target_frame` determines the name of the frame that all threedimensional visualization will be published in. By default this value is set to :code:`base_link`.
+
+The parameter :code:`cpqs_target_frame` determines the name of the frame that the in-scene points calculated by the closest point query system should be relative to. By default this value is set to :code:`base_link`.
+
 
 Executing a Controller
 ''''''''''''''''''''''
@@ -136,13 +140,12 @@ The second automated behavior of the server tries to ease the usage of collision
 
 The action server uses the names of a controller's inputs to automatically determine which link's of the robot should be queried for by the algorithm. If an input is meant to be used for collision avoidance, it's name must follow this naming convention :code:`COLL:(L|W):[LINK NAME]`. The :code:`L` and :code:`W` define whether this input is supplying the point on the robot's link or in the world. The :code:`LINK NAME` needs to be the name of a link defined by the robot's URDF.
 
-Collision Avoidance
+Closest Point Query System
 ----------
-What does it do:
-The collision avoidance tries do avoid collisions with point clouds. The point clouds are converted to octrees to accelerate this process. This is done by the Octomap_server package. After that the collision avoidance finds the closest cell of the octree to each link of the collision query. If this distance drops under a certain threshold it is maximized to avoid the collision.
+The closest point query system finds the closest points between a robot link and the environment. The environment is represented as point clouds, which are converted to octrees to accelerate query process. The query process is executed once every controller update cycle and its results are input into the current controller through designated inputs. 
+The points can be used for a very simple collision avoidance mechanism, that enforces a safety margin between the points.
 
-Usage:
-Additionally to the Actionserver you have to launch the octomap_server package. You can do that by running roslaunch suturo_action_server octomap_mapping.launch. The octomap_server package listens for point clouds on the topic */kinect_head/depth_registered/points*. This can be changed in the launch file. After the octomap_server was launched the Actionserver should automatically use the collision avoidance for controllers with collision queries.
+.. Additionally to the Actionserver you have to launch the octomap_server package. You can do that by running roslaunch suturo_action_server octomap_mapping.launch. The octomap_server package listens for point clouds on the topic */kinect_head/depth_registered/points*. This can be changed in the launch file. After the octomap_server was launched the Actionserver should automatically use the collision avoidance for controllers with collision queries.
 
 Testing and Tools
 =================
