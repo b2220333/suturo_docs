@@ -23,6 +23,7 @@ Contents:
    components/pr2
    components/turtlebot
    components/launching
+   implementierung/schnittstellen
 
 ..
    .. toctree::
