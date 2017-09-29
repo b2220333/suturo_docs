@@ -23,20 +23,19 @@ If you want to use the plan generator you have to install the fast downward plan
 
 2. Within this folder, create a new file named "setup.py" with the following structure::
    
-   	#!/usr/bin/env python
+    #!/usr/bin/env python
 
-	from distutils.core import setup
+    from distutils.core import setup
 
-	setup(name='planner',
-    version='1.0',
-    description='pddl planning system',
-    author='someone',
-    author_email='someone@stuff.net',
-    url='https://www.python.org/sigs/distutils-sig/',
-    packages=['downward'],
-    	)      
-
-    You can choose arbitrary values for the given fields.
+    setup(name='planner',
+        version='1.0',
+        description='pddl planning system',
+        author='someone',
+        author_email='someone@stuff.net',
+        url='https://www.python.org/sigs/distutils-sig/',
+        packages=['downward'],
+    )      
+    # You can choose arbitrary values for the given fields.
     
 3. To ensure that all necessary dependencies are installed, execute::
  
@@ -45,12 +44,12 @@ If you want to use the plan generator you have to install the fast downward plan
 4. Then, you can clone the planer to the folder that you created in step 1::
  
         cd planner
-	    hg clone http://hg.fast-downward.org downward
+        hg clone http://hg.fast-downward.org downward
         
 5. Build the planner::
  
         cd downward
-	    ./build.py
+        ./build.py
  
 6. Create an empty file named "__init__.py" within the "downward"-folder.
  
@@ -74,8 +73,14 @@ ____________
 
 Let's have a look at our architecture. The following picture depicts our modules and how they use each other.
 	
-.. note::
-	Here should be a picture of the architecture.
+.. figure:: planning_architecture.png  
+    :alt: Planning Architecture
+    :scale: 90%
+    :align: center
+    
+    An overview of the architecture of the CaterROS planning system. 
+
+
 Modules
 _______
 
