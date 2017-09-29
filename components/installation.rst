@@ -92,12 +92,22 @@ You can open Emacs using the command::
          
 Install CRAM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The planning module is based on the Cognitive Robot Abstract Machine (CRAM, see http://ai.uni-bremen.de/research/cram for further information). You need the minimal installation of it to run the module. Therefore execute the following commands within the src folder of your dependency workspace::
+The planning module is based on the Cognitive Robot Abstract Machine (CRAM, see http://ai.uni-bremen.de/research/cram  or http://cram-system.org for further information). You need the full installation of it to run the module. (note: we are using ros-indigo and cram2 for this.) Therefore execute the following commands within the src folder of your dependency workspace::
 
     git clone https://github.com/cram2/cram_3rdparty.git
     git clone https://github.com/cram2/cram_core.git
-    rosdep install --ignore-src --from-paths cram_3rdparty cram_core
+    git clone https://github.com/cram2/cram_beliefstate.git
+    git clone https://github.com/cram2/cram_common.git
+    git clone https://github.com/cram2/cram_json_prolog.git
+    git clone https://github.com/code-iai/designator_integration.git
+
+    rosdep install --ignore-src --from-paths cram_3rdparty cram_core cram_beliefstate cram_common cram_json_prolog designator_integration
     cd .. && catkin_make
+
+Note: you also need the iai_common_msgs. If you don't have them yet, please pull them now and catkin_make. Otherwise a lot of things won't work.::
+    git clone https://github.com/code-iai/iai_common_msgs.git
+
+
 
 [Optional] Install the fast downward planner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -164,3 +174,43 @@ If actionlib_lisp cannot be found, you are missing the roslisp_common package. I
         cd .. && catkin_make
        
 Now try again to build your project workspace.
+
+
+Since Lisp uses asdf as it's building tool, building with catkin_make just makes sure you have most of the necessary dependencies. To really properly test if the planning module builds, you have to use emacs. 
+Plase take some time to get familiar with Emacs since many of the shortcuts you are familiar with, do completly different things in Emacs. There is a very nice overview of the most usefull shortcuts for Emacs in the context of planning and cram here http://cram-system.org/doc/ide under the point "Setup" and "Useful Tips". 
+Keep in mind, that the notation of Emacs shortcuts is also different. (it's explained in the linked tutorial above.)
+
+So now, open an Emacs and type::
+    
+    M-x slime RET       || loads slime and repl.
+    ,                   || promts to enter an command
+    r-l-s RET           || short for "ros-load-system"
+    plan_execution RET  || package name of the package you want to use. Plan_execution is the high-lvl-package of this module
+    ,
+    in-package RET      || 
+    pexecution          || name of the package you want to work from.
+
+If this all runs through without any exeptions, it means that all your dependencies should be fine and you were able to build the planning module sucessfully. 
+
+
+
+[Optional Package for the Turtles]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If you try to drive around with the turtles and you are sure you've set up amcl and move_base correctly, your odom is fine but the turtle still seems to be getting lost in the map, try installing this package::
+
+    git clone https://github.com/code-iai/snap_map_icp.git
+
+Just put it into your workspace. You will have to adjuts the launchfile to use the topics of your your robot. (Ex: if your robots topic is /tortugabot1/odom then you should set it in the launch file accordingly.)
+
+This will just generally make the navigation and orientation within the map more stable, even if the robot looses connection to the rosmaster sometimes. 
+
+
+TurtleBot
+^^^^^^^^^^
+On the turtlebot itself there already should be everything necessary for it to run. To make sure, you can however check if this package https://github.com/code-iai/tortugabot is there. Also it should already have amcl, move_base, and tortugabot_bringup. 
+
+If it has all of the above, the only thing you need to to is clone this package onto the robot::
+
+    git clone https://github.com/suturo16/sut_tortugabot.git
+
+It contains all the launch files which it needs to run in order to work within this system.

@@ -14,6 +14,7 @@ Contents:
    :caption: Components of the CaterROS system
    
    components/overview
+   components/installation
    components/perception
    components/dialogsystem
    components/manipulation
