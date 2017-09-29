@@ -327,14 +327,12 @@ Most of the mockups have some support for the ROS parameter server. The graspkar
 Robot-specific Commands
 -----------------------
 
-.. note::
-	Hmmm
+The CaterROS planning system provides modules for the PR2 and TurtleBot robots. These contain mostly functions to control these robots.
 	
 PR2
 ___
 
-.. note::
-	Explain how reacting to feedback works for example.
+To control the PR2 the planning system uses an action client for the action server provided by Manipulation. The pr2_command_pool package holds functions which call the action server with different controllers to move the PR2. The planning system continuously handles the feedback given by the server. Based on a break condition defined on a per-action level the feedback is evaluated. If the condition is given, the server is preempted and the action is considered successful. The break condition can consider the raw error value, the alterration rate of this value or both to evaluate whether an action is completed.
 
 Turtlebot
 _________
