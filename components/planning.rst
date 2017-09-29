@@ -6,9 +6,64 @@ Planning
 
 Installation
 ------------
+To install the planning system to your workspace, you need clone the repository to the source folder of your workspace. After that you can use wstool and rosdep to install the needed dependencies::
 
-.. note::
-	Simple. Just git clone. And rosinstall :D (in theory)
+    cd ~/path_to_my_ws/src
+    git clone https://github.com/suturo16/planning.git
+    wstool merge planning/dependencies.rosinstall
+    wstool update
+    rosdep install -riy --from-paths .
+
+Now you can build your workspace using catkin.
+
+**Optional: Plan Generator**
+
+If you want to use the plan generator you have to install the fast downward planer from http://www.fast-downward.org/ in addtion. This package is not needed for building the planning module. You can find a detailled description of how to setup and use the fast downwards planner at http://www.fast-downward.org/ObtainingAndRunningFastDownward.
+
+1. Create a new folder within your dependency workspace, e.g. "planner". 
+
+2. Within this folder, create a new file named "setup.py" with the following structure::
+   
+   	#!/usr/bin/env python
+
+	from distutils.core import setup
+
+	setup(name='planner',
+    version='1.0',
+    description='pddl planning system',
+    author='someone',
+    author_email='someone@stuff.net',
+    url='https://www.python.org/sigs/distutils-sig/',
+    packages=['downward'],
+    	)      
+
+    You can choose arbitrary values for the given fields.
+    
+ 3. To ensure that all necessary dependencies are installed, execute::
+ 
+        sudo apt-get install cmake g++ g++-multilib mercurial make python python-pip
+        
+ 4. Then, you can clone the planer to the folder that you created in step 1::
+ 
+        cd planner
+	    hg clone http://hg.fast-downward.org downward
+        
+ 5. Build the planner::
+ 
+        cd downward
+	    ./build.py
+ 
+ 6. Create an empty file named "__init__.py" within the "downward"-folder.
+ 
+ 7. Go to the subfolder "driver" and within the file "main.py" uncomment the line "sys.exit(exitcode)"::
+ 
+        # sys.exit(exitcode)
+        
+   This is needed because otherwise the plan generator's server won't be able to give a return value when being called.
+   
+ 8. Now, you can finally install the planner as a python module. This is necessary so that the plan generator can get access to it. Go to the folder you created in step 1 and execute::
+ 
+        sudo pip install -e .
 
 System Overview
 ---------------
