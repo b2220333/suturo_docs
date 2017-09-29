@@ -1,7 +1,3 @@
-.. note:: 
-      Zur Dokumentation: Die Dokumentation soll so geschrieben sein, dass sie später anderen eine gute Übersicht über unser System gibt und dessen Nutzung vereinfacht. Wir sollen alle Komponenten unseres Systems (alle Features, die es so gibt oder Teile der Architektur, z.B. welche Dateien was enthalten, welche Regler es gibt...) beschreiben. Dabei helfen auch Grafiken, wie die Komponenten untereinander verbunden sind. Die Beschreibung soll eher auf "Highlevel"-Ebene sein, d.h. was die Features ungefähr machen und wo man sie findet, eine API ist nicht notwendig. Jeder sollte die von ihm entwickelten Features nach Möglichkeit selbst beschreiben!
-      Memo: Die Notiz am Ende bitte wieder entfernen =)
-
 Planning
 ========
 
@@ -172,12 +168,25 @@ The core functionality of the RPC client is to send RPC to Pepper. Mainly we use
 	
 	(fire-rpc-to-client :pepper "notify")
 
-Plans/Actions
+Plans
 -------------
+We defined different plans to realize our scenario: 
 
-.. note::
-	What actions do we have?
-	
+	**- grasp:**
+	There is one plan that enables the PR2 to grasp various objects. How to grasp the actual object is decided on the basis of the given object type. Possible objects that can be grasped are: a knife, a plate, a spatula and a cylinder. 
+
+	**- place-object:**
+	The plan place-object can be used hold a given object to a given location. Optionally, the object can be released so that this plan can also be used to drop objects to a given location. The given object has to be grasped already. 
+
+	**- detach-object-from-rack:**
+	This plan is used to detach objects that should be taken from the rack. It assumes that the given object was grasped already. In our scenario, this is only used for getting the knife. 
+
+	**- cut-object:**
+	The plan cut-object is used to cut a given object (in our case: a cake) with a given knife. It assumes that the knife is grasped 	already. Additionally, a target can be defined optionally. If a target is given, the slice that was cut is moved there. In our scenario, we pass the spatula as a target so that the PR2 pushs the piece of cake onto it after it was cut. 
+
+	**- move-n-flip:**
+	Move-n-flip is used to move a given tool to a given location and then flip it. In our scenario, we use it to drop the piece of cake on the plate after it was pushed on the spatula. 
+
 Executing Plans
 ---------------
 
@@ -276,3 +285,7 @@ ___
 
 .. note::
 	Explain how reacting to feedback works for example.
+
+Turtlebot
+_________
+

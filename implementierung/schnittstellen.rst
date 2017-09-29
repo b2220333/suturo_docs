@@ -136,8 +136,8 @@ __________
 graspkard/gripper_control.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Changes the gripper opening width to the desired value.
-    :Gelenklisten: 
+    :Description: Changes the gripper opening width to the desired value.
+    :Joint list: 
       - *graspkard/config/pr2_right_gripper.yaml*: Right gripper
       - *graspkard/config/pr2_left_gripper.yaml*: Left gripper
     :Parameter:
@@ -152,37 +152,37 @@ graspkard/gripper_control.yaml
 graspkard/pr2_grasp_control_r.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Fährt eine Greifpose an einem Zylinder mit dem rechten Arm an. Öffnet hierbei den Greifer.
-    :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+    :Description: Grasps a cylinder with the right arm. Opens the gripper in the process.
+    :Joint list: 
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform**: Frame des Zylinders im Referenzframe des Roboters. Beim PR2 ist dies *base_link*.
-      - **double**: Durchmesser des Zylinders in *m*
-      - **double**: Höhe des Zylinders in *m*
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/approach_cylinder_r.yaml*: Fährt mit dem rechten Arm einen Zylinder namens *cylinder* an, welcher die Maße 5x14 *cm* hat. 
+      - **transform**: Frame of the cylinder in the reference frame of the Robot. This is *base_link* for the PR2.
+      - **double**: Diameter of the cylinder in *m*
+      - **double**: Hight of the cylinder in *m*
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameters:
+      - *graspkard/test_params/approach_cylinder_r.yaml*: Moves the right arm to a cylinder with the name *cylinder* with the dimensions 5x14 *cm*. 
 
 graspkard/pr2_grasp_control_l.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Fährt eine Greifpose an einem Zylinder mit dem linken Arm an. Öffnet hierbei den Greifer.
-    :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_left_arm.yaml*: Torso, Linker Arm und Greifer
+    :Description: Grasps a cylinder with the left arm. Opens the gripper in the process.
+    :Joint list: 
+      - *graspkard/config/pr2_upper_body_left_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform**: Frame des Zylinders im Referenzframe des Roboters. Beim PR2 ist dies *base_link*.
-      - **double**: Durchmesser des Zylinders in *m*
-      - **double**: Höhe des Zylinders in *m*
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/approach_cylinder_l.yaml*: Fährt mit dem linken Arm einen Zylinder namens *cylinder* an, welcher die Maße 5x14 *cm* hat.
+      - **transform**:  Frame of the cylinder in the reference frame of the Robot. This is *base_link* for the PR2.
+      - **double**: Diameter of the cylinder in *m*
+      - **double**:Hight of the cylinder in *m*
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter:
+      - *graspkard/test_params/approach_cylinder_l.yaml*: Moves the right arm to a cylinder with the name *cylinder* with the dimensions 5x14 *cm*. 
         
 graspkard/pr2_upper_body_joint_control.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Fährt ein Gelenkziel für den Oberkörper des Roboters an. 
-    :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body.yaml*: Torso, beide Arme, keine Greifer
+    :Description: Moves the joints of the torso into a goal position 
+    :Joint list: 
+      - *graspkard/config/pr2_upper_body.yaml*: Torso, both arms, no grippers
     :Parameter:
         - **double** Position des Gelenks *torso_lift_joint* in *m*
         - **double** Position des Gelenks *l_shoulder_pan_joint* in *rad*
@@ -199,16 +199,16 @@ graspkard/pr2_upper_body_joint_control.yaml
         - **double** Position des Gelenks *r_forearm_roll_joint* in *rad*
         - **double** Position des Gelenks *r_wrist_flex_joint* in *rad*
         - **double** Position des Gelenks *r_wrist_roll_joint* in *rad*
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/upper_body_praying_mantis.yaml*: Die *Gottesanbeterin*-Pose
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter:
+      - *graspkard/test_params/upper_body_praying_mantis.yaml*: The *Praying Mantis* pose
 
 graspkard/pr2_right_arm_joint_control.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Fährt ein Gelenkziel für den rechten Arm des Roboters an. Der Greifer ist zwar Teil der Gelenkliste und Parameter, wird aber nicht kontrolliert.
-    :Gelenklisten: 
-      - *graspkard/config/pr2_right_arm.yaml*: Rechter Arm und Greifer
+    :Description: Moves the joints of the right arm into a goal position. Even though the gripper is included in the joint list and parameters, it is not comtrolled.
+    :Joint list: 
+      - *graspkard/config/pr2_right_arm.yaml*: Right arm and gripper
     :Parameter:
         - **double** Position des Gelenks *r_shoulder_pan_joint* in *rad*
         - **double** Position des Gelenks *r_shoulder_lift_joint* in *rad*
@@ -218,16 +218,16 @@ graspkard/pr2_right_arm_joint_control.yaml
         - **double** Position des Gelenks *r_wrist_flex_joint* in *rad*
         - **double** Position des Gelenks *r_wrist_roll_joint* in *rad*
         - **double** Position des Greifers in *m* - wird ignoriert
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/r_arm_praying_mantis.yaml*: Die *Gottesanbeterin*-Pose des rechten Arms
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter:
+      - *graspkard/test_params/r_arm_praying_mantis.yaml*: The *Praying Mantis* pose of the right arm
 
 graspkard/pr2_left_arm_joint_control.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Fährt ein Gelenkziel für den linken Arm des Roboters an. Der Greifer ist zwar Teil der Gelenkliste und Parameter, wird aber nicht kontrolliert.
-    :Gelenklisten: 
-      - *graspkard/config/pr2_left_arm.yaml*: Rechter Arm und Greifer
+    :Description: Moves the joints of the left arm into a goal position. Even though the gripper is included in the joint list and parameters, it is not comtrolled.
+    :Joint list: 
+      - *graspkard/config/pr2_left_arm.yaml*: Left arm and gripper
     :Parameter:
         - **double** Position des Gelenks *l_shoulder_pan_joint* in *rad*
         - **double** Position des Gelenks *l_shoulder_lift_joint* in *rad*
@@ -237,170 +237,170 @@ graspkard/pr2_left_arm_joint_control.yaml
         - **double** Position des Gelenks *l_wrist_flex_joint* in *rad*
         - **double** Position des Gelenks *l_wrist_roll_joint* in *rad*
         - **double** Position des Greifers in *m* - wird ignoriert
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/l_arm_praying_mantis.yaml*: Die *Gottesanbeterin*-Pose des linken Arms
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter:
+      - *graspkard/test_params/l_arm_praying_mantis.yaml*: The *Praying Mantis* pose of the left arm
 
 graspkard/pr2_place_control_r.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Platziert ein mit rechts gegriffenes, zylindrisches Objekt in einer Zielzone.
-    :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+    :Description: Places a cylinder in a traget area with the right arm.
+    :Joint list: 
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform** Frame der Zielzone in *base_link*.
-      - **transform** Frame des Zylinders in *r_wrist_roll_link*.
-      - **double** Durchmesser des Zylinders
-      - **double** Höhe des Zylinders
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/place_cylinder_r.yaml*: Platziert einen Zylinder namens *cylinder* in einem Zielareal namens *goal_area*
+      - **transform** Frame of the target area *base_link*.
+      - **transform** Frame of the cylinder in *r_wrist_roll_link*.
+      - **double** Diameter of the cylinder
+      - **double** Height of the Cylinder
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter:
+      - *graspkard/test_params/place_cylinder_r.yaml*: Places a cylinder called *cylinder* in a target area called *goal_area*
 
 graspkard/pr2_place_control_l.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Platziert ein mit links gegriffenes, zylindrisches Objekt in einer Zielzone.
-    :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_left_arm.yaml*: Torso, Rechter Arm und Greifer
+    :Beschreibung: Places a cylinder in a traget area with the left arm.
+    :Joint list: 
+      - *graspkard/config/pr2_upper_body_left_arm.yaml*: Torso, left arm and gripper
     :Parameter:
-      - **transform** Frame der Zielzone in *base_link*.
-      - **transform** Frame des Zylinders in *l_wrist_roll_link*.
-      - **double** Durchmesser des Zylinders
-      - **double** Höhe des Zylinders
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter:
-      - *graspkard/test_params/place_cylinder_l.yaml*: Platziert einen Zylinder namens *cylinder* in einem Zielareal namens *goal_area*
+      - **transform** Frame of the target area *base_link*.
+      - **transform** Frame of the cylinder in *r_wrist_roll_link*.
+      - **double** Diameter of the cylinder
+      - **double** Height of the Cylinder
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter:
+      - *graspkard/test_params/place_cylinder_l.yaml*: Places a cylinder called *cylinder* in a target area called *goal_area*
 
 
 graspkard/knife_grasp.yaml - Messer greifen
 """""""""""""""""""""""""
-    :Beschreibung: Fährt ein Messer zum Greifen mit dem rechten Arm an.
-    :Gelenklisten:
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm, rechter Greifer
+    :Description: Grasps a knife with the right arm.
+    :Joint list:
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, left arm and gripper
     :Parameter:
-      - **transform** Frame des Messers in *base_link*
-      - **double** Höhe des Messers in *m*
-      - **double** Länge des Messergriffes in *m*
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
-    :Beispiel-Parameter: TODO
+      - **transform** Frame of the knife in *base_link*
+      - **double** Height of the knife in *m*
+      - **double** Length of the knife hanfle in *m*
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter: TODO
 
 
 graspkard/TODO - Messer umgreifen
 """""""""""""""""""""""""
-    :Beschreibung: Messer sitzt beim ersten Greifen ungeeignet für das Schneiden im Greifer und wird mit Hilfe dieses Controllers in eine geeignete Position gebracht.
-    :Gelenklisten:
+    :Description: Messer sitzt beim ersten Greifen ungeeignet für das Schneiden im Greifer und wird mit Hilfe dieses Controllers in eine geeignete Position gebracht.
+    :Joint list:
       - *graspkard/config/pr2_upper_body_grippers.yaml*: Torso, rechter Arm, linker Arm, rechter Greifer, linker Greifer
     :Parameter:
       - **transform** Frame des Messers in *base_link*
       - **double** Länge des Messers in *m*
       - **double** Länge des Griffes in *m*
       - **double** Höhe des Griffes in *m*
-    :Feedback: *feedback* je näher an :math:'0', desto besser 
-    :Beispiel-Parameter: TODO
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Example parameter: TODO
 
 
 graspkard/pr2_cut_r.yaml
 """""""""""""""""""""""""
-    :Beschreibung: Schneidet einen Kuchen parallel zu seiner YZ-Ebene mit dem rechten Arm.
+    :Beschreibung: Cuts a cake parallel to its YZ-plane with the right arm.
     :Gelenklisten:
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, left arm and gripper
     :Parameter:
-      - **transform** Frame des Kuchens in *base_link*
-      - **double** Länge des Kuchens (X-Ausdehnung)
-      - **double** Breite des Kuchens (Y-Ausdehnung)
-      - **double** Tiefe des Kuchens (Z-Ausdehnung)
-      - **transform** Frame des Messers in *r_wrist_roll_link*
-      - **double** Höhe des Messers
-      - **double** Länge des Messergriffs
-      - **double** Breite des Kuchenstücks
-    :Feedback: *feedback* Je näher an 0 desto besser.
-    :Beispiel-Parameter: *graspkard/test_params/cut.yaml*: Schneidet ein 1,5cm breites Stück von einen Kuchen *cake* mit einem Messer *knife*.
+      - **transform** Frame of the cake in *base_link*
+      - **double** Length of the cake (X-dimension)
+      - **double** Width of the cake (Y-dimension)
+      - **double** Depth of the cake (Z-dimension)
+      - **transform** Frame of the cake in *r_wrist_roll_link*
+      - **double** Height of the knife
+      - **double** Length of the knife handle
+      - **double** Width of the piece of cake
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Beispiel-Parameter: *graspkard/test_params/cut.yaml*: Cuts a 1,5cm wide piece of cake *cake* with a knife *knife*.
 
 
 graspkard/pr2_cut_position_r.yaml
 """""""""""""""""""""""""
-    :Beschreibung: Geht mit dem rechten Arm in eine Vorpose, um einen Kuchen zu schneiden.
+    :Beschreibung: Moves the right arm into position for cutting the cake
     :Gelenklisten:
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform** Frame des Kuchens in *base_link*
-      - **double** Länge des Kuchens (X-Ausdehnung)
-      - **double** Breite des Kuchens (Y-Ausdehnung)
-      - **double** Tiefe des Kuchens (Z-Ausdehnung)
-      - **transform** Frame des Messers in *r_wrist_roll_link*
-      - **double** Höhe des Messers
+      - **transform** Frame of the cake in *base_link*
+      - **double** Length of the cake (X-dimension)
+      - **double** Width of the cake (Y-dimension)
+      - **double** Depth of the cake (Z-dimension)
+      - **transform** Frame of the knife in *r_wrist_roll_link*
+      - **double** Height of the knife
       - **double** Länge des Messergriffs
-      - **double** Breite des Kuchenstücks
-    :Feedback: *feedback* Je näher an 0 desto besser.
-    :Beispiel-Parameter: *graspkard/test_params/cut_pos.yaml*: Geht in die Vorpose um schließlich ein 1,5cm breites Stück von einen Kuchen *cake* mit einem Messer *knife*.
+      - **double** Width of the piece of cake
+    :Feedback: *feedback* the closer to :math:`0` the better.
+    :Beispiel-Parameter: *graspkard/test_params/cut_pos.yaml*: Moves the right arm into position for cutting a 1,5cm wide piece of cake from the cake *cake* with a knife *knife*.
 
 
 graspkard/pr2_detatch_knife_r.yaml
 """"""""""""""""""""""""""
     
-    :Beschreibung: Löst ein mit rechts gegriffenes, Objekt von einem Magnet-Rack. Die Y-Achse muss in das Rack hinein zeigen. Diese Ausrichtung wurde gewählt, da man so die letzte Pose des Messers als Pose für das Rack verwenden kann.
+    :Beschreibung: Detaches an object from the rack with the right arm. The Y-axis must point towards the rack. That way it is possible to use the last pose of the knife as rack pose.
     :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, Rechter Arm und Greifer
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform** Frame des Messers in *r_wrist_roll_link*.
-      - **transform** Frame des Racks in *base_link*.
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+      - **transform** Frame of the knife io *r_wrist_roll_link*.
+      - **transform** Frame of the rack in *base_link*.
+    :Feedback: *feedback* the closer to :math:`0` the better.
     :Beispiel-Parameter:
-      - Noch keine
+      - TODO
         
 graspkard/pr2_look_at.giskard
 """"""""""""""""""""""""""
     
-    :Beschreibung: Richtet den RGB-Sensor der Kinect auf den Mittlepunkt eines Frames aus.
+    :Beschreibung: Points the RGB-Sensor of the Kinect at the center of a frame.
     :Gelenklisten: 
       - *graspkard/config/pr2_lookAt_joints.yaml*: Torso, Neigungs- und Drehgelenk
     :Parameter:
-      - **transform** Frame zum Angucken in *base_link*.
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+      - **transform** Frame to look at in *base_link*.
+    :Feedback: *feedback* the closer to :math:`0` the better.
     :Beispiel-Parameter:
       - *graspkard/test_params/poi_test.yaml*
         
 graspkard/pr2_grasp_plate_r.giskard
 """"""""""""""""""""""""""
     
-    :Beschreibung: Nutzt den rechten Arm, um eine kreisförmige Kante anzufahren. Der Mittelpunkt der Kante wird als Frame übergeben. Die Z-Achse des Frames ist die Achse um die die Kante rotiert ist. Für die Kante wird ein Neigungswinkel angegeben, der die Neigung der Kante zur Z-Achse angibt. Wiichtig bei diesem Winkel ist, dass er vom äußeren Rand zur Achse hin gemessen wird, also üblicherweise größer als 90° ist.
+    :Beschreibung: Uses the right arm to grasp a circular edge. The center of the edge is passed as frame. The Z-axis is the rotational axis. The angle between the outer edge and the rotational axis is also passed. SO it it usually greater than 90°.
     :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm und Greifer
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform** Frame als Mittelpunkt für Kante in *base_link*.
-      - **double** Radius der Kante in *m*.
-      - **double** Obere Z-Koordinate der Kante im Mittelpunkts-Frame.
-      - **double** Breite der Kante in *m*.
-      - **double** Neigung der Kante relativ zur Z-Achse des Mittelpunkts-Frames in *rad*.
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+      - **transform** Frame of the center of the edge in *base_link*.
+      - **double** Radius of the edge in *m*.
+      - **double** Upper Z-Coordinate of the edge in the center frame.
+      - **double** Width of the dge in *m*.
+      - **double** Angle between the edge and the rotational axis in *rad*.
+    :Feedback: *feedback* the closer to :math:`0` the better.
     :Beispiel-Parameter:
       - *graspkard/test_params/pr2_grasp_plate_r.yaml*
 
 graspkard/pr2_release_r.giskard
 """"""""""""""""""""""""""
     
-    :Beschreibung: Lässt ein mit dem rechten Greifer gehaltenes Objekt los. Hierfür wird der Greifer ca 12cm entlang seiner X-Achse rückwärts bewegt, während die Rotation beibehalten wird. Damit dies funktioniert, muss dem Regler die initiale Transformation des Greifers als konstanter Frame übergeben werden. Zusätzlich muss noch angegeben werden, wie weit der Greifer geöffnet werden soll.
+    :Beschreibung: Releases an object that was grasped with the right gripper. The gripper is moved backwards 12cm along the X-axis. The rotation does not change in the meantime. In order for this to work the starting position of the gripper must be passed as constant frame. Aditionally the opening width for the gripper must be passed.
     :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm und Greifer
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform** Ausgangsframe des Greifers in *base_link*.
-      - **double** Öffnungsweite des Greifers in *m*.
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+      - **transform** Starting frame of the gripper in *base_link*.
+      - **double** Opening width of the gripper in *m*.
+    :Feedback: *feedback* the closer to :math:`0` the better.
     :Beispiel-Parameter:
       - Derzeit keine
         
 graspkard/pr2_move_and_flip_r.giskard
 """"""""""""""""""""""""""
     
-    :Beschreibung: Gedacht für den vorsichtigen Transport von etwas auf einem Teller oder Kuchenheber (o.ä) und anschließendes Ablegen (Abkippen) in einer kreisförmigen Zielzone. Benötigt wird die Transformation des Kuchenhebers relativ zum rechten Greifer, der Frame der Zielzone, die Breite des Hebers und der Radius der Zielzone.
+    :Beschreibung: It is used to drop an object in a target area from a plate or spatula. Required are the transformation of the spatula relative to the right gripper, the frame of the target area, the width of the spatula and the radius of the target area.
     :Gelenklisten: 
-      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, rechter Arm und Greifer
+      - *graspkard/config/pr2_upper_body_right_arm.yaml*: Torso, right arm and gripper
     :Parameter:
-      - **transform** Werkzeug relativ zu *r_wrist_roll_link*.
-      - **transform** Zielzone in *base_link*.
-      - **double** Breite des Werkzeugs in *m*.
-      - **double** Radius der Zielzone in *m*.
-    :Feedback: *feedback* je näher an :math:`0`, desto besser.
+      - **transform** Spatula relative to *r_wrist_roll_link*.
+      - **transform** target area in *base_link*.
+      - **double** Width of the spatula in *m*.
+      - **double** Radius of the target area in *m*.
+    :Feedback: *feedback* the closer to :math:`0` the better.
     :Beispiel-Parameter:
       - *graspkard/test_params/move_and_flip.yaml*
 
