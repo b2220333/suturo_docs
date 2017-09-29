@@ -196,30 +196,18 @@ Move-n-flip is used to move a given tool to a given location and then flip it. I
 Plan Generation
 ---------------
 
-The plan_generator module provides access to the classical planning system Fast Downward from http://www.fast-downward.org/ using a ROS service in python. Fast Downward can be used to generate a plan (as a sequence of actions) for a given task within a given domain. In the case of the CaterROS café, it is used to find a plan for the task of serving a given amount of pieces of cake in the CaterROS domain. This plan is generated dynamically at the beginning and executed without any changes afterwards.
+The plan_generator module allows to dynamically generate a sequence of actions that are needed to fulfill a given goal (in our case: serve a given amount of pieces of cake). Therefore, it provides access to the classical planning system Fast Downward from http://www.fast-downward.org/ using a ROS service in python. The service returns the resulting actions in a JSON-format that can easily be transformed to the action designators that are needed by our system.
 
 The Fast Downward planning system needs two inputs: a domain definition and a task definition written in the Planning Domain Definition Language (PDDL). You can find a good introduction on PDDL at: http://www.cs.toronto.edu/~sheila/2542/s14/A1/introtopddl2.pdf. 
+The domain definition describes the given environment which is mainly about the kind of objects that can be found there, the properties that they can have and the actions that can be used to change their properties. In our case, all the tasks that can be occur are placed in the same domain, so we defined the CaterROS domain. A task defines an initial state and a goal state. The planning system then shall find a sequence of actions (as defined in the given domain) to get from the initial state to the goal state. Therefore, the task definition also contains the concrete objects that are given (for example knife0 as a knife). The plan_generator module provides methods to generate a task file automatically depending on the amount of pieces of cake that should be served. The other objects and properties of the objects are fixed since they cannot (and don't have to) change within our scenario. 
 
-To use the plan generator for CaterROS, you have to: 
-1. Follow the installation instructions at: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-2. Run the server for the python service 
+To use the plan generator for the CaterROS scenario, just start the python service:
 
       .. code:: bash
 
             rosrun plan_generator generate_plan.py
 
-
-
-
-
-
-
-provides a service that can be used to generate a plan for a given task within a given domain dynamically. The resulting plan is contained in a json string that can easily be transformed into a list of CRAM's action designators. 
-
-In our implementation, the service is called within the plan_execution module. 
-
-Fast Downward is based on the Planning Domain Definition Language (PDDL). The algorithm needs two files as input: a domain file and a task file. The domain file for our scenario can be found in the pddl folder of the directory. The corresponding task file can be generated using the method generate-pddl-problem (name domain objects init-predicates goal-predicates) from pddl-problem-generation.lisp in the lisp folder. 
+Now the demonstration can be run using the plan generator.
 
 
 
@@ -260,6 +248,8 @@ Now you call::
 This starts the guest-centered plan execution loop (or GCPEL, as I certainly will never call it). As long as there is no guest present in the knowledge base the loop prints a message that it's waiting for a guest. When a guest arrives and makes an order, the loop will start executing the plans. First it will execute the ``prep`` task, to grasp the tools. Then it will ``cut`` as often as the guest ordered pieces of cake. And lastly it will ``deliver`` the plate with the cake onto the TurtleBot, which will then bring it to the table.
 
 If you want to test this without using Pepper`s Dialog system, you can call the ``test-guest`` function. It will generate a dummy guest in the knowledge base.
+
+
 
 Mockups
 -------
