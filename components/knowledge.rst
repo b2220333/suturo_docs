@@ -30,16 +30,33 @@ World state
 The world state comprises of the important concepts.
 
 1. Temporal Parts of Objects
+''''''''''''''''''''''''''''
+
 When storing spatial information about objects, it is crucial to connect these information to a certain point in time because it is the only way to enable the knowledge base to reason over new and old data respectively. In the picture below you can see how temporal parts are structured in KnowRob.
 
 .. figure:: temporal_parts.png  
     :alt: Temporal Parts in KnowRob
-    :scale: 50%
+    :scale: 30%
+    :align: center
+
+Due to this concept it is possible for objects in KnowRob to have their attributes connected to a specific point in time. 
+
+2. Physical Parts of Objects
+'''''''''''''''''''''''''''''
+
+To improve on the modelling concept of objects in KnowRob, physical parts were introduced. Objects now consist of subobjects. For example a cake spatula consists of two subobjects for its handle and for its supporting plane. This is useful because sometimes you want to grasp specific parts of an object. In case of the cake spatula you probably wanna grasp it at its handle, therefore it is easier to just lookup the pose of the handle instead of the object itself, which is defined as the center of the object. Despite the fact, that this way of representing objects is more plausible from a modelling side of view, it also makes it easier to store constants for specific offset values that belong to a physical part of an object. The illustration below provides an example of a cake spatula object in KnowRob.
+
+.. figure:: physical_parts.png  
+    :alt: Temporal Parts in KnowRob
+    :scale: 30%
     :align: center
 
 
 
-2. Zweiter Test
+
+
+''''''''''''''''''''''''''''''''''''''
+
 
 CaterROS Cafeteria Modelling
 ----------
