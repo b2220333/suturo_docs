@@ -123,7 +123,7 @@ Furthermore we needed an ordering system for the cafe CaterROS. For this we crea
     :scale: 50%
     :align: center 
     
- We extended this by a model of the CaterROS Cafe in the file :code:`suturo_cafetaria.owl`. This contains e.g. the position of the customer tables.
+We extended this by a model of the CaterROS Cafe in the file :code:`suturo_cafetaria.owl`. This contains e.g. the position of the customer tables.
     
 Interpretation of DialogIntention
 `````````````
