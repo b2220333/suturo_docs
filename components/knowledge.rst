@@ -70,6 +70,7 @@ When storing spatial information about objects, it is crucial to connect these i
     :alt: Temporal Parts in KnowRob
     :scale: 50%
     :align: center
+    
 
 Due to this concept it is possible for objects in KnowRob to have their attributes connected to a specific point in time. 
 
