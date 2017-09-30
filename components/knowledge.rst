@@ -79,7 +79,7 @@ Physical Parts of Objects
 To improve on the modelling concept of objects in KnowRob, physical parts were introduced. Objects now consist of subobjects. For example a cake spatula consists of two subobjects for its handle and for its supporting plane. This is useful because sometimes you want to grasp specific parts of an object. In case of the cake spatula you probably wanna grasp it at its handle, therefore it is easier to just lookup the pose of the handle instead of the object itself, which is defined as the center of the object. Despite the fact, that this way of representing objects is more plausible from a modelling side of view, it also makes it easier to store constants for specific offset values that belong to a physical part of an object. The illustration below provides an example of a cake spatula object in KnowRob.
 
 .. figure:: physical_parts.jpg  
-    :alt: Temporal Parts in KnowRob
+    :alt: Physical Parts
     :scale: 50%
     :align: center
 
@@ -115,8 +115,10 @@ The python script object_state/scripts/fluents_tf_publisher.py creates a ROS nod
 CaterROS Cafeteria Modelling
 `````````````
 
+Furthermore we needed an orderin system for the cafe CaterROS. For this we created a customer model. We modelled the customer who has the temporal property visit to Visit instances. Visit instances have hasOrder properties for each order and an property to store the table of the customer. An order stores the ordered product, the corresponding ordered amount and the coresponding delivered amount.
+
 .. figure:: cafetariamodel.png  
-    :alt: Connected frames in RVIZ.
+    :alt: Customer model
     :scale: 50%
     :align: center
  	
