@@ -115,13 +115,25 @@ The python script object_state/scripts/fluents_tf_publisher.py creates a ROS nod
 CaterROS Cafeteria Modelling
 `````````````
 
-Furthermore we needed an orderin system for the cafe CaterROS. For this we created a customer model. We modelled the customer who has the temporal property visit to Visit instances. Visit instances have hasOrder properties for each order and an property to store the table of the customer. An order stores the ordered product, the corresponding ordered amount and the coresponding delivered amount.
+Furthermore we needed an ordering system for the cafe CaterROS. For this we created a customer model in the file  	:code:`suturo_customer_model.owl`. We modelled the customer who has the temporal property visit to Visit instances. Visit instances have hasOrder properties for each order and an property to store the table of the customer. An order stores the ordered product, the corresponding ordered amount and the coresponding delivered amount.
 
 .. figure:: cafetariamodel.png  
     :alt: Customer model
     :scale: 50%
     :align: center
- 	
+    
+ We extended this by a model of the CaterROS Cafe in the file :code:`suturo_cafetaria.owl`. This contains e.g. the position of the customer tables.
+    
+Interpretation of DialogIntention
+`````````````
+Additionally a system to align the knowledge base to the results from the dialog system was implemented. The dialog system creates a JSON-String, that contains the intention derived from the dialog of the customer and the system. This intention is then filtered by the Planning System and then parsed to create a DialogIntention Object. 
+
+A DialogIntention objects saves the guestID and a DialogSem
+
+.. figure:: dialogintention.png 
+    :alt: Dialog Intention
+    :scale: 50%
+    :align: center 	
 
 Developed Tools / Libraries
 ----------
