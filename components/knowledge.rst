@@ -118,12 +118,12 @@ CaterROS Cafeteria Modelling
 
 Furthermore we needed an ordering system for the cafe CaterROS. For this we created a customer model in the file  	:code:`suturo_customer_model.owl`. We modelled the customer who has the temporal property visit to Visit instances. Visit instances have :code:`hasOrder` properties for each order and an property to store the table of the customer. An order stores the ordered product, the corresponding ordered amount and the coresponding delivered amount.
 
+We extended this by a model of the CaterROS Cafe in the file :code:`suturo_cafetaria.owl`. This contains e.g. the position of the customer tables.
+
 .. figure:: cafetariamodel.png
     :alt: Cafetaria Model
     :scale: 50%
-    :align: center 
-    
-We extended this by a model of the CaterROS Cafe in the file :code:`suturo_cafetaria.owl`. This contains e.g. the position of the customer tables.
+    :align: center
     
 Interpretation of DialogIntention
 `````````````
