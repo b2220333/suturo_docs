@@ -8,6 +8,14 @@ Part of these information surely are about the world and its objects. For robots
 
 Installation
 ----------
+The knowledge system depends on KnowRob and SWI-Prolog. To Install the dependencies follow this steps:
+
+	1. Install SWI-Prolog::
+
+		sudo apt-get install swi-prolog swi-prolog-*
+	
+	2. Install Knowrob
+
 To install the knowledge system to your workspace, you need clone the repository to the src folder of your workspace. 
 The easiest way to do this, is to copy the following lines into your terminal and replace the path with your local path.
 Make sure that you have created a workspace before executing the following commands.
