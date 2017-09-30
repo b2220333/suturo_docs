@@ -24,7 +24,8 @@ If you want to run all knowledge modules of the CaterROS Package, you need to ex
 
 
 .. code-block:: bash
-    :caption: launchws	
+    :caption: launch	
+    
 	roslaunch knowledge_launch suturo_knowledge_full.launch
 
 System Overview and Usage 
@@ -37,6 +38,7 @@ The world state comprises of the important concepts. To run the world state node
 
 .. code-block:: bash
     :caption: launchws	
+    
 	roslaunch object_state object_state.launch
 
 1. Temporal Parts of Objects
