@@ -61,8 +61,8 @@ The world state comprises of the important concepts. To run the world state node
     
 	roslaunch object_state object_state.launch
 
-1. Temporal Parts of Objects
-''''''''''''''''''''''''''''
+Temporal Parts of Objects
+~~~~~~~~~~~~~
 
 When storing spatial information about objects, it is crucial to connect these information to a certain point in time because it is the only way to enable the knowledge base to reason over new and old data respectively. In the picture below you can see how temporal parts are structured in KnowRob.
 
@@ -73,8 +73,8 @@ When storing spatial information about objects, it is crucial to connect these i
 
 Due to this concept it is possible for objects in KnowRob to have their attributes connected to a specific point in time. 
 
-2. Physical Parts of Objects
-'''''''''''''''''''''''''''''
+Physical Parts of Objects
+~~~~~~~~~~~~~
 
 To improve on the modelling concept of objects in KnowRob, physical parts were introduced. Objects now consist of subobjects. For example a cake spatula consists of two subobjects for its handle and for its supporting plane. This is useful because sometimes you want to grasp specific parts of an object. In case of the cake spatula you probably wanna grasp it at its handle, therefore it is easier to just lookup the pose of the handle instead of the object itself, which is defined as the center of the object. Despite the fact, that this way of representing objects is more plausible from a modelling side of view, it also makes it easier to store constants for specific offset values that belong to a physical part of an object. The illustration below provides an example of a cake spatula object in KnowRob.
 
@@ -87,8 +87,9 @@ To improve on the modelling concept of objects in KnowRob, physical parts were i
 Physical parts save spatial information about themselves, like the pose for example, relative to the position of their parents.
 The spatial information are automatically handled by the publishing module, which will be described later in this documentation.
 
-3. Connecting Frames
-'''''''''''''''''''''
+Connecting Frames
+~~~~~~~~~~~~~
+
 Since it is very difficult to recognize objects that are currently in the gripper of the robot, we came up with this solution.
 Once an object is successfully grasped by the PR2, we execute the connect_frames function. This way the knowledge base has the information that the object is gripped and more importantly, new perceptions of the grasped object type are ignored. The position of the grasped object is now published relative to the gripper position. This way the knowledge base always knows where the grasped object is. When the object is dropped, the disconnect_frames function allows new perceptions of the object again, so that the position of the object will automatically update itself again.
 
@@ -98,13 +99,13 @@ Once an object is successfully grasped by the PR2, we execute the connect_frames
     :align: center
 
 Receiving of Perceptions
-''''''''''''''''''''''''''''
+~~~~~~~~~~~~~
 
 The perception group publishes their perceptions to this topic: "`percepteros/object\_detection"'.
 The knowledge group implemented a subscriber for this topic to process the published data internally. The subscriber can be found in the knowledge package named object_state/scrips/subscriber.py. Following the flow of the subscriber, the acquired information are then internally handled by the object_state.pl module, where the KnowRob objects are created and published. The publishing of spatial information about objects is described in the next section. 
 
 Publishing of Perceptions
-''''''''''''''''''''''''''''
+~~~~~~~~~~~~~
 
 After creating the KnowRob representation of the perceived data, spatial information about the objects are published to the tf topic.
 
