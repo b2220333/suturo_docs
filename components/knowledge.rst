@@ -86,10 +86,12 @@ Prython
 
 There are a lot of different packages for calling Java code from Prolog, but we wanted to take advantage of the scipting functionalities of Python inside our code. With that in mind, a library for the purpose of calling Python from Prolog was programmed internally. At first the library started an interpreter each time a call was made, that was clearly ineficient and after some strenuous coding and optimizing the library it got almost 30 times faster than its first version. It was now feasible and even fast making calls, thanks to Prython. 
 
-You can find the library and further documentation at <https://github.com/sasjonge/Prython>`
+You can find the library and further documentation at https://github.com/sasjonge/Prython
 
 
 ROS specific Protege
 ''''''''''''''''''''''''''''
 
 For working with models and its capabilities Protégé, from the Stanford University, proved to be an excelent tool. With it it is easy to edit and view the OWL ontology files. The program was clearly not made with ROS environments in mind though, it can't handle any dynamic for example. As their code is completely open source we forked the repository and modified some parts of it to handle our dynamic paths, automatically recognizing the package path and selecting the appropriate files. That way we could spend less time looking for the right folders and more time adding new functionality.
+
+You can find the modified Protégé and Instructions, how to install it at https://github.com/raeglan/protege
