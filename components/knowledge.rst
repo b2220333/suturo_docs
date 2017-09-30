@@ -78,9 +78,6 @@ The python script object_state/scripts/fluents_tf_publisher.py creates a ROS nod
 CaterROS Cafeteria Modelling
 ----------
 
-Pepper and openEASE
-----------
-
 Developed Tools / Libraries
 ----------
 
