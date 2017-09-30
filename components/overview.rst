@@ -4,7 +4,7 @@ Overview
 
 Vision
 ----------
-The basis for our SUTURO project is the Vision of the CaterROS cafe:
+The basis for our SUTURO project is the vision of the CaterROS cafe:
 
 "As Thomas enters the CaterROS cafe, he is greeted by Pepper, the smart robot. During the course of the dialogue with Pepper, Thomas gets assigned a seat. Furthermore, he has the possibility to order one or more pieces of cake. Pepper knows the kitchen roboter Raphael, a PR2, can perform this task. The order will be relayed via RPC, then Raphael can start with its task.
 
