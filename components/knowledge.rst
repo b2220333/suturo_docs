@@ -23,7 +23,11 @@ Make sure that you have created a workspace before executing the following comma
 World state
 ----------
 
-The world state comprises of the important concepts.
+The world state comprises of the important concepts. To run the world state node call:
+
+.. code-block:: bash
+    :caption: setup	
+	roslaunch object_state object_state.launch
 
 1. Temporal Parts of Objects
 ''''''''''''''''''''''''''''
