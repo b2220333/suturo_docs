@@ -52,10 +52,31 @@ To improve on the modelling concept of objects in KnowRob, physical parts were i
     :align: center
 
 
+Physical parts save spatial information about themselves, like the pose for example, relative to the position of their parents.
+The spatial information are automatically handled by the publishing module, which will be described later in this documentation.
 
+3. Connecting Frames
+'''''''''''''''''''''
+Since it is very difficult to recognize objects that are currently in the gripper of the robot, we came up with this solution.
+Once an object is successfully grasped by the PR2, we execute the connect_frames function. This way the knowledge base has the information that the object is gripped and more importantly, new perceptions of the grasped object type are ignored. The position of the grasped object is now published relative to the gripper position. This way the knowledge base always knows where the grasped object is. When the object is dropped, the disconnect_frames function allows new perceptions of the object again, so that the position of the object will automatically update itself again.
 
+.. figure:: connect_frames.jpg  
+    :alt: Connected frames in RVIZ.
+    :scale: 30%
+    :align: center
 
-''''''''''''''''''''''''''''''''''''''
+Receiving of Perceptions
+''''''''''''''''''''''''''''
+
+The perception group publishes their perceptions to this topic: "`percepteros/object\_detection"'.
+The knowledge group implemented a subscriber for this topic to process the published data internally. The subscriber can be found in the knowledge package named object_state/scrips/subscriber.py. Following the flow of the subscriber, the acquired information are then internally handled by the object_state.pl module, where the KnowRob objects are created and published. The publishing of spatial information about objects is described in the next section. 
+
+Publishing of Perceptions
+''''''''''''''''''''''''''''
+
+After creating the KnowRob representation of the perceived data, spatial information about the objects are published to the tf topic.
+
+The python script object_state/scripts/fluents_tf_publisher.py creates a ROS node to transform the poses of objects. In a first step the required information for the transformation such as Name, FrameID, Pose and Orientation are queried, using the prolog function get_tf_infos(). The result of the transformation is forwarded to the tf topic by the publisher, making it accessable for manipulation.
 
 
 CaterROS Cafeteria Modelling
