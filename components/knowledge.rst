@@ -36,7 +36,7 @@ When storing spatial information about objects, it is crucial to connect these i
 
 .. figure:: temporal_parts.png  
     :alt: Temporal Parts in KnowRob
-    :scale: 30%
+    :scale: 50%
     :align: center
 
 Due to this concept it is possible for objects in KnowRob to have their attributes connected to a specific point in time. 
@@ -48,7 +48,7 @@ To improve on the modelling concept of objects in KnowRob, physical parts were i
 
 .. figure:: physical_parts.jpg  
     :alt: Temporal Parts in KnowRob
-    :scale: 30%
+    :scale: 50%
     :align: center
 
 
@@ -62,7 +62,7 @@ Once an object is successfully grasped by the PR2, we execute the connect_frames
 
 .. figure:: connect_frames.png  
     :alt: Connected frames in RVIZ.
-    :scale: 30%
+    :scale: 50%
     :align: center
 
 Receiving of Perceptions
