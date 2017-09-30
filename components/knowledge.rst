@@ -60,7 +60,7 @@ The spatial information are automatically handled by the publishing module, whic
 Since it is very difficult to recognize objects that are currently in the gripper of the robot, we came up with this solution.
 Once an object is successfully grasped by the PR2, we execute the connect_frames function. This way the knowledge base has the information that the object is gripped and more importantly, new perceptions of the grasped object type are ignored. The position of the grasped object is now published relative to the gripper position. This way the knowledge base always knows where the grasped object is. When the object is dropped, the disconnect_frames function allows new perceptions of the object again, so that the position of the object will automatically update itself again.
 
-.. figure:: connect_frames.jpg  
+.. figure:: connect_frames.png  
     :alt: Connected frames in RVIZ.
     :scale: 30%
     :align: center
