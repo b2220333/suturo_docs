@@ -46,7 +46,7 @@ Due to this concept it is possible for objects in KnowRob to have their attribut
 
 To improve on the modelling concept of objects in KnowRob, physical parts were introduced. Objects now consist of subobjects. For example a cake spatula consists of two subobjects for its handle and for its supporting plane. This is useful because sometimes you want to grasp specific parts of an object. In case of the cake spatula you probably wanna grasp it at its handle, therefore it is easier to just lookup the pose of the handle instead of the object itself, which is defined as the center of the object. Despite the fact, that this way of representing objects is more plausible from a modelling side of view, it also makes it easier to store constants for specific offset values that belong to a physical part of an object. The illustration below provides an example of a cake spatula object in KnowRob.
 
-.. figure:: physical_parts.png  
+.. figure:: physical_parts.jpg  
     :alt: Temporal Parts in KnowRob
     :scale: 30%
     :align: center
