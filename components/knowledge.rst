@@ -83,3 +83,11 @@ Pepper and openEASE
 
 Prython
 ----------
+
+
+
+
+ROS specific Protege
+---------
+
+For working with models and its capabilities Protégé, from the Stanford University, proved to be an excelent tool. With it it is easy to edit and view the OWL ontology files. The program was clearly not made with ROS environments in mind though, it can't handle any dynamic for example. As their code is completely open source we forked the repository and modified some parts of it to handle our dynamic paths, automatically recognizing the package path and selecting the appropriate files. That way we could spend less time looking for the right folders and more time adding new functionality.
