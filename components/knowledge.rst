@@ -29,7 +29,14 @@ World state
 
 The world state comprises of the important concepts.
 
-1. Test
+1. Temporal Parts of Objects
+When storing spatial information about objects, it is crucial to connect these information to a certain point in time because it is the only way to enable the knowledge base to reason over new and old data respectively. In the picture below you can see how temporal parts are structured in KnowRob.
+
+.. figure:: temporal_parts.png  
+    :alt: Temporal Parts in KnowRob
+    :scale: 50%
+    :align: center
+
 
 
 2. Zweiter Test
