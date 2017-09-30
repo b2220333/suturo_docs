@@ -117,10 +117,10 @@ CaterROS Cafeteria Modelling
 
 Furthermore we needed an ordering system for the cafe CaterROS. For this we created a customer model in the file  	:code:`suturo_customer_model.owl`. We modelled the customer who has the temporal property visit to Visit instances. Visit instances have hasOrder properties for each order and an property to store the table of the customer. An order stores the ordered product, the corresponding ordered amount and the coresponding delivered amount.
 
-.. figure:: cafetariamodel.png  
-    :alt: Customer model
+.. figure:: cafetariamodel.png 
+    :alt: Cafetaria Model
     :scale: 50%
-    :align: center
+    :align: center 	
     
  We extended this by a model of the CaterROS Cafe in the file :code:`suturo_cafetaria.owl`. This contains e.g. the position of the customer tables.
     
@@ -128,12 +128,21 @@ Interpretation of DialogIntention
 `````````````
 Additionally a system to align the knowledge base to the results from the dialog system was implemented. The dialog system creates a JSON-String, that contains the intention derived from the dialog of the customer and the system. This intention is then filtered by the Planning System and then parsed to create a DialogIntention Object. 
 
-A DialogIntention objects saves the guestID and a DialogSem
+A DialogIntention objects saves the guestID and a DialogQuery. A dialog query object can be of different types, that denotes the semantic of the intention. For example the type IncreaseCake denotes the intention of the customer to order more cake.
 
 .. figure:: dialogintention.png 
     :alt: Dialog Intention
     :scale: 50%
-    :align: center 	
+    :align: center 
+    
+To align the knowledge base to the DialogIntention Object we use SWRL Rules. This allows us to create dialog intentions and their interpretation solely on the modelling level, without adding new code.  Here an example rule:
+
+.. figure:: setLocationRule.png
+    :alt: SWRL Rule for SetLocation
+    :scale: 50%
+    :align: center 
+    
+We only consider DialogIntentions, that weren’t considered before by marking considered intentions with the Type “CheckedDialogIntention”. The dialog intention contains a query, that  detemines the semantic for the interpretation. In this case the Type is SetLocation. We use the information from intention and query to gain further information of the guest and the table. We then use these Informations to project the effect into the knowledgebase: During his visit, the customer will be assigned to the defined table.
 
 Developed Tools / Libraries
 ----------
