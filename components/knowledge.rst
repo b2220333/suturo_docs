@@ -19,14 +19,24 @@ Make sure that you have created a workspace before executing the following comma
 	git clone git@github.com:suturo16/knowledge.git
 	cd ../
 	catkin_make
+	
+If you want to run all knowledge modules of the CaterROS Package, you need to execute the following command:
+
+
+.. code-block:: bash
+    :caption: launchws	
+	roslaunch knowledge_launch suturo_knowledge_full.launch
+
+System Overview and Usage 
+----------
 
 World state
-----------
+`````````````
 
 The world state comprises of the important concepts. To run the world state node call:
 
 .. code-block:: bash
-    :caption: setup	
+    :caption: launchws	
 	roslaunch object_state object_state.launch
 
 1. Temporal Parts of Objects
@@ -80,7 +90,7 @@ The python script object_state/scripts/fluents_tf_publisher.py creates a ROS nod
 
 
 CaterROS Cafeteria Modelling
-----------
+`````````````
 
 Developed Tools / Libraries
 ----------
