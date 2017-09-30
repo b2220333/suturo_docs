@@ -84,7 +84,7 @@ Pepper and openEASE
 Prython
 ----------
 
-
+There are a lot of different packages for calling Java code from Prolog, but we wanted to take advantage of the scipting functionalities of Python inside our code. With that in mind, a library for the purpose of calling Python from Prolog was programmed internally. At first the library started an interpreter each time a call was made, that was clearly ineficient and after some strenuous coding and optimizing the library it got almost 30 times faster than its first version. It was now feasible and even fast making calls, thanks to Prython. 
 
 
 ROS specific Protege
